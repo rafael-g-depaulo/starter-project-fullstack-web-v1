@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [ emails, setEmails ] = useState([])
+
+  fetch('http://localhost:8080/api/email')
+    .then(res => res.json())
+    .then(res => (console.log(res), res))
+    .then(setEmails)
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +26,12 @@ function App() {
         >
           Learn React
         </a>
+
+        <ul>
+        { emails.map(email => 
+          <li>nome: {email.nome}. email: {email.email}. fone: {email.telefone}</li>
+        )}
+        </ul>
       </header>
     </div>
   );

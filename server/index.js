@@ -4,6 +4,25 @@ import express from 'express'
 // create new express app and save it as "app"
 const app = express()
 
+// get express middlewares
+import cors from 'cors'
+
+const allowedOrigins = [
+  'http://localhost:3000',
+]
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow requests with no origin 
+    // (like mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.'
+      return callback(new Error(msg), false)
+    }
+    return callback(null, true)
+  }
+}))
+
 // server configuration
 const PORT = process.env.PORT
 
@@ -13,10 +32,10 @@ import Router from './routes'
 // load DB connection
 import models from './db/models'
 models.sequelize.sync().then(() => {
-  app.use('/', Router(models))
+  app.use('/api', Router(models))
 
   // create a route for the app
-  app.get('/', (req, res) => {
+  app.get('/api', (req, res) => {
     res.json({
       message: "this is my starter project for a Node.js API with a postgres server connection",
       PS: "please remember to set up env vars in ./.env (example is in ./env.example",
