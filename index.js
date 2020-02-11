@@ -1,5 +1,6 @@
 // import express (after npm install express)
 import express from 'express'
+import path from 'path'
 
 // create new express app and save it as "app"
 const app = express()
@@ -40,6 +41,13 @@ models.sequelize.sync().then(() => {
       message: "this is my starter project for a Node.js API with a postgres server connection",
       PS: "please remember to set up env vars in ./.env (example is in ./env.example",
     })
+  })
+
+  // any requests that dont have an API path, map to react bundle
+  app.use(express.static(path.join(__dirname, '/app/build')));
+  app.get('*', (req, res) => {
+    console.log("going to the app, not the API", path.join(__dirname, '/app/build', 'index.html'))
+    res.sendFile(path.join(__dirname, '/app/build', 'index.html'))
   })
   
   // make the server listen to requests
