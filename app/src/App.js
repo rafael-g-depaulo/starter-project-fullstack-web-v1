@@ -8,9 +8,7 @@ function App() {
 
   useEffect(() => {
     fetch('/api/email')
-      .then(res => (console.log(res), res))
       .then(res => res.json())
-      .then(res => (console.log(res), res))
       .then(setEmails)
       .catch(err => console.error("err", err))
   }, [])
