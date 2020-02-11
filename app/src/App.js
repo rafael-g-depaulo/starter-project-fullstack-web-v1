@@ -7,10 +7,12 @@ function App() {
   const [ emails, setEmails ] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/email')
+    fetch('/api/email')
+      .then(res => (console.log(res), res))
       .then(res => res.json())
       .then(res => (console.log(res), res))
       .then(setEmails)
+      .catch(err => console.error("err", err))
   }, [])
 
   return (
