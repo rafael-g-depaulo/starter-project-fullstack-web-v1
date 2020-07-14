@@ -31,7 +31,7 @@ const PORT = process.env.PORT
 import Router from './routes'
 
 // load DB connection
-import db from './db'
+import db from './Database'
 db.sync().then(() => {
   app.use('/api', Router(db))
 
