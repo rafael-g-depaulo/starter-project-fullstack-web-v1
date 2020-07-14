@@ -8,7 +8,7 @@ module.exports = {
     [
       "module-resolver",
       {
-        root: ["./server"],
+        root: ["."],
         alias: {},
       },
     ],
