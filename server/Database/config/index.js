@@ -1,7 +1,7 @@
-const dotenv = require("dotenv");
-dotenv.config();
+import dotenv from "dotenv"
+dotenv.config()
 
-module.exports = {
+export default {
   dialect: "postgres",
   host: process.env.DB_HOST,
   username: process.env.DB_USER,

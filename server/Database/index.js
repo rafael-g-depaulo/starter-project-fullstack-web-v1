@@ -7,5 +7,4 @@ const connection = new Sequelize(dbConfig)
 
 EmailModel(connection)
 
-
 export default connection
