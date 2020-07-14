@@ -28,7 +28,7 @@ app.use(cors({
 const PORT = process.env.PORT
 
 // import routes of API
-import Router from './routes'
+import Router from './Routes'
 
 // load DB connection
 import db from './Database'

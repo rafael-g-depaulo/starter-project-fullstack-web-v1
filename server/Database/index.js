@@ -1,7 +1,7 @@
 import Sequelize from "sequelize"
 import dbConfig from "./config"
 
-import EmailModel from "./models/Email"
+import EmailModel from "../Models/Email"
 
 const connection = new Sequelize(dbConfig)
 
