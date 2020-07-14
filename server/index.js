@@ -28,10 +28,10 @@ app.use(cors({
 const PORT = process.env.PORT
 
 // import routes of API
-import Router from './Routes'
+import Router from 'Routes'
 
 // load DB connection
-import db from './Database'
+import db from 'Database'
 db.sync().then(() => {
   app.use('/api', Router(db))
 
