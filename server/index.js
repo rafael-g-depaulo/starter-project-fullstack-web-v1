@@ -18,7 +18,7 @@ import Router from 'Routes'
 // load DB connection
 import db from 'Database'
 db.sync().then(() => {
-  app.use('/api', Router(db))
+  app.use('/api', Router({ db }))
 
   // create a route for the app
   app.get('/api', (req, res) => {
