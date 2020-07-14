@@ -1,9 +1,9 @@
 import express from 'express'
 
 // use dependency injection in module
-export default (db, config) => express.Router(config)
+export default ({ Email }, config) => express.Router(config)
   // index
-  .get('/', (req, res) => db.Email.findAll()
+  .get('/', (req, res) => Email.findAll()
     .then(queryResult => res.json(queryResult))
-    .catch(err => res.json({error: err}))
+    .catch(error => res.status(500).json({ error }))
   )
