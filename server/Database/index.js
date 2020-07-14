@@ -1,10 +1,11 @@
 import Sequelize from "sequelize"
 import dbConfig from "./config"
 
-import EmailModel from "./models/email"
+import EmailModel from "../Models/Email"
 
 const connection = new Sequelize(dbConfig)
 
-EmailModel(connection)
+EmailModel.init(connection)
+EmailModel.associate(connection.models)
 
 export default connection
