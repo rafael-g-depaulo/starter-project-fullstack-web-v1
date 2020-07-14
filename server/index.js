@@ -31,9 +31,9 @@ const PORT = process.env.PORT
 import Router from './routes'
 
 // load DB connection
-import models from './db/models'
-models.sequelize.sync().then(() => {
-  app.use('/api', Router(models))
+import db from './db'
+db.sync().then(() => {
+  app.use('/api', Router(db))
 
   // create a route for the app
   app.get('/api', (req, res) => {
