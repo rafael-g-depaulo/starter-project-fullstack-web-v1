@@ -1,8 +1,8 @@
-const path = require('path')
+const { resolve } = require("path")
 
 module.exports = {
-  config: path.resolve('./db/config', 'config.js'),
-  'models-path': path.resolve('./db/models'),
-  'seeders-path': path.resolve('./db/seeds'),
-  'migrations-path': path.resolve('./db/migrations'),
+  "config":           resolve(__dirname, "server/database/config.js"),
+  "migrations-path":  resolve(__dirname, "server/database/migrations"),
+  "models-path":      resolve(__dirname, "server/database/models"),
+  "seeders-path":     resolve(__dirname, "server/database/seeds"),
 }
