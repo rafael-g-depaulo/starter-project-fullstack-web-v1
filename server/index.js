@@ -32,10 +32,12 @@ db.sync().then(() => {
 
   // any requests that dont have an API path, map to react bundle
   if (NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, '/app/build')));
+    const appBundleFolder = path.join(__dirname, '../client/build') 
+    
+    app.use(express.static(appBundleFolder));
     app.get('*', (req, res) => {
-      console.log("going to the app, not the API", path.join(__dirname, '/app/build', 'index.html'))
-      res.sendFile(path.join(__dirname, '/app/build', 'index.html'))
+      console.log("going to the app, not the API", path.join(appBundleFolder, 'index.html'))
+      res.sendFile(path.join(appBundleFolder, 'index.html'))
     })
   }
   
