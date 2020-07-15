@@ -21,6 +21,7 @@
     "install-deps": "yarn install:client && yarn install:server",
     "install:client": "yarn --cwd client install --production=true",
     "install:server": "yarn --cwd server install --production=true",
-    "start": "yarn --cwd server start"
+    "start": "yarn --cwd server start",
+    "web": "yarn start"
   }
 }
