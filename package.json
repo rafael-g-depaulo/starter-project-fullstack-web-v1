@@ -1,0 +1,26 @@
+{
+  "name": "starter-project",
+  "version": "1.0.0",
+  "description": "Monorepo of my starter project for fullstack web projects using React.js, Express.js, Sequelize & PostgreSQL",
+  "main": "index.js",
+  "repository": "git@github.com:rafael-g-depaulo/starter-project-express-react-sequelize-pgsql.git",
+  "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "build": "yarn build:client && yarn build:server",
+    "build:client": "yarn install:client && yarn --cwd client build",
+    "build:server": "yarn install:server && yarn --cwd server build",
+    "clean": "yarn clean:client && yarn clean:server",
+    "clean:client": "rm -rf ./client/build && mkdir ./client/build",
+    "clean:server": "rm -rf ./server/build && mkdir ./server/build",
+    "install-deps": "yarn install:client && yarn install:server",
+    "install:client": "yarn --cwd client install --production=true",
+    "install:server": "yarn --cwd server install --production=true",
+    "start": "yarn --cwd server start"
+  }
+}
