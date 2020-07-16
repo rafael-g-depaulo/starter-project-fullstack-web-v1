@@ -1,10 +1,10 @@
 import express from 'express'
 
-// import EmailRouter from './email'
+// import DragonRouter from './dragon'
 
-// import Email from "Models/Email"
+// import Dragon from "Models/dragon"
 
 // use dependency injection in module
 export default ({ }, config = { mergeParams: true }) => express.Router(config)
 // add routes
-  // .use('/email', EmailRouter({ Email }, config))
+  // .use('/dragon', DragonRouter({ Dragon }, config))
