@@ -1,5 +1,7 @@
 'use strict';
 
+const { default: Dragon } = require("Models/dragon");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Dragons', [

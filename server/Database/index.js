@@ -1,11 +1,11 @@
 import Sequelize from "sequelize"
 import dbConfig from "./config"
 
-// import EmailModel from "Models/Email"
+import DragonModel from "Models/dragon"
 
 const connection = new Sequelize(dbConfig)
 
-// EmailModel.init(connection)
-// EmailModel.associate(connection.models)
+DragonModel.init(connection)
+DragonModel.associate(connection.models)
 
 export default connection

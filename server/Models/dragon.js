@@ -21,7 +21,7 @@ export class Dragon extends Model {
         tableName: 'Dragons',
 
         // if true, add timestamps to table (updatedAt, createdAt)
-        timestamps: false,
+        timestamps: true,
 
         // if true, doesn't delete rows, instead adds a deletedAt column, if timestamps is true
         paranoid: false,
