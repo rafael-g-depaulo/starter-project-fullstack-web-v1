@@ -5,20 +5,14 @@
 // 
 // 
 
-'use strict'
-
-const fs = require('fs')
-const path = require('path')
-const Sequelize = require('sequelize')
-const basename = path.basename(__filename)
-const env = process.env.NODE_ENV || 'development'
-const config = require(__dirname + '/../Database/config.js')[env]
-const db = {}
+import fs from 'fs'
+import path from 'path'
+import Sequelize from 'sequelize'
+import config from 'Database/config.js'
 
 const sequelize = config.use_env_variable
   ? new Sequelize(process.env[config.use_env_variable], config)
   : new Sequelize(config.database, config.username, config.password, config)
-
 
 // function to get all of the model file names
 const readDir = (directory = __dirname) => new Promise((resolve, reject) => {
@@ -29,20 +23,20 @@ const readDir = (directory = __dirname) => new Promise((resolve, reject) => {
 })
 
 // read modules and sync models with db
+const basename = path.basename(__filename)
+const db = {}
+
+// read all models, initialize them and export them
 readDir()
   .then(fileNames => fileNames
-    .filter(file => 
-      (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js')
-    )
-    .map(file => {
-      console.log("model filenames", file)
-      import(path.join(__dirname, file))
-        .then(module => {
-          const modelFactory = module.default
-          const model = modelFactory(sequelize, Sequelize.DataTypes)
-          db[model.name] = model
-        })
-    })
+    .filter(file => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js')
+    .map(file => import(path.join(__dirname, file)))
+  )
+  .then(modulePromises => Promise.all(modulePromises))
+  .then(modules => modules
+    .map(module => module.default)
+    .map(modelFactory => modelFactory(sequelize, Sequelize.DataTypes))
+    .map(model => db[model.name] = model)
   )
   .catch(err => console.log("ERROR in loading sequelize models:", err))
 
