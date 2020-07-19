@@ -25,6 +25,12 @@ export default ({ Dragon, Title }, config) => Router(config)
 
     res.json({ newTitle, dragon })
   })
+  .delete("/:dragon_id", async (req, res) => {
+    const { dragon_id } = req.params
+
+    const deletedId = await Dragon.destroy({ where: { id: dragon_id } })
+
+    res.json({ msg: "dragon sucessfully deleted", id: deletedId })
+  })
   // TODO: add removal of titles
-  // TODO: add dragon deletion
   // TODO: make title:dragon relation NxM
