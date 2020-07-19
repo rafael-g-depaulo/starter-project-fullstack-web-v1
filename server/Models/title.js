@@ -1,6 +1,6 @@
 import { Model } from "sequelize"
 
-export class Dragon extends Model {
+export class Title extends Model {
   static init(sequelize, DataTypes) {
     super.init({
       name: DataTypes.STRING
@@ -11,10 +11,10 @@ export class Dragon extends Model {
       sequelize,
   
       // model name
-      modelName: "Dragon",
+      modelName: "Title",
   
       // define the table name
-      tableName: 'dragons',
+      tableName: 'titles',
   
       // if true, add timestamps to table (updatedAt, createdAt)
       timestamps: true,
@@ -35,10 +35,10 @@ export class Dragon extends Model {
   }
 
   static associate(models) {
-    
-    // define dragon title
-    this.hasMany(models.Title, { foreignKey: "dragon_id", as: "titles" })
+
+    // associated dragon
+    this.belongsTo(models.Dragon, { foreignKey: "dragon_id", as: "dragon" })
   }
 }
 
-export default Dragon
+export default Title
