@@ -2,7 +2,6 @@ import express from 'express'
 
 import DragonRouter from './dragon'
 
-import * as DDDD from "Models"
 import Dragon from "Models/dragon"
 
 // use dependency injection in module
