@@ -5,40 +5,53 @@
 // 
 // 
 
-'use strict';
+'use strict'
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../Database/config.js')[env];
-const db = {};
+const fs = require('fs')
+const path = require('path')
+const Sequelize = require('sequelize')
+const basename = path.basename(__filename)
+const env = process.env.NODE_ENV || 'development'
+const config = require(__dirname + '/../Database/config.js')[env]
+const db = {}
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+const sequelize = config.use_env_variable
+  ? new Sequelize(process.env[config.use_env_variable], config)
+  : new Sequelize(config.database, config.username, config.password, config)
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+
+// function to get all of the model file names
+const readDir = (directory = __dirname) => new Promise((resolve, reject) => {
+  fs.readdir(directory, (err, fileNames) => {
+    if (err) reject(err)
+    else resolve(fileNames)
   })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
+})
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+// read modules and sync models with db
+readDir()
+  .then(fileNames => fileNames
+    .filter(file => 
+      (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js')
+    )
+    .map(file => {
+      console.log("model filenames", file)
+      import(path.join(__dirname, file))
+        .then(module => {
+          const modelFactory = module.default
+          const model = modelFactory(sequelize, Sequelize.DataTypes)
+          db[model.name] = model
+        })
+    })
+  )
+  .catch(err => console.log("ERROR in loading sequelize models:", err))
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+// associate models
+Object
+  .keys(db)
+  .map(modelName => db[modelName]?.associate(db))
 
-module.exports = db;
+db.sequelize = sequelize
+db.Sequelize = Sequelize
+
+module.exports = db
