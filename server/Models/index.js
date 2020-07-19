@@ -10,6 +10,7 @@ import path from 'path'
 import Sequelize from 'sequelize'
 import config from 'Database/config.js'
 
+// db connection variable
 const sequelize = config.use_env_variable
   ? new Sequelize(process.env[config.use_env_variable], config)
   : new Sequelize(config.database, config.username, config.password, config)
@@ -22,11 +23,14 @@ const readDir = (directory = __dirname) => new Promise((resolve, reject) => {
   })
 })
 
-// read modules and sync models with db
-const basename = path.basename(__filename)
-const db = {}
+// aux variable to hold sequelize, db connection instance and models
+const db = {
+  sequelize,
+  Sequelize,
+}
 
 // read all models, initialize them and export them
+const basename = path.basename(__filename)
 readDir()
   .then(fileNames => fileNames
     .filter(file => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js')
@@ -34,18 +38,14 @@ readDir()
   )
   .then(modulePromises => Promise.all(modulePromises))
   .then(modules => modules
-    .map(module => module.default)
-    .map(modelFactory => modelFactory(sequelize, Sequelize.DataTypes))
-    .map(model => db[model.name] = model)
+    // initialize models
+    .map(module => {
+      const model = module.default
+      model.init(sequelize, Sequelize.DataTypes)
+      db[model.name] = model
+      return model
+    })
+    // associate models
+    .map(model => model?.associate(db))
   )
   .catch(err => console.log("ERROR in loading sequelize models:", err))
-
-// associate models
-Object
-  .keys(db)
-  .map(modelName => db[modelName]?.associate(db))
-
-db.sequelize = sequelize
-db.Sequelize = Sequelize
-
-module.exports = db
