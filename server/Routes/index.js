@@ -1,6 +1,6 @@
 import express from 'express'
 
-import DragonRouter from './dragon'
+import DragonRouter from './Dragon'
 
 import Dragon from "Models/dragon"
 import Title from "Models/title"
