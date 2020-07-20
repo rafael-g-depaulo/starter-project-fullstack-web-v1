@@ -12,7 +12,7 @@ export default ({ Dragon, Title }, config) => Router(config)
   .post("/create", (req, res) => {
     const { name } = req.body
     Dragon.create({ name })
-    .then(d => res.json({dragon: d}))
+    .then(dragon => res.json({ dragon }))
     .catch(err => res.status(500).json(err))
   })
   .post("/:dragon_id/addTitle", getDragon(), async (req, res) => {
