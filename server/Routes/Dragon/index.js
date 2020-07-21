@@ -13,7 +13,7 @@ export default ({ Dragon, Title }, config) => {
   return Router(config)
     // index
     .get('/', (req, res) => Dragon
-      .findAll({ include: [{ model: Title, as: 'titles' }] })
+      .findAll({ include: 'titles' })
       .then(queryResult => res.json(queryResult))
       .catch(error => res.status(500).json({ error }))
     )
@@ -33,7 +33,7 @@ export default ({ Dragon, Title }, config) => {
         .catch(err => res.status(504).json({ err: "error with title creation. please try again later" }))
       
     })
-    .get("/:dragon_id", getDragon({ include: { model: Title, as: 'titles' } }), async (req, res) => {
+    .get("/:dragon_id", getDragon({ include: 'titles' }), async (req, res) => {
       return res.json({ dragon: req.dragon })
     })
     .delete("/:dragon_id", async (req, res) => Dragon
@@ -43,7 +43,7 @@ export default ({ Dragon, Title }, config) => {
         : res.json({ msg: "dragon sucessfully deleted" })
       )
     )
-    .delete("/:dragon_id/title/:title_id", getDragon({ include: { model: Title, as: 'titles' } }), async (req, res) => {
+    .delete("/:dragon_id/title/:title_id", getDragon({ include: 'titles' }), async (req, res) => {
       const { title_id } = req.params
       const { dragon } = req
 

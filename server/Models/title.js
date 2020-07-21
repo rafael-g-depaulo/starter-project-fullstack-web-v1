@@ -37,7 +37,7 @@ export class Title extends Model {
   static associate(models) {
 
     // associated dragon
-    this.belongsTo(models.Dragon, { foreignKey: "dragon_id", as: "dragon" })
+    this.belongsToMany(models.Dragon, { through: 'dragons_titles', as: 'dragons' })
   }
 }
 

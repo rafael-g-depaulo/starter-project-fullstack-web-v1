@@ -8,16 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      dragon_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'dragons', // name of Target model
-          key: 'id', // key in Target model that we're referencing
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-      },
+      // dragon_id: {
+      //   type: Sequelize.INTEGER,
+      //   allowNull: false,
+      //   references: {
+      //     model: 'dragons', // name of Target model
+      //     key: 'id', // key in Target model that we're referencing
+      //   },
+      //   onUpdate: 'CASCADE',
+      //   onDelete: 'CASCADE',
+      // },
       name: {
         type: Sequelize.STRING
       },
