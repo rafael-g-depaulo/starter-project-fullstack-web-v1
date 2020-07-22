@@ -5,6 +5,7 @@ module.exports = {
   ],
   
   plugins: [
+    // module resolver for absolute imports
     [
       "module-resolver",
       {
@@ -12,5 +13,8 @@ module.exports = {
         alias: {},
       },
     ],
+
+    // for async await
+    "@babel/plugin-transform-runtime",
   ],
 }

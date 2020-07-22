@@ -16,14 +16,17 @@
     "db:create": "./node_modules/.bin/sequelize db:create",
     "db:drop": "./node_modules/.bin/sequelize db:drop",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
-    "db:seed": "./node_modules/.bin/sequelize db:seed",
-    "db:setup": "./node_modules/.bin/sequelize db:create && yarn db:migrate",
+    "db:seed": "./node_modules/.bin/sequelize db:seed:all",
+    "db:unseed": "./node_modules/.bin/sequelize db:seed:undo:all",
+    "db:reseed": "yarn db:unseed && yarn db:seed",
+    "db:setup": "./node_modules/.bin/sequelize db:create && yarn db:migrate && yarn db:seed",
     "db:reset": "yarn db:drop && yarn db:setup"
   },
   "dependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.4",
+    "@babel/runtime": "^7.10.5",
     "babel-plugin-module-resolver": "^4.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -41,6 +44,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.10.5",
     "nodemon": "^2.0.2"
   }
 }
