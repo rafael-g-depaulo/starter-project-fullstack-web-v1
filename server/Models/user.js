@@ -1,10 +1,27 @@
 import { Model } from "sequelize"
 
+const pwdHashRegex = /^(?:\$2\$|\$2a\$|\$2b\$|\$2y\$)(?:\d{2}\$)(?:[a-zA-Z0-9\/\.]{53})$/
 export class User extends Model {
   static init(sequelize, DataTypes) {
     super.init({
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true,
+        },
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          // bcrypt regex checker. i made that regex myself,
+          // so remove the next line if stuff fucks up
+          is: pwdHashRegex,
+        }
+      },
       name: DataTypes.STRING,
     },
     // options
