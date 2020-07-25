@@ -13,36 +13,30 @@ export default ({ createHash = hash, compareHash = compare, User = UserModel }, 
           .status(400)
           .send({ error: "incomplete request body" })
 
-      let user
-      try {
-        user = await User.create({
+      User
+        .create({
           email,
           password,
           name,
         })
-      } catch (error) {
-        const { name, errors, sql } = error
-        const { message, type } = errors[0]
-
-        errorLog("USER CREATION", {
-          name,
-          message,
-          SQL: sql,
-          type,
+        .then(user => {
+          const userObject = user.dataValues
+          delete userObject.password
+          res.status(200).json({ user: userObject })
         })
-
-        return res.status(400).send({
-          error: message,
+        .catch(error => {
+          const { name, errors, sql } = error
+          const { message, type } = errors[0]
+          errorLog("USER CREATION", {
+            name,
+            message,
+            SQL: sql,
+            type,
+          })
+          res.status(400).json({
+            error: message,
+          })
         })
-      }
-
-      const userObject = user.dataValues
-      delete userObject.password
-
-      return res
-        .status(200)
-        .json({ user: userObject })
-
     })
     .get("/current", async (req, res) => {})
     .post("/login", async (req, res) => {
