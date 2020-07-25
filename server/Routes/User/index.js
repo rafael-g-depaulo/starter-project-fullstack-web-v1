@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { hash } from 'Utils/hashPwd'
 import UserModel from "Models/user"
+import { errorLog } from 'Utils/log'
 
 export default ({ hashFunc = hash, User = UserModel }, options) => {
   return Router(options)
@@ -31,16 +32,14 @@ export default ({ hashFunc = hash, User = UserModel }, options) => {
         })
       } catch (error) {
         const { name, errors, sql } = error
-
         const { message, type } = errors[0]
 
-        const errMsg = `ERROR IN USER CREATION:`
-          + `\n  name: "${name}"`
-          + `\n  message: "${message}"`
-          + `\n  type: "${type}"`
-          + `\n  SQL: "${sql}"`
-        
-        console.error(errMsg)
+        errorLog("USER CREATION", {
+          name,
+          message,
+          SQL: sql,
+          type,
+        })
 
         return res.status(422).send({
           error: message,
