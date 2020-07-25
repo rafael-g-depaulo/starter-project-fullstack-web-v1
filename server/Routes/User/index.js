@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { hash } from 'Utils/hashPwd'
 import UserModel from "Models/user"
+import { hash, compare } from 'Utils/hash'
 import { errorLog } from 'Utils/log'
 
-export default ({ hashFunc = hash, User = UserModel }, options) => {
+export default ({ createHash = hash, compareHash = compare, User = UserModel }, options) => {
   return Router(options)
     .post("/register", async (req, res) => {
       const { email, password, name } = req.body
@@ -15,7 +15,7 @@ export default ({ hashFunc = hash, User = UserModel }, options) => {
 
       let pHash
       try {
-        pHash = await hashFunc(password)
+        pHash = await createHash(password)
       } catch (error) {
         console.error("ERROR IN USER CREATION:", error.errors)
         return res
@@ -41,7 +41,7 @@ export default ({ hashFunc = hash, User = UserModel }, options) => {
           type,
         })
 
-        return res.status(422).send({
+        return res.status(400).send({
           error: message,
         })
       }
@@ -54,6 +54,44 @@ export default ({ hashFunc = hash, User = UserModel }, options) => {
         .json({ user: userObject })
 
     })
-    .get("/current", (req, res) => {})
-    .post("/login", (req, res) => {})
+    .get("/current", async (req, res) => {})
+    .post("/login", async (req, res) => {
+
+      const { email, password } = req.body
+
+      if (!email || !password) return res
+        .status(400)
+        .send({ error: "incomplete request body" })
+
+      try {
+        const user = await User.findOne({ where: { email } })
+
+        // if user with that email not found, return 401
+        if (!user) return res
+          .status(401)
+          .json({ msg: "email e/ou senha inválidos" })
+
+        // check if passwords match
+        const passwordsMatch = await compareHash(password, user.password)
+        if (!passwordsMatch) return res
+          .status(401)
+          .json({ msg: "email e/ou senha inválidos" })
+        
+        // TODO: ADD JWT LOGIC
+        // TODO: ADD JWT LOGIC
+        // TODO: ADD JWT LOGIC
+        // TODO: ADD JWT LOGIC
+          
+        // all ok, user logged in
+        return res
+          .status(200)
+          .json({ msg: "tudo ok!!"})
+
+      } catch (error) {
+        errorLog("USER LOGIN PASSWORD HASH", error)
+        return res.status(401).send({
+          error: "email e/ou senha inválidos",
+        })
+      }
+    })
 }
