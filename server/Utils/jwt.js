@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken"
 
-const secret = process.env.TOKEN_SECRET_KEY ?? "safsdfgksdglkjsnfl"
+const secret = process.env.JWT_SECRET_KEY ?? "safsdfgksdglkjsnfl"
 
 // Transform jwt.verify into Promise format
-export const veryfy = (token, options = {}) => new Promise((resolve, reject) => {
+export const veryfyToken = (token, options = {}) => new Promise((resolve, reject) => {
   jwt.verify(
     token, secret, options,
     (err, decoded) => err ? reject(err) : resolve(decoded)
@@ -11,7 +11,7 @@ export const veryfy = (token, options = {}) => new Promise((resolve, reject) => 
 })
 
 const defaultCreateOptions = {
-  expiresIn: parseInt(process.env.TOKEN_EXPIRATION_TIME ?? "1d"),
+  expiresIn: process.env.JWT_EXPIRATION_TIME ?? "1d",
 }
-export const create = (payload, options = {}) => jwt
+export const createToken = (payload, options = {}) => jwt
   .sign(payload, secret, { ...defaultCreateOptions, ...options })
