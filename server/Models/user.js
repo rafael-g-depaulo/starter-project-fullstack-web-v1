@@ -1,4 +1,5 @@
 import { Model } from "sequelize"
+import { hash } from "Utils/hash"
 
 export class User extends Model {
   static init(sequelize, DataTypes) {
@@ -16,7 +17,10 @@ export class User extends Model {
         allowNull: false,
         unique: true,
       },
-      name: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
     // options
     {
@@ -41,7 +45,13 @@ export class User extends Model {
   
       // hooks
       hooks: {
-        // beforeCreate: (user, options) => user.id = uuid()
+        beforeCreate: async (user, options) => {
+          try {
+            user.password = await hash(user.password)
+          } catch (error) {
+            console.error("ERROR IN USER CREATION:", error)
+          }
+        }
   
       }
     })

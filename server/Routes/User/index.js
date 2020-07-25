@@ -13,21 +13,11 @@ export default ({ createHash = hash, compareHash = compare, User = UserModel }, 
           .status(400)
           .send({ error: "incomplete request body" })
 
-      let pHash
-      try {
-        pHash = await createHash(password)
-      } catch (error) {
-        console.error("ERROR IN USER CREATION:", error.errors)
-        return res
-          .status(422)
-          .send( { error: "An error occurred while registering" })
-      }
-        
       let user
       try {
         user = await User.create({
           email,
-          password: pHash,
+          password,
           name,
         })
       } catch (error) {
