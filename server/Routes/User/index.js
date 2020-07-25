@@ -1,8 +1,60 @@
 import { Router } from 'express'
+import { hash } from 'Utils/hashPwd'
+import UserModel from "Models/user"
 
-export default ({}, options) => {
+export default ({ hashFunc = hash, User = UserModel }, options) => {
   return Router(options)
-    .post("/register", (req, res) => {})
+    .post("/register", async (req, res) => {
+      const { email, password, name } = req.body
+
+      if (!email || !password || !name)
+        return res
+          .status(400)
+          .send({ error: "incomplete request body" })
+
+      let pHash
+      try {
+        pHash = await hashFunc(password)
+      } catch (error) {
+        console.error("ERROR IN USER CREATION:", error.errors)
+        return res
+          .status(422)
+          .send( { error: "An error occurred while registering" })
+      }
+        
+      let user
+      try {
+        user = await User.create({
+          email,
+          password: pHash,
+          name,
+        })
+      } catch (error) {
+        const { name, errors, sql } = error
+
+        const { message, type } = errors[0]
+
+        const errMsg = `ERROR IN USER CREATION:`
+          + `\n  name: "${name}"`
+          + `\n  message: "${message}"`
+          + `\n  type: "${type}"`
+          + `\n  SQL: "${sql}"`
+        
+        console.error(errMsg)
+
+        return res.status(422).send({
+          error: message,
+        })
+      }
+
+      const userObject = user.dataValues
+      delete userObject.password
+
+      return res
+        .status(200)
+        .json({ user: userObject })
+
+    })
     .get("/current", (req, res) => {})
     .post("/login", (req, res) => {})
 }
