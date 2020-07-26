@@ -4,7 +4,7 @@ import { Router } from 'express'
 import { checkJwt, getUser } from "Middlewares/auth"
 
 // Models used
-import UserModel from "Models/user"
+import UserModel from "Models/User"
 
 // Route handlers
 import register from './register'

@@ -1,4 +1,4 @@
-import UserModel from 'Models/user'
+import UserModel from 'Models/User'
 import { errorLog } from 'Utils/log'
 import { createToken } from 'Utils/jwt'
 

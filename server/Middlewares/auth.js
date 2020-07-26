@@ -1,5 +1,5 @@
 import { verifyToken } from "Utils/jwt"
-import User from "Models/user"
+import User from "Models/User"
 import { errorLog } from "Utils/log"
 
 export const checkJwt = (req, res, next) => {
