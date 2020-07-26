@@ -1,3 +1,6 @@
 .env
 node_modules/
 build/
+
+# yarn stuff
+yarn-error.log
