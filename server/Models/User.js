@@ -78,4 +78,5 @@ export class User extends Model {
   }
 }
 
+export const UserModel = User
 export default User

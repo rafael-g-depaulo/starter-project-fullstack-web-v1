@@ -41,4 +41,5 @@ export class Dragon extends Model {
   }
 }
 
+export const DragonModel = Dragon
 export default Dragon

@@ -41,4 +41,5 @@ export class Title extends Model {
   }
 }
 
+export const TitleModel = Title
 export default Title
