@@ -6,7 +6,7 @@ import TitleModel from "Models/Title"
 
 // Middlewares used
 import getFromModel from 'Middlewares/getFromModel'
-import getAllFromModel from 'Middlewares/getAllFromModel'
+import getPaginatedFromModel from 'Middlewares/getPaginatedFromModel'
 
 // Route handlers
 import returnDragons from './returnDragons'
@@ -27,9 +27,10 @@ export default ({ Dragon = DragonModel, Title = TitleModel }, config) => {
     attributes: ['id', 'name'],
   })
 
-  const getAllDragons = getAllFromModel({
+  const getAllDragons = getPaginatedFromModel({
     model: Dragon,
     objectName: "dragons",
+    objectsPerPage: 3,
 
     // sequelize options
     attributes: ['id', 'name'],
