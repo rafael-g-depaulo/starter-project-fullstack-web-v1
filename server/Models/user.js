@@ -1,5 +1,6 @@
 import { Model } from "sequelize"
 import { createHash, compareHash } from "Utils/hash"
+import { errorLog } from "Utils/log"
 
 export class User extends Model {
   static init(sequelize, DataTypes) {
@@ -55,7 +56,7 @@ export class User extends Model {
           try {
             user.password = await createHash(user.password)
           } catch (error) {
-            console.error("ERROR IN USER CREATION:", error)
+            errorLog("USER CREATION", error)
           }
         }
       },

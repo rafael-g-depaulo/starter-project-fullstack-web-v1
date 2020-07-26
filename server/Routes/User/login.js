@@ -36,8 +36,9 @@ export const login = ({ User = UserModel }) => async (req, res, next) => {
       .cookie("token", token, { httpOnly: true })
       .json({ user: userObj })
 
+  // both promises called don't ever throw, so this catch block should neved run
   } catch (error) {
-    errorLog("USER LOGIN PASSWORD HASH", error)
+    errorLog("USER LOGIN", { ...error, msg: "this shouldn't have ever been called."})
     return res.status(401).send({
       error: "email e/ou senha inválidos",
     })

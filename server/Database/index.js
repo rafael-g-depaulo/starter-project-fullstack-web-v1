@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import Sequelize from "sequelize"
 import config from "./config"
+import { errorLog } from 'Utils/log'
 
 // db connection variable
 const sequelize = new Sequelize(config)
@@ -44,7 +45,7 @@ readDir(modelsFolder)
     .map(model => model?.associate(db))
   )
   // log error
-  .catch(err => console.log("ERROR in loading sequelize models:", err))
+  .catch(err => errorLog("LOADING SEQUELIZE MODELS", err))
 
 // export connection
 export default sequelize

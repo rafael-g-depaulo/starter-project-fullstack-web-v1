@@ -6,10 +6,8 @@ export const checkJwt = (req, res, next) => {
   const token = req.cookies.token
 
   // if there is no token provided, return error
-  if (!token) {
-    console.log("\n[ERROR] No token provided.\n")
-    return res.status(403).json({ error: "No token provided." })
-  }
+  if (!token)
+    return res.status(403).json({ error: "no token provided." })
 
   verifyToken(token)
     .then(decoded => {
@@ -17,27 +15,24 @@ export const checkJwt = (req, res, next) => {
       next()
     })
     .catch(err => {
-      console.log("\n[ERROR]", err.message)
       res.status(401).json({ error: "Acesso não-autorizado." })
     })
 }
 
-export const getUser = (req, res, next) => {
+export const getUser = async (req, res, next) => {
   if (!req.userId) {
-    console.log("ERROR used getUser without first checking JWT.")
+    errorLog("GETUSER MIDDLEWARE", { msg: "used getUser without first checking JWT" })
     return res.status(401).json({ error: "Acesso não-autorizado" })
   }
 
-  User.findByPk(req.userId)
-    .then(user => {
-      req.user = user
-      next()
-    })
-    .catch(err => {
-      console.log(err)
-      errorLog("GETUSER MIDDLEWARE", {})
-      res.status(401).json({ error: "Acesso não-autorizado" })
-    })
+  const user = await User.findByPk(req.userId)
+
+  if (!user) {
+    return res.status(401).json({ error: "Acesso não-autorizado" })
+  }
+
+  req.user = user
+  next()
 }
 
 export default checkJwt
