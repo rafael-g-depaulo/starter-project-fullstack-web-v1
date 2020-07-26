@@ -1,9 +1,16 @@
 import { Router } from 'express'
-import UserModel from "Models/user"
-import { hash, compare } from 'Utils/hash'
-import { errorLog } from 'Utils/log'
 
-export default ({ createHash = hash, compareHash = compare, User = UserModel }, options) => {
+import { checkJwt, getUser } from "Middlewares/auth"
+
+import UserModel from "Models/user"
+
+import { compareHash } from 'Utils/hash'
+import { errorLog } from 'Utils/log'
+import { createToken } from 'Utils/jwt'
+
+export default ({
+  User = UserModel,
+}, options) => {
   return Router(options)
     .post("/register", async (req, res) => {
       const { email, password, name } = req.body
@@ -38,7 +45,15 @@ export default ({ createHash = hash, compareHash = compare, User = UserModel }, 
           })
         })
     })
-    .get("/current", async (req, res) => {})
+    .get("/current", checkJwt, getUser, async (req, res) => {
+      const user = req.user.dataValues
+      delete user.password
+      delete user.createdAt
+      delete user.updatedAt
+      
+      if (!user) return res.status(401).json({ err })
+      res.status(200).json({ user })
+    })
     .post("/login", async (req, res) => {
 
       const { email, password } = req.body
@@ -61,15 +76,15 @@ export default ({ createHash = hash, compareHash = compare, User = UserModel }, 
           .status(401)
           .json({ msg: "email e/ou senha inválidos" })
         
-        // TODO: ADD JWT LOGIC
-        // TODO: ADD JWT LOGIC
-        // TODO: ADD JWT LOGIC
-        // TODO: ADD JWT LOGIC
+        const token = createToken({ email: user.email, id: user.id })
           
         // all ok, user logged in
+        const userObj = user.dataValues
+        delete userObj.password
         return res
           .status(200)
-          .json({ msg: "tudo ok!!"})
+          .cookie("token", token, { httpOnly: true })
+          .json({ user: userObj })
 
       } catch (error) {
         errorLog("USER LOGIN PASSWORD HASH", error)
