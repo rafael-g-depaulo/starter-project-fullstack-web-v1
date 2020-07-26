@@ -28,9 +28,12 @@ export default ({ Dragon, Title }, config) => {
       const { dragon } = req
       
       Title
-        .create({ name, dragon_id: dragon.id })
-        .then(newTitle => res.json({ newTitle, dragon }))
-        .catch(err => res.status(504).json({ err: "error with title creation. please try again later" }))
+        .findCreateFind({ where: { name }, defaults: { name }})
+        .then(async ([title, isNew]) => {
+          await dragon.addTitle(title)
+          res.json({ msg: isNew ? "new title created" : "title added to dragon", title, dragon })
+        })
+        .catch(err => res.status(504).json({ err, msg: "error with title creation. please try again later" }))
       
     })
     .get("/:dragon_id", getDragon({ include: 'titles' }), async (req, res) => {
