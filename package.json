@@ -23,5 +23,8 @@
     "install:server": "yarn --cwd server install --production=true",
     "start": "yarn --cwd server start",
     "web": "yarn start"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
   }
 }
