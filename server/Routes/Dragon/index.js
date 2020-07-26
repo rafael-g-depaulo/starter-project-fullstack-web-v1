@@ -1,70 +1,49 @@
 import { Router } from 'express'
+
+// Models
+import DragonModel from "Models/Dragon"
+import TitleModel from "Models/Title"
+
+// Middlewares used
 import getFromModel from 'Middlewares/getFromModel'
+import getAllFromModel from 'Middlewares/getAllFromModel'
+
+// Route handlers
+import returnDragons from './returnDragons'
+import create from './createDragon'
+import addTitle from './addTitle'
+import returnDragon from './returnDragon'
+import deleteDragon from './deleteDragon'
+import deleteDragonTitle from './deleteDragonTitle'
 
 // use dependency injection in module
-export default ({ Dragon, Title }, config) => {
+export default ({ Dragon = DragonModel, Title = TitleModel }, config) => {
   
   const getDragon = getFromModel({
     model: Dragon,
     objectName: "dragon",
-    errorMsg: "404: dragon not found"
+
+    // sequelize options
+    attributes: ['id', 'name'],
+  })
+
+  const getAllDragons = getAllFromModel({
+    model: Dragon,
+    objectName: "dragons",
+
+    // sequelize options
+    attributes: ['id', 'name'],
+    include: [
+      { association: 'titles', attributes: ['id', 'name'], through: { attributes: [] } },
+    ],
   })
 
   return Router(config)
     // index
-    .get('/', (req, res) => Dragon
-      .findAll({ include: 'titles' })
-      .then(queryResult => res.json(queryResult))
-      .catch(error => res.status(500).json({ error }))
-    )
-    .post("/create", (req, res) => {
-      const { name } = req.body
-      Dragon.create({ name })
-        .then(dragon => res.json({ dragon }))
-        .catch(err => res.status(500).json(err))
-    })
-    .post("/:dragon_id/addTitle", getDragon(), async (req, res) => {
-      const { name } = req.body
-      const { dragon } = req
-      
-      Title
-        .findCreateFind({ where: { name }, defaults: { name }})
-        .then(async ([title, isNew]) => {
-          await dragon.addTitle(title)
-          res.json({ msg: isNew ? "new title created" : "title added to dragon", title, dragon })
-        })
-        .catch(err => res.status(504).json({ err, msg: "error with title creation. please try again later" }))
-      
-    })
-    .get("/:dragon_id", getDragon({ include: 'titles' }), async (req, res) => {
-      return res.json({ dragon: req.dragon })
-    })
-    .delete("/:dragon_id", async (req, res) => Dragon
-      .destroy({ where: { id: req.params.dragon_id } })
-      .then(destroyedRows => destroyedRows === 0
-        ? res.status(404).json({ err: "404 dragon doesn't exist" } )
-        : res.json({ msg: "dragon sucessfully deleted" })
-      )
-    )
-    .delete("/:dragon_id/title/:title_id", getDragon({ include: 'titles' }), async (req, res) => {
-      const { title_id } = req.params
-      const { dragon } = req
-
-      const titleId = Number(title_id)
-
-      // if dragon doesn't have that title
-      if (!dragon.titles.some(title => title.id === titleId))
-        return res.status(404).json({ err: "404 dragon doesn't have that title" })
-      
-      // destroy title
-      const destroyedRows = await Title.destroy({ where: { id: titleId }})
-
-      // this should never run, but if dragon has the title and the title doesn't exist in the db this runs
-      if (destroyedRows === 0)
-        res.status(404).json({ err: "404 title doesn't exist" } )
-
-      // return dragon
-      res.json({ msg: "title sucessfully deleted" })
-    })
-    // TODO: make title:dragon relation NxM
+    .get('/', getAllDragons(), returnDragons)
+    .post("/create", create)
+    .post("/:dragon_id/addTitle", getDragon(), addTitle({ Title }))
+    .get("/:dragon_id", getDragon({ include: 'titles' }), returnDragon)
+    .delete("/:dragon_id", deleteDragon({ Dragon }))
+    .delete("/:dragon_id/title/:title_id", getDragon({ include: 'titles' }), deleteDragonTitle({ Title }))
 }
