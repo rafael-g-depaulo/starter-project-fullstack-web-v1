@@ -1,5 +1,5 @@
 import { Model } from "sequelize"
-import { createHash } from "Utils/hash"
+import { createHash, compareHash } from "Utils/hash"
 
 export class User extends Model {
   static init(sequelize, DataTypes) {
@@ -59,6 +59,16 @@ export class User extends Model {
 
   static associate(models) {
     
+  }
+
+  // check user password
+  async checkPassword(password) {
+    try {
+      return await compareHash(password, this.password)
+    } catch {
+      // if error with hash, return false
+      return false
+    }
   }
 }
 

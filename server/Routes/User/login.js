@@ -1,6 +1,5 @@
 import UserModel from 'Models/user'
 import { errorLog } from 'Utils/log'
-import { compareHash } from 'Utils/hash'
 import { createToken } from 'Utils/jwt'
 
 export const login = ({ User = UserModel }) => async (req, res, next) => {
@@ -20,7 +19,7 @@ export const login = ({ User = UserModel }) => async (req, res, next) => {
       .json({ msg: "email e/ou senha inválidos" })
 
     // check if passwords match
-    const passwordsMatch = await compareHash(password, user.password)
+    const passwordsMatch = await user.checkPassword(password)
     if (!passwordsMatch) return res
       .status(401)
       .json({ msg: "email e/ou senha inválidos" })
