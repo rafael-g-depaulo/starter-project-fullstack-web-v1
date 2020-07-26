@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 const secret = process.env.JWT_SECRET_KEY ?? "safsdfgksdglkjsnfl"
 
 // Transform jwt.verify into Promise format
-export const veryfyToken = (token, options = {}) => new Promise((resolve, reject) => {
+export const verifyToken = (token, options = {}) => new Promise((resolve, reject) => {
   jwt.verify(
     token, secret, options,
     (err, decoded) => err ? reject(err) : resolve(decoded)
