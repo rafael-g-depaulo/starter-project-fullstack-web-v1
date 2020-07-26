@@ -16,6 +16,12 @@ export class User extends Model {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        validate: {
+          minLength(value) {
+            if (value.length < 6)
+              throw new Error('senha deve conter pelo menos 6 caracteres')
+          },
+        },
       },
       name: {
         type: DataTypes.STRING,
@@ -52,8 +58,7 @@ export class User extends Model {
             console.error("ERROR IN USER CREATION:", error)
           }
         }
-  
-      }
+      },
     })
   }
 
