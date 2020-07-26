@@ -11,7 +11,7 @@ export default ({
   // get object
   const object = await Model.findByPk(id, { ...defaultOptions, ...options })
   
-  // if dragon not found
+  // if object not found
   if (object === null) return res.status(404).json({ errorMsg })
   
   // add the object
