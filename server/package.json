@@ -9,7 +9,7 @@
     "prod": "yarn start:prod",
     "start:dev": "./node_modules/.bin/dotenv -- nodemon --exec babel-node --presets @babel/env index.js",
     "start:prod": "./node_modules/.bin/dotenv -- yarn serve",
-    "serve": "node build",
+    "serve": "node ./build",
     "build": "yarn build:server && yarn build:db",
     "build:server": "./node_modules/.bin/babel . -d ./build -s",
     "build:db": "yarn db:migrate",
