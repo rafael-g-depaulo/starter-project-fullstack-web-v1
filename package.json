@@ -18,7 +18,9 @@
     "clean": "yarn clean:client && yarn clean:server",
     "clean:client": "rm -rf ./client/build && mkdir ./client/build",
     "clean:server": "rm -rf ./server/build && mkdir ./server/build",
-    "start": "yarn --cwd server start"
+    "start": "yarn start:server",
+    "start:server": "yarn --cwd server start",
+    "start:client": "yarn --cwd client start"
   },
   "devDependencies": {
     "lerna": "^3.22.1"

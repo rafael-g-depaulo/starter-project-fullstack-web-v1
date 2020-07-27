@@ -1,1 +1,1 @@
-web: yarn web
+web: ${WEB_COMMAND:-yarn start}
