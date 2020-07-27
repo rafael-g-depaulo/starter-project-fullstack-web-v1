@@ -9,7 +9,8 @@
   "private": true,
   "workspaces": [
     "client",
-    "server"
+    "server",
+    "strapi"
   ],
   "scripts": {
     "build": "yarn && yarn build:client && yarn build:server",
@@ -20,6 +21,7 @@
     "clean:server": "rm -rf ./server/build && mkdir ./server/build",
     "start": "yarn start:server",
     "start:server": "yarn --cwd server start",
+    "start:strapi": "yarn --cwd strapi start",
     "start:client": "yarn --cwd client start"
   },
   "devDependencies": {

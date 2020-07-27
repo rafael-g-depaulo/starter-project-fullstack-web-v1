@@ -1,6 +1,5 @@
 {
-  "name": "strapi",
-  "private": true,
+  "name": "@starter-project/strapi",
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
@@ -21,7 +20,7 @@
     "strapi-plugin-upload": "3.1.1",
     "strapi-connector-bookshelf": "3.1.1",
     "knex": "<0.20.0",
-    "pg": "latest"
+    "pg": "^8.3.0"
   },
   "author": {
     "name": "A Strapi developer"
@@ -30,8 +29,8 @@
     "uuid": "c7801966-c8af-4061-b526-a992135d4088"
   },
   "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+    "node": "12.x",
+    "yarn": "1.x"
   },
   "license": "MIT"
 }
