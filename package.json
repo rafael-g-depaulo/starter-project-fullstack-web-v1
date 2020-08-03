@@ -8,9 +8,7 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "client",
-    "server",
-    "strapi"
+    "packages/*"
   ],
   "scripts": {
     "build": "yarn && yarn build:client && yarn build:server",
