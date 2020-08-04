@@ -8,9 +8,7 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "client",
-    "server",
-    "strapi"
+    "packages/*"
   ],
   "scripts": {
     "build": "yarn && yarn build:client && yarn build:server",
@@ -25,6 +23,13 @@
     "start:client": "yarn --cwd client start"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-styled-components": "^1.11.1",
     "lerna": "^3.22.1"
   },
   "engines": {

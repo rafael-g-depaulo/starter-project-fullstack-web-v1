@@ -1,8 +1,6 @@
 {
   "packages": [
-    "client",
-    "server",
-    "strapi"
+    "packages/*"
   ],
   "version": "1.2.0",
   "npmClient": "yarn",
