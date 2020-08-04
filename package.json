@@ -32,6 +32,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "jest": "^26.2.2",
     "lerna": "^3.22.1"
   },
   "engines": {
