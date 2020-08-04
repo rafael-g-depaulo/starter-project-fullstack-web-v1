@@ -21,7 +21,9 @@
     "db:unseed": "./node_modules/.bin/sequelize db:seed:undo:all",
     "db:reseed": "yarn db:unseed && yarn db:seed",
     "db:setup": "./node_modules/.bin/sequelize db:create && yarn db:migrate && yarn db:seed",
-    "db:reset": "yarn db:drop && yarn db:setup"
+    "db:reset": "yarn db:drop && yarn db:setup",
+    "test": "jest",
+    "watch": "jest --watch"
   },
   "dependencies": {
     "@babel/cli": "^7.10.5",
