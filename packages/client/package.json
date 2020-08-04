@@ -1,6 +1,7 @@
 {
   "name": "@starter-project/client",
   "version": "1.1.0",
+  "main": "dist/client.cjs.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

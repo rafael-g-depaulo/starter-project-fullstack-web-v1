@@ -1,6 +1,6 @@
 {
   "name": "starter-project",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Monorepo of my starter project for fullstack web projects using React.js, Express.js, Sequelize & PostgreSQL",
   "main": "index.js",
   "repository": "git@github.com:rafael-g-depaulo/starter-project-express-react-sequelize-pgsql.git",
@@ -20,13 +20,15 @@
     "start": "yarn start:server",
     "start:server": "yarn --cwd server start",
     "start:strapi": "yarn --cwd strapi start",
-    "start:client": "yarn --cwd client start"
+    "start:client": "yarn --cwd client start",
+    "postinstall": "preconstruct dev"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "@preconstruct/cli": "^1.1.19",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
@@ -35,5 +37,10 @@
   "engines": {
     "node": "12.x",
     "yarn": "1.x"
+  },
+  "preconstruct": {
+    "packages": [
+      "packages/*"
+    ]
   }
 }
