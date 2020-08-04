@@ -31,8 +31,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080",
-  "homepage": "http://localhost:8080",
+  "proxy": "http://localhost:5000",
+  "homepage": "http://localhost:5000",
   "engines": {
     "node": "12.x",
     "yarn": "1.x"
