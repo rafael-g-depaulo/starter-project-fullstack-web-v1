@@ -21,7 +21,13 @@
     "start:server": "yarn --cwd server start",
     "start:strapi": "yarn --cwd strapi start",
     "start:client": "yarn --cwd client start",
-    "postinstall": "preconstruct dev"
+    "postinstall": "preconstruct dev",
+    "test": "jest",
+    "test:server": "jest server",
+    "test:client": "jest client",
+    "watch": "jest --watch",
+    "watch:client": "jest --watch client",
+    "watch:server": "jest --watch server"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
@@ -29,9 +35,13 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@preconstruct/cli": "^1.1.19",
+    "@testing-library/jest-dom": "^5.11.2",
     "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^26.2.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "jest": "^26.2.2",
+    "jest-fetch-mock": "^3.0.3",
     "lerna": "^3.22.1"
   },
   "engines": {
