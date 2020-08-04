@@ -4,3 +4,4 @@ build/
 
 # yarn stuff
 yarn-error.log
+.log
