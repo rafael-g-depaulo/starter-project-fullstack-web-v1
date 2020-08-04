@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import logger from "@starter-project/logger"
+
 function App() {
 
   const [ emails, setEmails ] = useState([])
@@ -12,6 +14,8 @@ function App() {
       .then(setEmails)
       .catch(err => console.error("err", err))
   }, [])
+
+  logger("POGGERS!")
 
   return (
     <div className="App">
