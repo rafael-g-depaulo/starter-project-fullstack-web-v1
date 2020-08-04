@@ -1,4 +1,2 @@
 
-export default aaa => {
-    console.log("SDFSDFSDFSDF", aaa)
-}
+export default aaa => console.log("aaaaaaaaaaa", aaa)
