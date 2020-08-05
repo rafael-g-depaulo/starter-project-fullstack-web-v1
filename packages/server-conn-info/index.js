@@ -10,6 +10,10 @@ export const port = (env = defaultEnv) => env === "development"
   ? 5000
   : 5000
 
+export const strapiUrl = (env = defaultEnv) => env === "development"
+  ? "http://localhost:1337"
+  : "http://localhost:1337"
+
 // default serverUrl for most situations
 export const serverUrl = url()
 export default serverUrl

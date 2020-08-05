@@ -10,7 +10,9 @@ import Middewares from "Middlewares"
 Middewares(app)
 
 // server configuration
-const { PORT = "8000", NODE_ENV = "development" } = process.env;
+import { port } from "@starter-project/server-conn-info"
+const { NODE_ENV = "development" } = process.env;
+const PORT = port(NODE_ENV)
 
 // import routes of API
 import Router from 'Routes'

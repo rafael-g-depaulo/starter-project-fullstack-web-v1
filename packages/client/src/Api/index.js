@@ -1,8 +1,8 @@
 import axios from "axios"
+import { serverUrl } from "@starter-project/server-conn-info"
 
 // development options
 const devOptions = {
-  baseURL: `http://localhost:${process.env.REACT_APP_SERVER_PORT}`
 }
 
 // production options
@@ -13,9 +13,11 @@ const productionOptions = {
 const envSpecificOptions = process.env.NODE_ENV === 'production'
   ? productionOptions : devOptions
 
-
-console.log(envSpecificOptions)
+console.log(serverUrl)
 // create axios instance
-export const api = axios.create(envSpecificOptions)
+export const api = axios.create({
+  ...envSpecificOptions,
+  baseURL: serverUrl,
+})
 
 export default api
