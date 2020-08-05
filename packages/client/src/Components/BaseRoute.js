@@ -11,17 +11,13 @@ export const BaseRoute = ({
   children,
   ...props
 }) => {
-  console.log("path",[path, ...aliases])
   return (
     // add route and aliases
     <Route path={[path, ...aliases]} {...props}>
       {/* add a router to use relative links */}
       <Router>
         <Switch>
-          { (() => {
-            console.log(children.flatMap(c => [c, ".."]))
-            return children
-          })() }
+          { children }
         </Switch>
       </Router>
     </Route>
