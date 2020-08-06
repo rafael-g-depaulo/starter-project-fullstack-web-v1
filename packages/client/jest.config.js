@@ -5,7 +5,7 @@ module.exports = {
     color: 'blue',
   },
   // setup jest
-  setupFilesAfterEnv: ['./jest.setup.js'],
+  setupFilesAfterEnv: ['./src/setupTests.js'],
 
   // this ignores all assets imported with webpack when testing from the monorepo root
   moduleNameMapper: {

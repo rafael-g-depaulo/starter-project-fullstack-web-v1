@@ -1,0 +1,26 @@
+{
+  "name": "@starter-project/server-conn-info",
+  "version": "1.3.0",
+  "description": "logging library",
+  "keywords": [
+    "log"
+  ],
+  "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
+  "homepage": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql#readme",
+  "license": "ISC",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql/issues"
+  },
+  "preconstruct": {
+    "source": "index"
+  }
+}

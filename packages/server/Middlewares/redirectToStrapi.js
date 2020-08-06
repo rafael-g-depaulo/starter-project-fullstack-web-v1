@@ -1,9 +1,9 @@
+import { strapiUrl } from "@starter-project/server-conn-info"
+
 export const redirectToStrapi = (pathTransform = a => a) => (req, res, next) => {
 
   // setup domain to redirect request to
-  const domain = process.env.NODE_ENV === "production"
-    ? process.env.STRAPI_URL ?? "http://localhost:1337"
-    : "http://localhost:1337"
+  const domain = strapiUrl(process.env.NODE_ENV)
 
   // get the path without /api at the start
   // i.e.: "/api/blogs" becomes "/blogs"

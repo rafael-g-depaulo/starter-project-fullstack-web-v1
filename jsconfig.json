@@ -5,5 +5,5 @@
       "@starter-project/*": ["./packages/*"]
     }
   },
-  "include": [ ".", "./packages/*" ]
+  "include": [ "./packages/*" ]
 }
