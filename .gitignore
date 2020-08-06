@@ -1,6 +1,11 @@
 .env
 node_modules/
 build/
+dist/
 
 # yarn stuff
 yarn-error.log
+.log
+
+# jest test coverage report
+coverage/
