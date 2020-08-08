@@ -15,15 +15,15 @@
   ],
   "scripts": {
     "build": "yarn && yarn build:client && yarn build:server",
-    "build:client": "yarn workspaces @starter-project/client run build",
-    "build:server": "yarn workspaces @starter-project/server run build",
+    "build:client": "yarn workspace @starter-project/client run build",
+    "build:server": "yarn workspace @starter-project/server run build",
     "clean": "yarn clean:client && yarn clean:server",
     "clean:client": "rm -rf ./client/build && mkdir ./client/build",
     "clean:server": "rm -rf ./server/build && mkdir ./server/build",
     "start": "yarn start:server",
-    "start:server": "yarn workspaces @starter-project/server run start",
-    "start:strapi": "yarn workspaces @starter-project/strapi run start",
-    "start:client": "yarn workspaces @starter-project/client run start",
+    "start:server": "yarn workspace @starter-project/server run start",
+    "start:strapi": "yarn workspace @starter-project/strapi run start",
+    "start:client": "yarn workspace @starter-project/client run start",
     "postinstall": "preconstruct dev",
     "test": "jest",
     "test:server": "jest server",
@@ -53,7 +53,7 @@
   },
   "preconstruct": {
     "packages": [
-      "packages/*"
+      "libs/*"
     ]
   }
 }
