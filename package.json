@@ -37,7 +37,6 @@
     "@babel/core": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
-    "@preconstruct/cli": "^1.1.19",
     "@testing-library/jest-dom": "^5.11.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^26.2.2",
@@ -55,5 +54,8 @@
     "packages": [
       "libs/*"
     ]
+  },
+  "dependencies": {
+    "@preconstruct/cli": "^1.1.20"
   }
 }
