@@ -12,7 +12,7 @@
     "start:prod": "./node_modules/.bin/dotenv -- yarn serve",
     "serve": "node ./build",
     "build": "yarn build:server && yarn build:db",
-    "build:server": "./node_modules/.bin/babel . -d ./build -s",
+    "build:server": "./node_modules/.bin/babel . --root-mode upward -d ./build -s",
     "build:db": "yarn db:migrate",
     "db:create": "./node_modules/.bin/sequelize db:create",
     "db:drop": "./node_modules/.bin/sequelize db:drop",
