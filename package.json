@@ -8,19 +8,22 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "libs/*",
+    "server",
+    "client",
+    "strapi"
   ],
   "scripts": {
     "build": "yarn && yarn build:client && yarn build:server",
-    "build:client": "yarn && yarn --cwd client build",
-    "build:server": "yarn && yarn --cwd server build",
+    "build:client": "yarn workspace @starter-project/client run build",
+    "build:server": "yarn workspace @starter-project/server run build",
     "clean": "yarn clean:client && yarn clean:server",
     "clean:client": "rm -rf ./client/build && mkdir ./client/build",
     "clean:server": "rm -rf ./server/build && mkdir ./server/build",
     "start": "yarn start:server",
-    "start:server": "yarn --cwd server start",
-    "start:strapi": "yarn --cwd strapi start",
-    "start:client": "yarn --cwd client start",
+    "start:server": "yarn workspace @starter-project/server run start",
+    "start:strapi": "yarn workspace @starter-project/strapi run start",
+    "start:client": "yarn workspace @starter-project/client run start",
     "postinstall": "preconstruct dev",
     "test": "jest",
     "test:server": "jest server",
@@ -34,7 +37,6 @@
     "@babel/core": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
-    "@preconstruct/cli": "^1.1.19",
     "@testing-library/jest-dom": "^5.11.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^26.2.2",
@@ -50,7 +52,10 @@
   },
   "preconstruct": {
     "packages": [
-      "packages/*"
+      "libs/*"
     ]
+  },
+  "dependencies": {
+    "@preconstruct/cli": "^1.1.20"
   }
 }
