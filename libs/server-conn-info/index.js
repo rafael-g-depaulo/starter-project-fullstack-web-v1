@@ -8,7 +8,7 @@ export const domain = (env = defaultEnv) => env === "development"
 
 export const port = (env = defaultEnv) => env === "development"
   ? 5000
-  : process.env.PORT ?? 80
+  : process.env.PORT ?? 5000
 
 export const strapiUrl = (env = defaultEnv) => env === "development"
   ? "http://localhost:1337"
