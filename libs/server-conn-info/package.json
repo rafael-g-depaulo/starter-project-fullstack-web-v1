@@ -8,8 +8,8 @@
   "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
   "homepage": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql#readme",
   "license": "ISC",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/server-conn-info.cjs.js",
+  "module": "dist/server-conn-info.esm.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql.git"
