@@ -1,6 +1,6 @@
 {
-  "name": "@starter-project/server-conn-info",
-  "version": "1.4.0",
+  "name": "@starter-project/logger",
+  "version": "2.0.0",
   "description": "logging library",
   "keywords": [
     "log"
@@ -8,8 +8,8 @@
   "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
   "homepage": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql#readme",
   "license": "ISC",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/logger.cjs.js",
+  "module": "dist/logger.esm.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql.git"
@@ -21,6 +21,6 @@
     "url": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql/issues"
   },
   "preconstruct": {
-    "source": "index"
+    "source": "logger"
   }
 }

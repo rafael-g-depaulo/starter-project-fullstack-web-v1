@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@macroeconomia/*": ["../../libs/*"]
+    }
+  },
+  "include": [ "src", "../../libs/*" ]
+}
