@@ -2,8 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@starter-project/*": ["./libs/*"]
+      "@starter-project/*": [
+        "./libs/*",
+        "./apps/*",
+      ]
     }
   },
-  "include": [ "./libs/*" ]
+  "include": [
+    "./libs/*",
+    "./apps/*",
+  ]
 }

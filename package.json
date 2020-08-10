@@ -9,9 +9,7 @@
   "private": true,
   "workspaces": [
     "libs/*",
-    "server",
-    "client",
-    "strapi"
+    "apps/*"
   ],
   "scripts": {
     "build": "yarn && yarn build:client && yarn build:server",
@@ -39,10 +37,10 @@
     "@babel/preset-react": "^7.10.4",
     "@testing-library/jest-dom": "^5.11.2",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^26.2.2",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
-    "jest": "^26.2.2",
+    "jest": "^24.9.0",
     "jest-fetch-mock": "^3.0.3",
     "lerna": "^3.22.1"
   },
