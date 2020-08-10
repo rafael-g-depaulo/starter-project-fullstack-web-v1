@@ -2,9 +2,7 @@ module.exports = {
   babelrcRoots: [
     ".",
     "libs/*",
-    "server",
-    "client",
-    "strapi",
+    "apps/*",
   ],  
   
   presets: [

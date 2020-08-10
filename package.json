@@ -9,9 +9,7 @@
   "private": true,
   "workspaces": [
     "libs/*",
-    "server",
-    "client",
-    "strapi"
+    "apps/*"
   ],
   "scripts": {
     "build": "yarn && yarn build:client && yarn build:server",
