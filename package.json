@@ -12,9 +12,11 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "yarn && yarn build:client && yarn build:server",
+    "build": "yarn && ${BUILD_SCRIPT:-yarn build:all}",
+    "build:all": "yarn build:client & yarn build:server & yarn build:strapi",
     "build:client": "yarn workspace @starter-project/client run build",
     "build:server": "yarn workspace @starter-project/server run build",
+    "build:strapi": "yarn workspace @starter-project/strapi run build",
     "clean": "yarn clean:client && yarn clean:server",
     "clean:client": "rm -rf ./client/build && mkdir ./client/build",
     "clean:server": "rm -rf ./server/build && mkdir ./server/build",
