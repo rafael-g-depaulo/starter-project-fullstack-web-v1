@@ -10,6 +10,8 @@ module.exports = ({ env }) => {
   const password  = result ? result.groups.password : env('DB_PASS', 'password')
   const port      = result ? result.groups.port     : env.int('DB_PORT', 5432)
   const database  = result ? result.groups.database : env('DB_NAME', 'starter-project-strapi')
+
+  console.log("DB CONNECTION ATTEMPT with", databaseUrl)
   
   return {
     defaultConnection: 'default',
