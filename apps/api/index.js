@@ -1,3 +1,6 @@
+// logging library
+import logger from '@starter-project/logger'
+
 // import express (after npm install express)
 import express from 'express'
 
@@ -9,19 +12,15 @@ import Middewares from "Middlewares"
 Middewares(app)
 
 // server configuration
-import { port } from "@starter-project/server-conn-info"
+import { api } from "@starter-project/server-conn-info"
 const { NODE_ENV = "development" } = process.env;
-const PORT = port(NODE_ENV)
+const PORT = api.port(NODE_ENV)
 
 // import routes of API
 import Router from 'Routes'
 
 // load DB connection
 import db from 'Database'
-
-import logger from '@starter-project/logger'
-logger(123)
-
 db.sync().then(() => {
   app.use('/api', Router({ db }))
 
@@ -42,7 +41,7 @@ db.sync().then(() => {
   
   // make the server listen to requests
   app.listen(PORT, () => {
-    console.log(`Server running at: http://localhost:${PORT}/`)
+    logger(`Server running at: ${api.url(NODE_ENV)}`)
   })
 
 })

@@ -1,2 +1,2 @@
 
-export default aaa => console.log("aaaaaaaaaaa", aaa)
+export default aaa => console.log(aaa)
