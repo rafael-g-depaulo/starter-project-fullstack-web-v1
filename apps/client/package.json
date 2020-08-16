@@ -18,10 +18,10 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "craco build && cp -p ./serve.json ./build/serve.json",
     "test": "craco test",
     "eject": "craco eject",
-    "serve": "serve ./build -l ${PORT:-8000} -s -n"
+    "serve": "serve ./build -l ${PORT:-4000} -s -n"
   },
   "eslintConfig": {
     "extends": "react-app"
