@@ -1,6 +1,6 @@
 {
   "name": "@starter-project/api",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "main": "dist/server.cjs.js",
   "module": "dist/server.esm.js",
   "license": "MIT",
@@ -30,8 +30,8 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.4",
     "@babel/runtime": "^7.10.5",
-    "@starter-project/logger": "^4.0.0",
-    "@starter-project/server-conn-info": "^4.0.0",
+    "@starter-project/logger": "^5.0.0",
+    "@starter-project/server-conn-info": "^5.0.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
