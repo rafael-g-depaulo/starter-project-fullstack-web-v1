@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react'
+import React, { lazy } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom"
 
-import Loading from 'Components/Loading'
+import LazyRoute from 'Components/LazyRoute'
 
 const Home = lazy(() => import('./Home'))
 
@@ -24,11 +24,9 @@ export const Routes = ({
       <Switch>
 
         {/* home */}
-        <Route path={["/home"]}>{({ match }) => (
-          <Suspense fallback={<Loading />}>
-            <Home match={match} />
-          </Suspense>
-        )}</Route>
+        <LazyRoute path={["/home"]}>
+          <Home />
+        </LazyRoute>
 
       </Switch>
     </Router>

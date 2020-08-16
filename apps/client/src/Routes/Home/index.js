@@ -1,7 +1,7 @@
-import React, { lazy, Suspense } from 'react'
-import { Route, Switch } from "react-router-dom"
+import React, { lazy } from 'react'
+import { Switch } from "react-router-dom"
 
-import Loading from 'Components/Loading'
+import LazyRoute from 'Components/LazyRoute'
 
 const Show = lazy(() => import("./Show"))
 const ListAll = lazy(() => import("./ListAll"))
@@ -15,22 +15,14 @@ export const Home = ({
     <Switch>
       
       {/* base route */}
-      <Route exact path={`${path}`}>
-        {() => (
-          <Suspense fallback={<Loading />}>
-            <ListAll />
-          </Suspense>
-        )}
-      </Route>
+      <LazyRoute exact path={`${path}`}>
+        <ListAll />
+      </LazyRoute>
 
       {/* page to show a single thing */}
-      <Route path={`${path}/:id`}>
-        {({ match }) => (
-          <Suspense fallback={<Loading />}>
-            <Show thing_id={match.params.id} />
-          </Suspense>
-        )}
-      </Route>
+      <LazyRoute path={`${path}/:id`}>
+        <Show thing_id={match.params.id} />
+      </LazyRoute>
     </Switch>
   )
 }
