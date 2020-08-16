@@ -1,6 +1,6 @@
 module.exports = ({ env }) => {
 
-  const databaseUrl = process.env.DABABASE_URL || ""
+  const databaseUrl = env("DATABASE_URL", "")
   const dbUriRegex = /^(?<client>postgres):\/\/(?<username>\w+):(?<password>\w+)@(?<host>.+):(?<port>\d+)\/(?<database>\w+)$/
   const result = dbUriRegex.exec(databaseUrl)
   
@@ -10,6 +10,14 @@ module.exports = ({ env }) => {
   const password  = result ? result.groups.password : env('DB_PASS', 'password')
   const port      = result ? result.groups.port     : env.int('DB_PORT', 5432)
   const database  = result ? result.groups.database : env('DB_NAME', 'starter-project-strapi')
+
+  console.log("DB CONNECTION ATTEMPT with", 
+    `client: ${client}`,
+    `host: ${host}`,
+    `username: ${username}`, 
+    `port: ${port}`,
+    `database: ${database}`,
+  )
   
   return {
     defaultConnection: 'default',
