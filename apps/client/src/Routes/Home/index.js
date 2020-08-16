@@ -1,26 +1,30 @@
-import React from 'react'
-import { Route } from "react-router-dom"
+import React, { lazy } from 'react'
+import { Switch } from "react-router-dom"
 
-import BaseRoute from 'Components/BaseRoute'
+import LazyRoute from 'Components/LazyRoute'
 
-import Show from './Show'
-import ListAll from './ListAll'
+const Show = lazy(() => import("./Show"))
+const ListAll = lazy(() => import("./ListAll"))
 
 export const Home = ({
+  match,
   ...props
 }) => {
+  const { path } = match
   return (
-    <BaseRoute path="/home" aliases={["/"]}>
-      {/* sub route */}
-      <Route path="/home/:thing_id">
-        <Show />
-      </Route>
-
-      {/* base sub route */}
-      <Route>
+    <Switch>
+      
+      {/* base route */}
+      <LazyRoute exact path={`${path}`}>
         <ListAll />
-      </Route>
-    </BaseRoute>
+      </LazyRoute>
+
+      {/* page to show a single thing */}
+      <LazyRoute path={`${path}/:id`}>
+        <Show thing_id={match.params.id} />
+      </LazyRoute>
+      
+    </Switch>
   )
 }
 
