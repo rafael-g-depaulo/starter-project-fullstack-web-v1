@@ -1,5 +1,5 @@
 {
-  "name": "@starter-project/server",
+  "name": "@starter-project/api",
   "version": "3.0.0",
   "main": "dist/server.cjs.js",
   "module": "dist/server.esm.js",
