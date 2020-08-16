@@ -1,6 +1,6 @@
 module.exports = ({ env }) => {
 
-  const databaseUrl = process.env.DABABASE_URL || ""
+  const databaseUrl = env(DABABASE_URL, "")
   const dbUriRegex = /^(?<client>postgres):\/\/(?<username>\w+):(?<password>\w+)@(?<host>.+):(?<port>\d+)\/(?<database>\w+)$/
   const result = dbUriRegex.exec(databaseUrl)
   
