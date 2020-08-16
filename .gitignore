@@ -9,3 +9,17 @@ yarn-error.log
 
 # jest test coverage report
 coverage/
+
+# VS CODE FILES
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+!.vscode/commands.json
+!.vscode/terminals.json
+
+# Local History for Visual Studio Code
+.history/
