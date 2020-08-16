@@ -13,13 +13,15 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "serve": "^11.3.2",
     "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "serve": "serve ./build -l ${PORT:-8000} -s -n"
   },
   "eslintConfig": {
     "extends": "react-app"
