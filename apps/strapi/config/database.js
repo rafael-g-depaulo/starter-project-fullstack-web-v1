@@ -14,7 +14,7 @@ module.exports = ({ env }) => {
   console.log("DB CONNECTION ATTEMPT with", 
     `client: ${client}`,
     `host: ${host}`,
-    `username: ${username}`,
+    `username: ${username}`, 
     `port: ${port}`,
     `database: ${database}`,
   )
