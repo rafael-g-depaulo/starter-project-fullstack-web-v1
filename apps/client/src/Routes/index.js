@@ -24,7 +24,7 @@ export const Routes = ({
       <Switch>
 
         {/* home */}
-        <LazyRoute path={["/home"]}>
+        <LazyRoute path={["/home", "/casa"]}>
           <Home />
         </LazyRoute>
 

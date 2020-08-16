@@ -8,7 +8,7 @@ export const Show = ({
   return (
     <div>
       <p>looking at the {thing_id}th thing</p>
-      <Link to="/home">go back to home</Link>
+      <Link to="..">go back to home</Link>
     </div>
   )
 }

@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
-import { Link, useRouteMatch } from 'react-router-dom'
-import { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
 import { ping } from 'Api/ping'
+import useUrl from 'Hooks/useUrl'
 
 export const ListAll = ({
   ...props
 }) => {
   const [text, setText] = useState("Loading...")
-  const { url } = useRouteMatch()
+  const url = useUrl()
 
   useEffect(() => {
     ping()

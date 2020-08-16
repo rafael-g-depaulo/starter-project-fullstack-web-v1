@@ -23,6 +23,7 @@ export const Home = ({
       <LazyRoute path={`${path}/:id`}>
         <Show thing_id={match.params.id} />
       </LazyRoute>
+      
     </Switch>
   )
 }
