@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,7 +6,9 @@ import {
   Route,
 } from "react-router-dom"
 
-import Home from './Home'
+import Loading from 'Components/Loading'
+
+const Home = lazy(() => import('./Home'))
 
 export const Routes = ({
   ...props
@@ -22,8 +24,12 @@ export const Routes = ({
       <Switch>
 
         {/* home */}
-        <Route path={["/home"]} component={Home}/>
-        
+        <Route path={["/home"]}>{({ match }) => (
+          <Suspense fallback={<Loading />}>
+            <Home match={match} />
+          </Suspense>
+        )}</Route>
+
       </Switch>
     </Router>
   )

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Route, Switch } from "react-router-dom"
 
-import Show from './Show'
-import ListAll from './ListAll'
+import Loading from 'Components/Loading'
+
+const Show = lazy(() => import("./Show"))
+const ListAll = lazy(() => import("./ListAll"))
 
 export const Home = ({
   match,
@@ -15,14 +17,18 @@ export const Home = ({
       {/* base route */}
       <Route exact path={`${path}`}>
         {() => (
-          <ListAll />
+          <Suspense fallback={<Loading />}>
+            <ListAll />
+          </Suspense>
         )}
       </Route>
 
       {/* page to show a single thing */}
       <Route path={`${path}/:id`}>
         {({ match }) => (
-          <Show thing_id={match.params.id}/>
+          <Suspense fallback={<Loading />}>
+            <Show thing_id={match.params.id} />
+          </Suspense>
         )}
       </Route>
     </Switch>
