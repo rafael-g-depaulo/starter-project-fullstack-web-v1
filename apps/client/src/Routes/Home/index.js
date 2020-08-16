@@ -1,26 +1,31 @@
 import React from 'react'
-import { Route } from "react-router-dom"
-
-import BaseRoute from 'Components/BaseRoute'
+import { Route, Switch } from "react-router-dom"
 
 import Show from './Show'
 import ListAll from './ListAll'
 
 export const Home = ({
+  match,
   ...props
 }) => {
+  const { path } = match
   return (
-    <BaseRoute path="/home" aliases={["/"]}>
-      {/* sub route */}
-      <Route path="/home/:thing_id">
-        <Show />
+    <Switch>
+      
+      {/* base route */}
+      <Route exact path={`${path}`}>
+        {() => (
+          <ListAll />
+        )}
       </Route>
 
-      {/* base sub route */}
-      <Route>
-        <ListAll />
+      {/* page to show a single thing */}
+      <Route path={`${path}/:id`}>
+        {({ match }) => (
+          <Show thing_id={match.params.id}/>
+        )}
       </Route>
-    </BaseRoute>
+    </Switch>
   )
 }
 
