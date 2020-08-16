@@ -1,6 +1,5 @@
 // import express (after npm install express)
 import express from 'express'
-import path from 'path'
 
 // create new express app and save it as "app"
 const app = express()
@@ -36,17 +35,8 @@ db.sync().then(() => {
     }
   })
 
-  // any requests that dont have an API path, map to react bundle
-  if (NODE_ENV === "production") {
-    const appBundleFolder = path.join(__dirname, '../../client/build') 
-    
-    app.use(express.static(appBundleFolder));
-    app.get('*', (req, res) => {
-      console.log("going to the app, not the API", path.join(appBundleFolder, 'index.html'))
-      res.sendFile(path.join(appBundleFolder, 'index.html'))
-    })
   // when not in production, add a "ping" route
-  } else {
+  if (NODE_ENV !== "production") {
     app.get('/api/ping', (req, res) => res.json("pong"))
   }
   
