@@ -20,7 +20,7 @@
     "clean": "yarn clean:client && yarn clean:api",
     "clean:client": "rm -rf ./client/build && mkdir ./client/build",
     "clean:api": "rm -rf ./server/build && mkdir ./server/build",
-    "start": "yarn start:api",
+    "start": "yarn start:client",
     "start:api": "yarn workspace @starter-project/api run start",
     "start:strapi": "yarn workspace @starter-project/strapi run start",
     "start:client": "yarn workspace @starter-project/client run start",
