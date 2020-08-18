@@ -17,6 +17,12 @@
       ]
     },
     {
+      "icon": "app",
+      "extensions": [
+        "apps"
+      ]
+    },
+    {
       "icon": "client",
       "extensions": [
         "client"
