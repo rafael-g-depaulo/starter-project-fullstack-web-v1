@@ -26,3 +26,6 @@ coverage/
 
 # TypeScript cache
 *.tsbuildinfo
+
+# ultra runner
+.ultra.cache.json

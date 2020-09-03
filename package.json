@@ -14,13 +14,13 @@
   "scripts": {
     "build": "yarn && ${BUILD_SCRIPT:-yarn build:all}",
     "build:all": "yarn build:libs && yarn build:apps",
-    "build:libs": "preconstruct build",
-    "build:libs:watch": "yarn nodemon --exec 'yarn build:libs' --watch libs/ --ignore 'libs/**/dist/'",
-    "build:apps": "yarn build:client & yarn build:api & yarn build:strapi",
+    "build:libs": "yarn ultra -r --build --filter \"+libs/*\" build",
+    "build:libs:watch": "yarn ultra -r --build --filter \"+libs/*\" build:watch",
+    "build:apps": "yarn ultra -r --build --filter \"+libs/*\" build",
     "build:api": "yarn workspace @starter-project/api run build",
     "build:client": "yarn workspace @starter-project/client run build",
     "build:strapi": "yarn workspace @starter-project/strapi run build",
-    "clean": "yarn clean:client && yarn clean:api",
+    "clean": "yarn ultra -r --filter \"+libs/*\" clean",
     "clean:api": "rm -rf ./server/build && mkdir ./server/build",
     "clean:client": "rm -rf ./client/build && mkdir ./client/build",
     "start": "yarn start:client",
@@ -60,6 +60,7 @@
     ]
   },
   "dependencies": {
-    "@preconstruct/cli": "^1.1.20"
+    "@preconstruct/cli": "^1.1.20",
+    "ultra-runner": "^3.5.0"
   }
 }
