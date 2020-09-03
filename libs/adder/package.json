@@ -1,0 +1,12 @@
+{
+  "name": "@starter-project/adder",
+  "version": "5.1.0",
+  "license": "MIT",
+  "main": "dist/adder.cjs.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  }
+}
