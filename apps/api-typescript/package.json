@@ -20,11 +20,12 @@
     "start": "dotenv -- if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
     "dev": "yarn start:dev",
     "prod": "yarn start:prod",
-    "start:dev": "dotenv -- tsnd -r tsconfig-paths/register --project ./tsconfig.json --respawn --transpile-only src/index.ts",
+    "start:dev": "dotenv -- tsnd -r tsconfig-paths/register --respawn --transpile-only src/index.ts",
     "start:prod": "dotenv -- yarn serve",
     "serve": "node -r tsconfig-paths/register dist/index.js",
     "build": "tsc && link-module-alias",
     "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm --config ./ormconfig",
     "test": "jest",
     "test:watch": "jest --watch",
     "watch": "jest --watch"
@@ -43,7 +44,10 @@
     "dotenv-cli": "^3.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "link-module-alias": "^1.2.0"
+    "link-module-alias": "^1.2.0",
+    "pg": "^8.3.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "tsconfig-paths": "^3.9.0"
