@@ -16,7 +16,8 @@
 
     "baseUrl": "src",
     "paths": {
-      "Middlewares/*": [ "src/Middlewares/*" ]
+      "Middlewares/*": [ "src/Middlewares/*" ],
+      "Utils/*": [ "src/Utils/*" ],
     }
   },
   "include": [

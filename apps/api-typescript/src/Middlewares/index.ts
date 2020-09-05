@@ -9,13 +9,13 @@ export type Middleware = (req: Request, res: Response, next: NextFunction) => vo
 export default (app: Express) => {
 
   // to allow cors from desirable origins
-  app.use(cors)
-
+  app.use(cors() as Middleware)
+  
   // To parse cookies from the HTTP Request
-  app.use(cookieParser())
+  app.use(cookieParser() as Middleware)
 
   // body parser to parse http requests' bodies
-  app.use(bodyParser.json({}))
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(bodyParser.json({}) as Middleware)
+  app.use(bodyParser.urlencoded({ extended: true }) as Middleware)
 
 }
