@@ -1,13 +1,25 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
+    "moduleResolution": "node",
+
     "rootDir": "./src",
     "outDir": "./dist",
+
     "strict": true,
+    "pretty": true,
+    "sourceMap": true,
+
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-  }
+
+    "baseUrl": "src",
+    "paths": {
+      "Middlewares/*": [ "src/Middlewares/*" ]
+    }
+  },
+  "include": [
+    "src",
+  ]
 }
