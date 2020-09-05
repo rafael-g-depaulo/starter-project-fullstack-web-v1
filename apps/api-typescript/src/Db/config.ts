@@ -16,10 +16,31 @@ export const connConfig: ConnectionOptions = {
   database: process.env.DB_NAME ?? "database_name",
 }
 
-export const entities = [User]
+export const entities = [
+  User,
+]
 
 export const typeOrmConfig = {
   synchronize: true,
+  logging: false,
+
+  migrations: [
+    "src/Migrations/**/*.ts",
+  ],
+  subscribers: [
+    "src/Subscribers/**/*.ts",
+  ],
+  cli: {
+    "entitiesDir": "src/Entities",
+    "migrationsDir": "src/Migrations",
+    "subscribersDir": "src/Subscribers",
+  },
+}
+
+export const cliConfig = {
+  entitiesDir: "src/Entities",
+  migrationsDir: "src/Migrations",
+  subscribersDir: "src/Subscribers",
 }
 
 export const config: ConnectionOptions = {

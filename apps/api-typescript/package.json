@@ -25,7 +25,7 @@
     "serve": "node -r tsconfig-paths/register dist/index.js",
     "build": "tsc && link-module-alias",
     "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm --config ./ormconfig",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm --config ./src/Db/config.cli",
     "test": "jest",
     "test:watch": "jest --watch",
     "watch": "jest --watch"

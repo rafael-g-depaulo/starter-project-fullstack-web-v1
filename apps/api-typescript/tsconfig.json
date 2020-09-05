@@ -23,6 +23,7 @@
     // typeorm config
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "lib": [
       "es5",
       "es6"
