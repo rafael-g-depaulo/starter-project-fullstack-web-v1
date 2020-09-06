@@ -1,8 +1,8 @@
 import { ConnectionOptions } from "typeorm"
 
-import User from "./Entities/User"
+const dbFoldersRoot = `src/Db`
 
-export const getDbConn = () => {
+export const getDbConnConfig = () => {
 
 }
 
@@ -16,37 +16,34 @@ export const connConfig: ConnectionOptions = {
   database: process.env.DB_NAME ?? "database_name",
 }
 
-export const entities = [
-  User,
-]
-
 export const typeOrmConfig = {
   synchronize: true,
   logging: false,
 
   migrations: [
-    "src/Migrations/**/*.ts",
+    `${dbFoldersRoot}/Migrations/**/*.ts`,
   ],
   subscribers: [
-    "src/Subscribers/**/*.ts",
+    `${dbFoldersRoot}/Subscribers/**/*.ts`,
   ],
   cli: {
-    "entitiesDir": "src/Entities",
-    "migrationsDir": "src/Migrations",
-    "subscribersDir": "src/Subscribers",
+    entitiesDir: `${dbFoldersRoot}/Entities`,
+    migrationsDir: `${dbFoldersRoot}/Migrations`,
+    subscribersDir: `${dbFoldersRoot}/Subscribers`,
   },
-}
-
-export const cliConfig = {
-  entitiesDir: "src/Entities",
-  migrationsDir: "src/Migrations",
-  subscribersDir: "src/Subscribers",
+  
+  entities: [
+    `${dbFoldersRoot}/Entities/**/*.{ts,js}`,
+  ],
+  
+  entitiesDir: `${dbFoldersRoot}/Entities`,
+  migrationsDir: `${dbFoldersRoot}/Migrations`,
+  subscribersDir: `${dbFoldersRoot}/Subscribers`,
 }
 
 export const config: ConnectionOptions = {
   ...connConfig,
   ...typeOrmConfig,
-  entities,
 }
 
 export default config
