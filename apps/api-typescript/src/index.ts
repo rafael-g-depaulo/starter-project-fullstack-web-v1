@@ -9,6 +9,7 @@ Middewares(app)
 
 // setup db connection
 import Db from "Db"
+import Routes from "Routes"
 import User from 'Db/Entities/User'
 Db()
   .then(async ({ conn }) => {
@@ -17,8 +18,12 @@ Db()
   const users = await conn.manager.find(User)
   console.log("Loaded users: ", users)
 
-  const port = add(3000, 23)
+  const port = add(4999, 1)
   
+  app.use("/api", Routes({}))
+
+  app.get('/hello', (_, res) => res.json({ msg: 'world' }))
+
   app.listen(port, () => console.log(`listening PORT ${port}, in typescript!`)) 
 })
 .catch(e => console.error(e))
