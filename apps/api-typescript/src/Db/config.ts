@@ -16,7 +16,7 @@ export const getDbConnConfig: () => ConnectionOptions = () => {
   }
 }
 
-export const dbConnConfig: ConnectionOptions = getDbConnConfig()
+export const dbConnConfig = getDbConnConfig()
 
 export const getTypeOrmConfig = () => {
   const dbFoldersRoot = getDbFoldersRoot()
