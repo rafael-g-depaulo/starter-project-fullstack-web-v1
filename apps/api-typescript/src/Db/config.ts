@@ -1,8 +1,8 @@
 import { ConnectionOptions } from "typeorm"
 
-const getDbFoldersRoot = () => process.env.NODE_ENV === "development"
-  ? `src/Db`
-  : `dist/Db`
+const getDbFoldersRoot = () => process.env.IS_SERVING_BUNDLE === "true"
+  ? `dist/Db`
+  : `src/Db`
 
 export const getDbConnConfig: () => ConnectionOptions = () => {
   return {
