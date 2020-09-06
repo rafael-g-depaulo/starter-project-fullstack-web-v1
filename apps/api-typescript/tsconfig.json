@@ -1,40 +1,33 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+
+    // baseUrl for absolute imports
+    "baseUrl": "src",
+
+    // module import
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
 
+    // buil/source file location
     "rootDir": "./src",
     "outDir": "./dist",
 
-    "strict": true,
-    "pretty": true,
-    "sourceMap": true,
-
+    // optional typescript stuff
     "skipLibCheck": true,
-
-    "baseUrl": "src",
-    "paths": {
-      "Middlewares/*": [ "src/Middlewares/*" ],
-      "Utils/*": [ "src/Utils/*" ],
-      "Db/*": [ "src/Db/*" ],
-    },
+    "strict": true,
 
     // typeorm config
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "lib": [
-      "es5",
-      "es6"
-    ],
   },
+  
   "include": [
     "src",
   ],
   "exclude": [
     "**/*.test.ts",
   ],
-
 }

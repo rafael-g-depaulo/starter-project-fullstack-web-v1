@@ -22,8 +22,8 @@
     "prod": "yarn start:prod",
     "start:dev": "dotenv -- tsnd -r tsconfig-paths/register --respawn --transpile-only src/index.ts",
     "start:prod": "dotenv -- yarn serve",
-    "serve": "IS_SERVING_BUNDLE=true node -r tsconfig-paths/register dist/index.js",
-    "build": "tsc && link-module-alias",
+    "serve": "IS_SERVING_BUNDLE=true NODE_PATH=dist node -r tsconfig-paths/register dist/index.js",
+    "build": "tsc",
     "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm --config ./src/Db/config.cli",
     "test": "jest",
@@ -44,17 +44,10 @@
     "dotenv-cli": "^3.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "link-module-alias": "^1.2.0",
     "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
+    "tsconfig-paths": "^3.9.0",
     "typeorm": "^0.2.25"
   },
-  "devDependencies": {
-    "tsconfig-paths": "^3.9.0"
-  },
-  "_moduleAliases": {
-    "Middlewares": "dist/Middlewares",
-    "Utils": "dist/Utils",
-    "Db": "dist/Db"
-  }
+  "devDependencies": {}
 }
