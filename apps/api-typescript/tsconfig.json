@@ -18,6 +18,7 @@
     "paths": {
       "Middlewares/*": [ "src/Middlewares/*" ],
       "Utils/*": [ "src/Utils/*" ],
+      "Db/*": [ "src/Db/*" ],
     },
 
     // typeorm config
@@ -31,6 +32,9 @@
   },
   "include": [
     "src",
+  ],
+  "exclude": [
+    "**/*.test.ts",
   ],
 
 }
