@@ -10,13 +10,13 @@ Middewares(app)
 // setup db connection
 import Db from "Db"
 import Routes from "Routes"
-import User from 'Db/Entities/User'
+// import User from 'Db/Entities/User'
 Db()
   .then(async ({ conn }) => {
 
-  console.log("Loading users from the database...")
-  const users = await conn.manager.find(User)
-  console.log("Loaded users: ", users)
+  // console.log("Loading users from the database...")
+  // const users = await conn.manager.find(User)
+  // console.log("Loaded users: ", users)
 
   const port = add(4999, 1)
   

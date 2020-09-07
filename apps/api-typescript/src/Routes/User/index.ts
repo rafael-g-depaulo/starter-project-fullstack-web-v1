@@ -1,47 +1,57 @@
-import User from "Db/Entities/User"
 import express, { Request, Response } from "express"
+import { getCustomRepository } from "typeorm"
+
 import { Router } from "Routes"
 
+import User from "Db/Entities/User"
+import { UserRepository } from "Db/Repository/UserRepository"
+
 type UserDeps = {
+  UserRepo?: UserRepository,
 }
 
-const UserRouter: Router<UserDeps> = ({}, options) => express.Router(options)
-  .get('/', (_, res) => res.json({ msg: "ASDSADFSDFSD" }))
-  .post('/register', async (req: Request<{}, {}, User>, res: Response) => {
-    const { firstName, lastName, age } = req.body
+const UserRouter: Router<UserDeps> = (deps, options) => {
+  const {
+    UserRepo = getCustomRepository(UserRepository)
+  } = deps
+  
+  return express.Router(options)
+    .get('/', (_, res) => res.json({ msg: "ASDSADFSDFSD" }))
+    .post('/register', async (req: Request<{}, {}, User>, res: Response) => {
+      const { firstName, lastName, age } = req.body
 
-    const user = User.create({
-      firstName,
-      lastName,
-      age,
+      const user = UserRepo.create({
+        firstName,
+        lastName,
+        age,
+      })
+
+      await user.save()
+
+      return res.json({ user })
     })
+    .get('/:uuid', async (req, res) => {
 
-    await user.save()
+      const userId = req.params.uuid
+      
+      const user = await UserRepo.findOne(userId, { relations: ['bestFriend'] })
 
-    return res.json({ user })
-  })
-  .get('/:uuid', async (req, res) => {
+      res.json({ user })
+    })
+    .post('/:uuid/addBestFriend', async (req: Request<{ uuid: string }, {}, { friendId: string }>, res) => {
 
-    const userId = req.params.uuid
+      const [user, usersFriend] = await Promise.all([
+        UserRepo.findOne(req.params.uuid),
+        UserRepo.findOne(req.body.friendId),
+      ])
 
-    const user = await User.findOne(userId, { relations: ['bestFriend'] })
+      if (!user || !usersFriend)
+        return res.json({ msg: "user not found" })
 
-    res.json({ user })
-  })
-  .post('/:uuid/addBestFriend', async (req: Request<{ uuid: string }, {}, { friendId: string }>, res) => {
+      user.bestFriend = usersFriend
+      await user.save()
 
-    const [user, usersFriend] = await Promise.all([
-      User.findOne(req.params.uuid),
-      User.findOne(req.body.friendId),
-    ])
-
-    if (!user || !usersFriend)
-      return res.json({ msg: "user not found" })
-
-    user.bestFriend = usersFriend
-    await user.save()
-
-    return res.json({ user, usersFriend: user.bestFriend })
-  })
-
+      return res.json({ user, usersFriend: user.bestFriend })
+    })
+}
 export default UserRouter
