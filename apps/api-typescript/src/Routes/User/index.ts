@@ -29,12 +29,16 @@ const UserRouter: Router<UserDeps> = ({}, options) => express.Router(options)
     res.json({ user })
   })
   .post('/:uuid/addBestFriend', async (req: Request<{ uuid: string }, {}, { friendId: string }>, res) => {
-    const user = await User.findOne(req.params.uuid)
 
-    if (!user) return res.json({ msg: "user not found" })
+    const [user, usersFriend] = await Promise.all([
+      User.findOne(req.params.uuid),
+      User.findOne(req.body.friendId),
+    ])
 
-    user.bestFriend = await User.findOne(req.body.friendId)
+    if (!user || !usersFriend)
+      return res.json({ msg: "user not found" })
 
+    user.bestFriend = usersFriend
     await user.save()
 
     return res.json({ user, usersFriend: user.bestFriend })
