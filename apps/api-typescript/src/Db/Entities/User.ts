@@ -1,5 +1,8 @@
 import { Entity, PrimaryColumn, Column, BeforeInsert, BaseEntity } from "typeorm"
-import { v4 as uuidv4 } from "uuid"
+import { nanoid } from "nanoid"
+
+// INFO: check https://github.com/ai/nanoid and https://zelark.github.io/nano-id-cc/ to understand what this is for
+const idSize = 10
 
 @Entity()
 export class User extends BaseEntity {
@@ -18,7 +21,7 @@ export class User extends BaseEntity {
 
   @BeforeInsert()
   addId() {
-    this.id = uuidv4()
+    this.id = nanoid(idSize)
   }
 }
 
