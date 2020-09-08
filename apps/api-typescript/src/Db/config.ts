@@ -44,6 +44,8 @@ export const getTypeOrmConfig = () => {
     entitiesDir: `${dbFoldersRoot}/Entities`,
     migrationsDir: `${dbFoldersRoot}/Migrations`,
     subscribersDir: `${dbFoldersRoot}/Subscribers`,
+
+    migrationsTableName: "migrations",
   }
 }
 

@@ -26,7 +26,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
         age,
       })
 
-      await user.save()
+      await UserRepo.save(user)
 
       return res.json({ user })
     })
@@ -49,7 +49,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
         return res.json({ msg: "user not found" })
 
       user.bestFriend = usersFriend
-      await user.save()
+      await UserRepo.save(user)
 
       return res.json({ user, usersFriend: user.bestFriend })
     })
