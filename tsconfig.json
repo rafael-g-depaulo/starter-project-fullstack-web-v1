@@ -29,5 +29,10 @@
     "@starter-project/*": [
       "packages/libs/*"
     ],
-  }
+  },
+
+  // exclude tests in build
+  "exclude": [
+    "**/*.test.ts",
+  ],
 }
