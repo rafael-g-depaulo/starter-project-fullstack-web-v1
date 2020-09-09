@@ -21,18 +21,16 @@
     "build:client": "yarn workspace @starter-project/client run build",
     "build:strapi": "yarn workspace @starter-project/strapi run build",
     "clean": "yarn ultra -r --filter \"+libs/*\" clean",
-    "clean:api": "rm -rf ./server/build && mkdir ./server/build",
-    "clean:client": "rm -rf ./client/build && mkdir ./client/build",
     "start": "yarn start:client",
     "start:api": "yarn workspace @starter-project/api run start",
     "start:client": "yarn workspace @starter-project/client run start",
     "start:strapi": "yarn workspace @starter-project/strapi run start",
     "test": "jest",
-    "test:api": "jest server",
+    "test:api": "jest api",
     "test:client": "jest client",
     "watch": "jest --watch",
     "watch:client": "jest --watch client",
-    "watch:api": "jest --watch server"
+    "watch:api": "jest --watch api"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
@@ -54,11 +52,6 @@
   "engines": {
     "node": "12.x",
     "yarn": "1.x"
-  },
-  "preconstruct": {
-    "packages": [
-      "libs/*"
-    ]
   },
   "dependencies": {
     "@preconstruct/cli": "^1.1.20",

@@ -1,7 +1,7 @@
 module.exports = {
   projects: [
     "<rootDir>/libs/adder",
-    "<rootDir>/apps/api-typescript",
+    "<rootDir>/apps/api",
   ],
   
   testPathIgnorePatterns: [
