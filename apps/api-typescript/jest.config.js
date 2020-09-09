@@ -7,4 +7,8 @@ module.exports = {
     color: 'yellow',
   },
   moduleDirectories: ["node_modules", path.join(__dirname, "src")],
+  testPathIgnorePatterns: [
+    "<rootDir>/dist/",
+    "<rootDir>/node_modules/"
+  ]
 }
