@@ -20,7 +20,7 @@ Db()
 
   const port = add(4999, 1)
   
-  app.use("/api", Routes({}))
+  app.use("/api", Routes({ conn }))
 
   app.get('/hello', (_, res) => res.json({ msg: 'world' }))
 

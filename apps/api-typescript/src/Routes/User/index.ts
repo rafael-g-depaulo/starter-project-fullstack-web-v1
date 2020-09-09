@@ -1,18 +1,20 @@
 import express, { Request, Response } from "express"
-import { getCustomRepository } from "typeorm"
+import { Connection } from "typeorm"
 
 import { Router } from "Routes"
 
-import User from "Db/Entities/User"
-import { UserRepository } from "Db/Repository/UserRepository"
+import User from "Entities/User"
+import { UserRepository } from "Repository/UserRepository"
 
 type UserDeps = {
   UserRepo?: UserRepository,
+  conn: Connection,  
 }
 
 const UserRouter: Router<UserDeps> = (deps, options) => {
   const {
-    UserRepo = getCustomRepository(UserRepository)
+    conn,
+    UserRepo = conn.getCustomRepository(UserRepository),
   } = deps
   
   return express.Router(options)

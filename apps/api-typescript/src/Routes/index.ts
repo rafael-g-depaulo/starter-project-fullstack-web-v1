@@ -1,7 +1,13 @@
-import express, { Router as ExpressRouter, RouterOptions } from "express";
-import UserRouter from "./User";
+import express, { Router as ExpressRouter, RouterOptions } from "express"
+import { Connection } from "typeorm"
 
-export interface Router<Deps extends {}> {
+import UserRouter from "./User"
+
+export interface RouterDeps {
+  conn: Connection
+}
+
+export interface Router<Deps extends BaseRouterDeps> {
   (deps: Deps, options?: RouterOptions): ExpressRouter
 }
 
@@ -10,11 +16,11 @@ const defaultOptions: RouterOptions = {
 }
 
 type BaseRouterDeps = {
-
+  conn: Connection
 }
 
-const Routes: Router<BaseRouterDeps> = ({}, options = defaultOptions) => express.Router(options)
+const Routes: Router<BaseRouterDeps> = ({ conn }, options = defaultOptions) => express.Router(options)
   .get("/ping", (_, res) => res.json("pong"))
-  .use("/user", UserRouter({}, options))
+  .use("/user", UserRouter({ conn }, options))
 
 export default Routes
