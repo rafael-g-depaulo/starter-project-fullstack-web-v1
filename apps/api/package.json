@@ -1,64 +1,55 @@
 {
   "name": "@starter-project/api",
   "version": "5.1.0",
-  "main": "dist/server.cjs.js",
-  "module": "dist/server.esm.js",
-  "license": "MIT",
+  "description": "express.js api in typescript",
+  "keywords": [
+    "api",
+    "server",
+    "typescript"
+  ],
+  "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
+  "homepage": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql.git"
+  },
   "scripts": {
     "start": "dotenv -- if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
     "dev": "yarn start:dev",
     "prod": "yarn start:prod",
-    "start:dev": "dotenv -- nodemon --exec babel-node --root-mode upward index.js",
+    "start:dev": "dotenv -- tsnd -r tsconfig-paths/register --respawn --transpile-only src/index.ts",
     "start:prod": "dotenv -- yarn serve",
-    "serve": "node ./build",
-    "build": "yarn build:server && yarn build:db",
-    "build:server": "babel . --root-mode upward --ignore '**/*.test.js' -d ./build -s",
-    "build:db": "yarn db:migrate",
-    "db:create": "sequelize db:create",
-    "db:drop": "sequelize db:drop",
-    "db:migrate": "sequelize db:migrate",
-    "db:seed": "sequelize db:seed:all",
-    "db:unseed": "sequelize db:seed:undo:all",
-    "db:reseed": "yarn db:unseed && yarn db:seed",
-    "db:setup": "sequelize db:create && yarn db:migrate && yarn db:seed",
-    "db:reset": "yarn db:drop && yarn db:setup",
+    "serve": "IS_SERVING_BUNDLE=true NODE_PATH=dist node -r tsconfig-paths/register dist/index.js",
+    "build": "tsc",
+    "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm --config ./src/Db/config.cli",
     "test": "jest",
+    "test:watch": "jest --watch",
     "watch": "jest --watch"
   },
+  "bugs": {
+    "url": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql/issues"
+  },
   "dependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/register": "^7.10.4",
-    "@babel/runtime": "^7.10.5",
-    "@starter-project/logger": "^5.0.0",
-    "@starter-project/server-conn-info": "^5.0.0",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "bcrypt": "^5.0.0",
-    "body-parser": "^1.19.0",
+    "@starter-project/adder": "5.1.0",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.8",
+    "@types/nanoid": "^2.1.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "dotenv-cli": "^3.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "jsonwebtoken": "^8.5.1",
-    "pg": "^7.18.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.4",
-    "sequelize-cli": "^6.2.0"
+    "nanoid": "^3.1.12",
+    "pg": "^8.3.3",
+    "reflect-metadata": "^0.1.13",
+    "tsconfig-paths": "^3.9.0",
+    "typeorm": "^0.2.25"
   },
-  "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/node": "^7.8.4",
-    "@babel/plugin-transform-runtime": "^7.10.5",
-    "@preconstruct/cli": "^1.1.19",
-    "nodemon": "^2.0.2"
-  },
-  "engines": {
-    "node": "12.x",
-    "yarn": "1.x"
-  },
-  "preconstruct": {
-    "source": "index"
-  }
+  "devDependencies": {}
 }

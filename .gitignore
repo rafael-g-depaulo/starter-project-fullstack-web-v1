@@ -23,3 +23,9 @@ coverage/
 
 # Local History for Visual Studio Code
 .history/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# ultra runner
+.ultra.cache.json

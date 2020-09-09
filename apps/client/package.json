@@ -22,7 +22,7 @@
     "start": "dotenv -- if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
     "start:dev": "craco start",
     "start:prod": "yarn serve",
-    "build": "craco build && cp -p ./serve.json ./build/serve.json",
+    "________________________build": "craco build && cp -p ./serve.json ./build/serve.json",
     "test": "craco test",
     "eject": "craco eject",
     "serve": "serve ./build -l ${PORT:-4000} -s -n"

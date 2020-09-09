@@ -33,9 +33,9 @@
       "command": "yarn develop"
     },
     {
-      "name": "Preconstruct",
+      "name": "Build Libs",
       "icon": "gear",
-      "description": "Run preconstruct on packages to dinamically link them",
+      "description": "Build libs and dinamically link them",
       "persistent": "persistent_starter-project_preconstruct",
       "onlyMultiple": true,
       "command": "yarn build:libs:watch"

@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@starter-project/*": ["../libs/*"]
-    }
-  },
-  "include": [ ".", "../libs/*" ]
-}
