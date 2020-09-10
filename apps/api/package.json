@@ -52,7 +52,5 @@
     "tsconfig-paths": "^3.9.0",
     "typeorm": "^0.2.25"
   },
-  "devDependencies": {
-    "@types/jest": "^24.9"
-  }
+  "devDependencies": {}
 }
