@@ -3,6 +3,8 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
+import Routes from "Routes"
+
 const App = () => {
   return (
     <div className="App">
@@ -20,6 +22,7 @@ const App = () => {
           Learn React
         </a>
       </header>
+      <Routes />
     </div>
   )
 }
