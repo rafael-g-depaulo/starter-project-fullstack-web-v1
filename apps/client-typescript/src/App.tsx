@@ -2,15 +2,16 @@ import React from 'react'
 
 import GlobalStyles from 'GlobalStyles'
 import Routes from 'Routes'
-import Theme from 'Themes'
+import { ThemeProvider } from 'Themes'
 
 export const App = () => {
+
   return (
     <>
-      <Theme>
+      <ThemeProvider>
         <GlobalStyles />
         <Routes />
-      </Theme>
+      </ThemeProvider>
     </>
   )
 }
