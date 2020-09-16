@@ -1,11 +1,11 @@
 import Loading from "Components/Loading"
-import React, { Suspense } from "react"
+import React, { lazy, Suspense } from "react"
 import { Route, RouteComponentProps, Switch } from "react-router-dom"
 
 import { Router } from "Routes"
 
-import HomePage from "./HomePage"
-import ListItems from "./ListItems"
+const HomePage = lazy(() => import("./HomePage"))
+const ListItems = lazy(() => import("./ListItems"))
 
 export const Home: Router = ({
   match,
@@ -14,6 +14,8 @@ export const Home: Router = ({
   
   return (
     <Switch>
+
+      {/* base home route */}
       <Route exact path={path}>
         {() => (
           <Suspense fallback={<Loading />}>
@@ -22,6 +24,7 @@ export const Home: Router = ({
         )}
       </Route>
 
+      {/* route to list things */}
       <Route path={`${path}/:id`}>
         {({ match }: RouteComponentProps<{ id: string }>) => (
           <Suspense fallback={<Loading />}>
