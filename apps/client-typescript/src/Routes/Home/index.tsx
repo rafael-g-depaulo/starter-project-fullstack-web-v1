@@ -7,13 +7,11 @@ import { Router } from "Routes"
 import HomePage from "./HomePage"
 import ListItems from "./ListItems"
 
-// import LazyRoute from "Components/LazyRoute"
-
 export const Home: Router = ({
   match,
 }) => {
   const { path } = match ?? {}
-  console.log(match)
+  
   return (
     <Switch>
       <Route exact path={path}>

@@ -1,15 +1,13 @@
-// import LazyRoute from 'Components/LazyRoute'
-import Loading from 'Components/Loading'
 import React, { FC, lazy, Suspense } from 'react'
 import {
   BrowserRouter as BaseRouter,
   match,
   Redirect,
   Route,
-  // RouteChildrenProps,
-  // RouteComponentProps,
   Switch,
 } from "react-router-dom"
+
+import Loading from 'Components/Loading'
 
 const Home = lazy(() => import('./Home'))
 
