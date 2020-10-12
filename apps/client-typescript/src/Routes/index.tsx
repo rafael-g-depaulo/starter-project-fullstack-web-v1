@@ -16,7 +16,7 @@ export type RouterProps<MatchParams = {}> = {
   location?: Location,
   match: match<MatchParams> | null,
 }
-export type Router = FC<RouterProps>
+export type Router<T = {}> = FC<RouterProps<T>>
 
 const Routes: FC = () => {
   return (

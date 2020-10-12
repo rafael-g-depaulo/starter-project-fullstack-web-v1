@@ -25,7 +25,7 @@ export const Home: Router = ({
       </Route>
 
       {/* route to list things */}
-      <Route path={`${path}/:id`}>
+      <Route path={`${path ?? ""}/:id`}>
         {({ match }: RouteComponentProps<{ id: string }>) => (
           <Suspense fallback={<Loading />}>
             <ListItems id={match.params.id}/>
