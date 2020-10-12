@@ -48,6 +48,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.11.1",
     "jest": "^24.9.0",
     "jest-fetch-mock": "^3.0.3",
