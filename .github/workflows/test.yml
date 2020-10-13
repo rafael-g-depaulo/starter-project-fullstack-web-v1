@@ -25,6 +25,7 @@ jobs:
 
       # Runs the build script
       - run: yarn --frozen-lockfile
+      - run: yarn build:libs
       - run: yarn test
         env:
           CI: true
