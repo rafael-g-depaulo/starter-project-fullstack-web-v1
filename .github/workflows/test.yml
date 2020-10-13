@@ -1,6 +1,12 @@
 name: Test
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    types: [ opened, edited ]
 
 jobs:
   test-all:
@@ -10,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      # setup node version
       matrix:
         node-version: [12.x]
       
