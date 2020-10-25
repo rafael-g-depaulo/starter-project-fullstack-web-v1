@@ -22,7 +22,7 @@ jobs:
     - name: Build and push
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME_DEV_CLIENT }}
+      run: heroku git:remote -a ${{ secrets.HEROKU_CLIENT_APP_NAME }}
     - name: Release
       run: |
         git remote rename heroku heroku-dev-client
