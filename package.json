@@ -12,7 +12,7 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "yarn && ${BUILD_SCRIPT:-yarn build:all}",
+    "build": "${BUILD_SCRIPT:-yarn build:all}",
     "build:all": "yarn build:libs && yarn build:apps",
     "build:libs": "ultra -r -b --filter \"+libs/*\" build",
     "build:libs:watch": "ultra -r -b --filter \"+libs/*\" build:watch",
