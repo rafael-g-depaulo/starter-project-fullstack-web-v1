@@ -1,9 +1,9 @@
 import "reflect-metadata"
 import { createConnection } from "typeorm"
 
-import { config } from "./config"
+import { getConfig } from "./config"
 
-const connect = () => createConnection(config)
+const connect = () => createConnection(getConfig())
   .then(conn => ({ conn }))
 
 export default connect
