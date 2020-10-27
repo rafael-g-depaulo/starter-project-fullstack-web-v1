@@ -1,5 +1,5 @@
-import config from './config'
+import getConfig from './config'
 
 module.exports = {
-  ...config,
+  ...getConfig(),
 }
