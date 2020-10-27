@@ -1,16 +1,16 @@
 
-name: Deploy client (dev)
+name: Deploy api (prod)
 
 on:
   push:
     branches:
-      - develop
+      - master
     paths:
       - '**'
       - '!.github/workflows'
-      - '.github/workflows/deploy-dev-client.yml'
+      - '.github/workflows/deploy-prod-api.yml'
       - '!apps/**'
-      - 'apps/client/**'
+      - 'apps/api/**'
 
 jobs:
   deploy:
@@ -22,6 +22,6 @@ jobs:
     - uses: akhileshns/heroku-deploy@v3.6.8
       with:
         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: ${{ secrets.HEROKU_APP_NAME_DEV_CLIENT }}
+        heroku_app_name: ${{ secrets.HEROKU_APP_NAME_PROD_API }}
         heroku_email: ${{ secrets.HEROKU_EMAIL }}
         branch: "develop"
