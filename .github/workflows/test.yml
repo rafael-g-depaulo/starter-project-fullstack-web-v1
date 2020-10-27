@@ -6,7 +6,7 @@ on:
       - master
       - develop
   pull_request:
-    types: [ opened, edited ]
+    types: [ opened, synchronize, edited ]
 
 jobs:
   test-all:
@@ -30,9 +30,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # Runs the build script
-      - run: yarn --frozen-lockfile
-      - run: yarn build:libs
-      - run: yarn test
+      # cache node_modules
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      # install dependencies
+      - name: Install packages
+        run: yarn --frozen-lockfile
+
+      # build local libs
+      - name: Build Libs
+        run: yarn build:libs
+
+      # test project
+      - name: Test project
+        run: yarn test
         env:
           CI: true
