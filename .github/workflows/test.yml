@@ -6,7 +6,7 @@ on:
       - master
       - develop
   pull_request:
-    types: [ opened, edited ]
+    types: [ opened, synchronize, edited ]
 
 jobs:
   test-all:
