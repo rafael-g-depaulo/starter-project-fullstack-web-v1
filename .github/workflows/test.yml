@@ -30,9 +30,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # Runs the build script
-      - run: yarn --frozen-lockfile
-      - run: yarn build:libs
-      - run: yarn test
+      # install dependencies
+      - name: Install packages
+        run: yarn --frozen-lockfile
+
+      # build local libs
+      - name: Build Libs
+        run: yarn build:libs
+
+      # test project
+      - name: Test project
+        run: yarn test
         env:
           CI: true
