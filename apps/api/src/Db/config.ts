@@ -1,36 +1,22 @@
 import { ConnectionOptions } from "typeorm"
-import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions"
 
 const getDbFoldersRoot = () => process.env.IS_SERVING_BUNDLE === "true"
   ? `dist`
   : `src`
 
-export const getDbConnConfig: () => PostgresConnectionOptions = () => {
-  const baseConfig: { type: "postgres" } = {
-    type: "postgres",
-  }
-
-  // if DATABASE_URL provided
-  if (process.env.DATABASE_URL)
+export const getDbConnConfig: () => ConnectionOptions = () => {
   return {
-    ...baseConfig,
-    url: process.env.DATABASE_URL,
-  }
-
-  // if DB_* provided
-  if (process.env.DB_HOST && process.env.DB_USER && process.env.DB_PASS && process.env.DB_NAME)
-  return {
-    ...baseConfig,
+    url:      process.env.DATABASE_URL ?? "",
+    type:     "postgres",
     host:     process.env.DB_HOST,
-    port:     Number(process.env.DB_PORT ?? 5432) || undefined,
+    port:     Number(process.env.DB_PORT) || undefined,
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
   }
-
-  // else, throw
-  throw new Error("Invalid DB config. Check environment variables")
 }
+
+export const dbConnConfig = getDbConnConfig()
 
 export const getTypeOrmConfig = () => {
   const dbFoldersRoot = getDbFoldersRoot()
@@ -63,9 +49,11 @@ export const getTypeOrmConfig = () => {
   }
 }
 
-export const getConfig: () => ConnectionOptions = () => ({
-  ...getDbConnConfig(),
-  ...getTypeOrmConfig(),
-})
+export const typeOrmConfig = getTypeOrmConfig()
 
-export default getConfig
+export const config: ConnectionOptions = {
+  ...dbConnConfig,
+  ...typeOrmConfig,
+}
+
+export default config
