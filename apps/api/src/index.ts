@@ -18,7 +18,7 @@ Db()
   // const users = await conn.manager.find(User)
   // console.log("Loaded users: ", users)
 
-  const port = add(4999, 1)
+  const port = process.env.PORT ?? 5000
   
   app.use("/api", Routes({ conn }))
 
