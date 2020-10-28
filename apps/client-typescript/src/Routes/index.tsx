@@ -2,7 +2,6 @@ import React, { FC, lazy, Suspense } from 'react'
 import {
   BrowserRouter as BaseRouter,
   match,
-  Redirect,
   Route,
   Switch,
 } from "react-router-dom"
@@ -22,9 +21,13 @@ const Routes: FC = () => {
   return (
     <BaseRouter>
 
-      {/* exact alias for "/" */}
+      {/* default route */}
       <Route exact path="/">
-        <Redirect to="/home" />
+          {({ match }) => (
+            <Suspense fallback={<Loading />}>
+              <Home match={match}/>
+            </Suspense> 
+          )}
       </Route>
 
       <Switch>
