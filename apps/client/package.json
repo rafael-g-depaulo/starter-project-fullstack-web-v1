@@ -1,5 +1,5 @@
 {
-  "name": "@starter-project/client-typescript",
+  "name": "@starter-project/client",
   "version": "5.1.0",
   "license": "MIT",
   "dependencies": {
