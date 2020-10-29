@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sample_collections",
+  "info": {
+    "name": "Sample Collection"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    }
+  }
+}
