@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "sample_collections",
+  "collectionName": "people_examples",
   "info": {
-    "name": "Sample Collection"
+    "name": "People Example"
   },
   "options": {
     "increments": true,

@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/sample-collections",
-      "handler": "sample-collection.find",
+      "path": "/people-examples",
+      "handler": "people-example.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/sample-collections/count",
-      "handler": "sample-collection.count",
+      "path": "/people-examples/count",
+      "handler": "people-example.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/sample-collections/:id",
-      "handler": "sample-collection.findOne",
+      "path": "/people-examples/:id",
+      "handler": "people-example.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/sample-collections",
-      "handler": "sample-collection.create",
+      "path": "/people-examples",
+      "handler": "people-example.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/sample-collections/:id",
-      "handler": "sample-collection.update",
+      "path": "/people-examples/:id",
+      "handler": "people-example.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/sample-collections/:id",
-      "handler": "sample-collection.delete",
+      "path": "/people-examples/:id",
+      "handler": "people-example.delete",
       "config": {
         "policies": []
       }
