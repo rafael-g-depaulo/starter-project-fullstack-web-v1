@@ -9,6 +9,7 @@ import {
 import Loading from 'Components/Loading'
 
 const Home = lazy(() => import('./Home'))
+const Animals = lazy(() => import('./Animals'))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History,
@@ -21,16 +22,16 @@ const Routes: FC = () => {
   return (
     <BaseRouter>
 
-      {/* default route */}
-      <Route exact path="/">
-          {({ match }) => (
-            <Suspense fallback={<Loading />}>
-              <Home match={match}/>
-            </Suspense> 
-          )}
-      </Route>
-
       <Switch>
+        
+        {/* default route */}
+        <Route exact path="/">
+            {({ match }) => (
+              <Suspense fallback={<Loading />}>
+                <Home match={match}/>
+              </Suspense> 
+            )}
+        </Route>
         
         {/* home router */}
         <Route path={["/home"]}>
@@ -39,6 +40,15 @@ const Routes: FC = () => {
               <Home match={match}/>
             </Suspense> 
           )}
+        </Route>
+
+        {/* animals router */}
+        <Route path="/animals">
+            {({ match }) => (
+              <Suspense fallback={<Loading />}>
+                <Animals match={match} />
+              </Suspense>
+            )}
         </Route>
       </Switch>
 
