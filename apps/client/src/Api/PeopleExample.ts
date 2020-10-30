@@ -1,5 +1,5 @@
 import { strapi } from "Api"
-import CreateApiHook from 'Utils/CreateApiHook'
+import useFetchApi from 'Hooks/useFetchApi'
 
 export interface PersonExample {
   name: string,
@@ -11,7 +11,7 @@ export const fetchPersonExample = (id: number) => strapi
   .then(({ data }) => data)
   .then(({ name, age }) => ({ name, age }))
 
-export const usePersonExample = (id: number) => CreateApiHook<PersonExample>(`/people-example/${id}`, () => fetchPersonExample(id))
+export const usePersonExample = (id: number) => useFetchApi<PersonExample>(`/people-example/${id}`, () => fetchPersonExample(id))
 
 export const fetchPeopleExample = () => strapi
   .get<PersonExample[]>(`/people-examples`)
@@ -20,4 +20,4 @@ export const fetchPeopleExample = () => strapi
     .map(({ name, age }) => ({ name, age }))
   )
 
-export const usePeopleExample = () =>  CreateApiHook<PersonExample[]>(`/people-example`, fetchPeopleExample)
+export const usePeopleExample = () => useFetchApi<PersonExample[]>(`/people-example`, fetchPeopleExample)

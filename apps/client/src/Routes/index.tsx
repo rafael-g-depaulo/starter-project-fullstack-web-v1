@@ -10,6 +10,7 @@ import Loading from 'Components/Loading'
 
 const Home = lazy(() => import('./Home'))
 const PeopleExample = lazy(() => import('./PeopleExample'))
+const SingletonExample = lazy(() => import('./SingletonExample'))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History,
@@ -42,11 +43,20 @@ const Routes: FC = () => {
           )}
         </Route>
 
-        {/* animals router */}
+        {/* strapi collection example router */}
         <Route path="/people-example">
             {({ match }) => (
               <Suspense fallback={<Loading />}>
                 <PeopleExample match={match} />
+              </Suspense>
+            )}
+        </Route>
+
+        {/* strapi collection example router */}
+        <Route path="/singleton-example">
+            {({ match }) => (
+              <Suspense fallback={<Loading />}>
+                <SingletonExample match={match} />
               </Suspense>
             )}
         </Route>
