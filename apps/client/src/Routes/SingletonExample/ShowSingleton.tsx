@@ -1,5 +1,7 @@
 import React, { FC } from "react"
+
 import { useSingletonExample } from "Api/SingletonExample"
+import Loading from "Components/Loading"
 
 export const ShowSingleton: FC = () => {
 
@@ -7,7 +9,7 @@ export const ShowSingleton: FC = () => {
 
   if (error) return <div>error: { error?.message ?? "" }</div>
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Loading />
 
   const { text, image} = data!
   return (

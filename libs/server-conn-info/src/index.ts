@@ -13,8 +13,8 @@ const getApiUrlEnvVar = () => process.env.API_URL ?? process.env.REACT_APP_API_U
 
 export const defaultApiUrl = `starter-project-api-prod.herokuapp.com/`
 export const getApiUrl = () => process.env.NODE_ENV === 'production'
-? getApiUrlEnvVar() ?? defaultApiUrl
-: `http://localhost:${getApiPort()}`
+  ? getApiUrlEnvVar() ?? defaultApiUrl
+  : `http://localhost:${getApiPort()}`
 
 // STRAPI
 const getStrapiUrlEnvVar = () => process.env.STRAPI_URL ?? process.env.REACT_APP_STRAPI_URL
