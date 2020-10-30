@@ -1,5 +1,5 @@
-import useSWR from 'swr'
 import { strapi } from "Api"
+import CreateApiHook from 'Utils/CreateApiHook'
 
 export interface PersonExample {
   name: string,
@@ -11,15 +11,7 @@ export const fetchPersonExample = (id: number) => strapi
   .then(({ data }) => data)
   .then(({ name, age }) => ({ name, age }))
 
-export const usePersonExample = (id: number) => {
-  const { data, error, isValidating } = useSWR(`/people-example/${id}`, () => fetchPersonExample(id))
-
-  return {
-    error,
-    data,
-    isLoading: isValidating || (!data && !error),
-  }
-}
+export const usePersonExample = (id: number) => CreateApiHook<PersonExample>(`/people-example/${id}`, () => fetchPersonExample(id))
 
 export const fetchPeopleExample = () => strapi
   .get<PersonExample[]>(`/people-examples`)
@@ -28,12 +20,4 @@ export const fetchPeopleExample = () => strapi
     .map(({ name, age }) => ({ name, age }))
   )
 
-export const usePeopleExample = () => {
-  const { data, error, isValidating } = useSWR(`/people-example`, () => fetchPeopleExample())
-
-  return {
-    error,
-    data,
-    isLoading: isValidating || (!data && !error),
-  }
-}
+export const usePeopleExample = () =>  CreateApiHook<PersonExample[]>(`/people-example`, fetchPeopleExample)
