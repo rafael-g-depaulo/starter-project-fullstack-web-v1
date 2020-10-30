@@ -9,7 +9,7 @@ import {
 import Loading from 'Components/Loading'
 
 const Home = lazy(() => import('./Home'))
-const Animals = lazy(() => import('./Animals'))
+const PeopleExample = lazy(() => import('./PeopleExample'))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History,
@@ -43,10 +43,10 @@ const Routes: FC = () => {
         </Route>
 
         {/* animals router */}
-        <Route path="/animals">
+        <Route path="/people-example">
             {({ match }) => (
               <Suspense fallback={<Loading />}>
-                <Animals match={match} />
+                <PeopleExample match={match} />
               </Suspense>
             )}
         </Route>
