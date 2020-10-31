@@ -1,6 +1,6 @@
 {
   "name": "@starter-project/api",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "express.js api in typescript",
   "keywords": [
     "api",
@@ -36,7 +36,7 @@
     "url": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql/issues"
   },
   "dependencies": {
-    "@starter-project/adder": "^7.0.0",
+    "@starter-project/adder": "^7.0.1",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.7",
     "@types/express": "^4.17.8",
