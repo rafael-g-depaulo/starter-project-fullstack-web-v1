@@ -1,6 +1,6 @@
 {
   "name": "@starter-project/api",
-  "version": "6.0.0",
+  "version": "6.2.1",
   "description": "express.js api in typescript",
   "keywords": [
     "api",
