@@ -1,11 +1,18 @@
-import express, { Router as ExpressRouter, RouterOptions } from "express"
+import express, { Router as ExpressRouter, Request, Response, NextFunction, RouterOptions } from "express"
 import { Connection } from "typeorm"
+
+// sub routers
+import AnimalExampleRouter from "./AnimalExample"
+
+export interface RequestHandler<ReqBody = {}, Params = {}> {
+  (req: Request<Params, {}, ReqBody>, res: Response, next?: NextFunction): void,
+}
 
 export interface RouterDeps {
   conn: Connection
 }
 
-export interface Router<Deps extends BaseRouterDeps> {
+export interface Router<Deps extends RouterDeps> {
   (deps: Deps, options?: RouterOptions): ExpressRouter
 }
 
@@ -19,6 +26,6 @@ type BaseRouterDeps = {
 
 const Routes: Router<BaseRouterDeps> = ({ conn }, options = defaultOptions) => express.Router(options)
   .get("/ping", (_, res) => res.json("pong"))
-  // .use("/user", UserRouter({ conn }, options))
+  .use("/animal-example", AnimalExampleRouter({ conn }, options))
 
 export default Routes

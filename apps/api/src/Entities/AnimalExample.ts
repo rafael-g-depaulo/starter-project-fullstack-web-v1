@@ -22,3 +22,5 @@ export class AnimalExample {
     this.id = nanoid(idSize)
   }
 }
+
+export default AnimalExample

@@ -19,7 +19,7 @@ Db()
 
   const port = process.env.PORT ?? 5000
   
-  app.use("/api", Routes({ conn }))
+  app.use("/", Routes({ conn }))
 
   app.get('/hello', (_, res) => res.json({ msg: 'world' }))
 
