@@ -1,5 +1,4 @@
 import express from 'express'
-import { add } from '@starter-project/adder'
 
 const app = express()
 
