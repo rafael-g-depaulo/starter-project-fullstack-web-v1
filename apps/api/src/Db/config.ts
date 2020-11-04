@@ -36,7 +36,7 @@ export const getTypeOrmConfig = () => {
   const dbFoldersRoot = getDbFoldersRoot()
 
   return {
-    synchronize: true,
+    synchronize: process.env.IS_SERVING_BUNDLE !== "true" && process.env.NODE_ENV !== "production",
     logging: false,
 
     migrations: [
@@ -52,7 +52,7 @@ export const getTypeOrmConfig = () => {
     },
 
     entities: [
-      `${dbFoldersRoot}/Entities/**/*.{ts,js}`,
+      `${dbFoldersRoot}/Entities/**/*.ts`,
     ],
 
     entitiesDir: `${dbFoldersRoot}/Entities`,
