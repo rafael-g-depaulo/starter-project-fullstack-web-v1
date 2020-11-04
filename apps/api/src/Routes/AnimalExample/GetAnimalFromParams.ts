@@ -19,12 +19,15 @@ export const GetAnimalFromParams: (deps: GetAnimalDeps) => RequestHandler<Animal
   AnimalExampleRepo,
 }) => async (req, res, next) => {
 
-  const { id } = req.params
+  const { id } = req.params ?? {}
+
+  // return an error if id not in params
+  if (!id) return res.status(400).json({ error: "Id not present in route params" })
 
   const animal = await AnimalExampleRepo.findOne({ id })
 
   // if id doesnt correspont to an animal
-  if (!animal) return res.status(404).json({ msg: "Animal not found!" })
+  if (!animal) return res.status(404).json({ error: "Animal not found!" })
 
   // add animal to body
   req.body = { animal }
