@@ -19,8 +19,7 @@ export const CreateAnimalExampleRepo: () => [ AnimalExampleRepository, RepoConfi
       name,
       rank,
       id: `${animalTable.length}.${name}.${rank}`,
-      addId(){},
-    })
+    }) as AnimalExample
   )
 
   // mock function to save animal to table
