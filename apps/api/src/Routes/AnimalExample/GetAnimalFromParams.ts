@@ -11,11 +11,11 @@ export interface AnimalRequest {
   animal: AnimalExample
 }
 
-interface Params {
+export interface AnimalIdParams {
   id: string,
 }
 
-export const GetAnimalFromParams: (deps: GetAnimalDeps) => RequestHandler<AnimalRequest | undefined, Params> = ({
+export const GetAnimalFromParams: (deps: GetAnimalDeps) => RequestHandler<AnimalRequest | undefined, AnimalIdParams> = ({
   AnimalExampleRepo,
 }) => async (req, res, next) => {
 

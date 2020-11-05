@@ -1,8 +1,9 @@
+import { createResponseMock, mockRouteHandler, createRequestMock } from "Utils/mockUtils"
+import expectStatus200 from "Utils/expectStatus200"
+
 import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
-// import AnimalExampleRepository from "Repository/AnimalExampleRepository"
+import AnimalExample from "Entities/AnimalExample"
 import CreateAnimal from "./CreateAnimal"
-import { expectStatus200, createResponseMock, mockRouteHandler } from "Utils/mockUtils"
-// import { Request, Response } from "express"
 
 describe('CreateAnimal Route Handler', () => {
 
@@ -16,23 +17,19 @@ describe('CreateAnimal Route Handler', () => {
 
   it('correctly saves the animal given in the request body in the database table', async () => {
     
-    // mock response
+    // mock response and request objects
     const response = createResponseMock()
-
-    // request body
-    const request = {
-      body: {
-        name: "Cat",
-        rank: 5
-      }
-    }
+    const request = createRequestMock({
+      name: "Cat",
+      rank: 5
+    })
 
     // created animal
     const createdAnimal = {
       name: "Cat",
       rank: 5,
       id: `0.Cat.5`, // id is created on the mock repository implementation of the create function
-    }
+    } as AnimalExample
 
     // call route
     await mockRouteHandler(createAnimalRoute, request, response)
@@ -45,25 +42,23 @@ describe('CreateAnimal Route Handler', () => {
   })
 
   it('correctly returns the new animal in the response json', async () => {
-    // mock response
-    const response = createResponseMock()
 
-    // request body
-    const body = {
+    // mock response and request objects
+    const response = createResponseMock()
+    const request = createRequestMock({
       name: "Dog",
       rank: 25
-    }
+    })
 
-    // created animal
+    // animal that should be created
     const createdAnimal = {
       name: "Dog",
       rank: 25,
       id: `0.Dog.25`, // id is created on the mock repository implementation of the create function
-    }
+    } as AnimalExample
 
     // call route
-    // await createAnimalRoute({ body } as Request, response as Response)
-    await mockRouteHandler(createAnimalRoute, { body }, response)
+    await mockRouteHandler(createAnimalRoute, request, response)
 
     // expect newly created animal to be sent to client in response json
     const mockCalls = response.json.mock.calls

@@ -1,6 +1,8 @@
+import { createResponseMock, mockRouteHandler, createRequestMock } from "Utils/mockUtils"
+import expectStatus200 from "Utils/expectStatus200"
+
 import AnimalExample from "Entities/AnimalExample"
 import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
-import { expectStatus200, createResponseMock, mockRouteHandler } from "Utils/mockUtils"
 
 import DeleteAnimal from "./DeleteAnimal"
 
@@ -35,14 +37,11 @@ describe('CreateAnimal Route Handler', () => {
     ]
 
     // create mocks
-    const body = {
-      animal: raccoon,
-    }
-    // mock response object
+    const request = createRequestMock({ animal: raccoon })
     const response = createResponseMock()
 
     // call route
-    await mockRouteHandler(DeleteAnimalRoute, { body }, response)
+    await mockRouteHandler(DeleteAnimalRoute, request, response)
 
     // expect animal to be deleted from table
     const afterTable = RepoConfig.table
@@ -58,14 +57,11 @@ describe('CreateAnimal Route Handler', () => {
     ]
 
     // create mocks
-    const body = {
-      animal: raccoon,
-    }
-    // mock response object
+    const request = createRequestMock({ animal: raccoon })
     const response = createResponseMock()
 
     // call route
-    await mockRouteHandler(DeleteAnimalRoute, { body }, response)
+    await mockRouteHandler(DeleteAnimalRoute, request, response)
 
     // expect animal to be deleted from table
     const responseCalls = response.json.mock.calls

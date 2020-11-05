@@ -21,6 +21,9 @@ export interface MockResponse {
   status: jest.Mock<Express.Response, [number]>,
 }
 
+export const createRequestMock: <Body = {}, Params = {}> (body?: Body, params?: Params) => MockRequest<Body, Params> =
+  (body, params) => ({ body, params })
+
 export const createResponseMock = (_jest: Jest = jest) => {
   const responseMock: MockResponse = {
     json: _jest.fn(),
@@ -28,14 +31,6 @@ export const createResponseMock = (_jest: Jest = jest) => {
   }
 
   return responseMock
-}
-
-export const expectStatus200 = (expect: jest.Expect, response: MockResponse) => {
-  const statusCalledTimes = response.status.mock.calls.length
-  expect(statusCalledTimes).toBeLessThanOrEqual(1)
-  expect(statusCalledTimes).toBeGreaterThanOrEqual(0)
-  if (statusCalledTimes === 1)
-    expect(response.status).toBeCalledWith(200)
 }
 
 export const mockRouteHandler = <ReqBody = {}, ReqParams = {}>(handler: RequestHandler<ReqBody, ReqParams>, request: MockRequest<ReqBody, ReqParams>, response: MockResponse, next?: MockNext) =>

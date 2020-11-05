@@ -1,7 +1,9 @@
+import { createResponseMock, mockRouteHandler, createRequestMock } from "Utils/mockUtils"
+import expectStatus200 from "Utils/expectStatus200"
+
 import AnimalExample from "Entities/AnimalExample"
 import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
-import { MockRequest, createResponseMock, expectStatus200, mockRouteHandler } from "Utils/mockUtils"
-import GetAnimalFromParams, { AnimalRequest } from "./GetAnimalFromParams"
+import GetAnimalFromParams, { AnimalRequest, AnimalIdParams } from "./GetAnimalFromParams"
 
 describe('CreateAnimal Route Handler', () => {
   
@@ -34,11 +36,9 @@ describe('CreateAnimal Route Handler', () => {
     ]
 
     // create mocks
-    const request: MockRequest<AnimalRequest | undefined, { id: string }> = {
-      params: {
-        id: snake.id,        
-      },
-    }
+    const request = createRequestMock<AnimalRequest | undefined, AnimalIdParams>(undefined, {
+      id: snake.id,
+    })
     const response = createResponseMock()
     const next = jest.fn()
 
@@ -84,7 +84,7 @@ describe('CreateAnimal Route Handler', () => {
   })
 
   it("returns a 404 if the id doesn't correspond to an animal", async () => {
-    const request = {}
+    const request = createRequestMock(undefined, { id: "wrong id" })
     const response = createResponseMock()
     const next = jest.fn()
 
@@ -92,12 +92,12 @@ describe('CreateAnimal Route Handler', () => {
     await mockRouteHandler(GetAnimalFromParamsRoute, request, response, next)
 
     expect(response.status).toBeCalledTimes(1)
-    expect(response.status).toBeCalledWith(400)
+    expect(response.status).toBeCalledWith(404)
     
     expect(next).not.toBeCalled()
     
     expect(response.json).toBeCalledTimes(1)
     const jsonResponse = response.json.mock.calls[0][0]
-    expect(jsonResponse).toMatchObject({ error: "Id not present in route params" })
+    expect(jsonResponse).toMatchObject({ error: "Animal not found!" })
   })
 })

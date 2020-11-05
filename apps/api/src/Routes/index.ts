@@ -5,7 +5,7 @@ import { Connection } from "typeorm"
 import AnimalExampleRouter from "./AnimalExample"
 
 export interface RequestHandler<ReqBody = {}, Params = {}> {
-  (req: Request<Params, {}, ReqBody>, res: Response, next?: NextFunction): void,
+  (req: Request<Params, {}, ReqBody>, res: Response, next?: NextFunction): any,
 }
 
 export interface RouterDeps {

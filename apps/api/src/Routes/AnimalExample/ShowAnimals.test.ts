@@ -1,5 +1,7 @@
+import { createResponseMock, mockRouteHandler } from "Utils/mockUtils"
+import expectStatus200 from "Utils/expectStatus200"
+
 import AnimalExample from "Entities/AnimalExample"
-import { createResponseMock, expectStatus200, mockRouteHandler } from "Utils/mockUtils"
 import ShowAnimalRoute from "./ShowAnimal"
 
 describe('ShowAnimal Route Handler', () => {

@@ -1,6 +1,8 @@
+import { createResponseMock, mockRouteHandler } from "Utils/mockUtils"
+import expectStatus200 from "Utils/expectStatus200"
+
 import AnimalExample from "Entities/AnimalExample"
 import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
-import { createResponseMock, expectStatus200, mockRouteHandler } from "Utils/mockUtils"
 import ListAllAnimals from "./ListAllAnimals"
 
 describe('ListAllAnimals Route Handler', () => {
