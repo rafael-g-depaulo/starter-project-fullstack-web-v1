@@ -8,13 +8,13 @@
     "typescript"
   ],
   "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
-  "homepage": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql#readme",
+  "homepage": "https://github.com/rafael-g-depaulo/starter-project-fullstack-web#readme",
   "license": "ISC",
   "main": "dist/index.js",
   "typings": "dist/index.d.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql.git"
+    "url": "git+https://github.com/rafael-g-depaulo/starter-project-fullstack-web.git"
   },
   "scripts": {
     "start": "dotenv -- if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
@@ -33,7 +33,7 @@
     "watch": "jest --watch"
   },
   "bugs": {
-    "url": "https://github.com/rafael-g-depaulo/starter-project-express-react-sequelize-pgsql/issues"
+    "url": "https://github.com/rafael-g-depaulo/starter-project-fullstack-web/issues"
   },
   "dependencies": {
     "@starter-project/adder": "^7.0.1",
