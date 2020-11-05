@@ -43,7 +43,7 @@
 
   // exclude tests in build
   "exclude": [
-    "**/*.test.ts",
+    // "**/*.test.ts",
     "**/dist/**/*",
   ],
 }

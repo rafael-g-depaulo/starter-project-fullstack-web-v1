@@ -1,5 +1,8 @@
 import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
+// import AnimalExampleRepository from "Repository/AnimalExampleRepository"
 import CreateAnimal from "./CreateAnimal"
+import { expectStatus200, createResponseMock, mockRouteHandler } from "Utils/mockUtils"
+// import { Request, Response } from "express"
 
 describe('CreateAnimal Route Handler', () => {
 
@@ -14,14 +17,14 @@ describe('CreateAnimal Route Handler', () => {
   it('correctly saves the animal given in the request body in the database table', async () => {
     
     // mock response
-    const mockResponse = {
-      json: jest.fn()
-    }
+    const response = createResponseMock()
 
     // request body
-    const body = {
-      name: "Cat",
-      rank: 5
+    const request = {
+      body: {
+        name: "Cat",
+        rank: 5
+      }
     }
 
     // created animal
@@ -32,20 +35,18 @@ describe('CreateAnimal Route Handler', () => {
     }
 
     // call route
-    await createAnimalRoute({ body }, mockResponse)
+    await mockRouteHandler(createAnimalRoute, request, response)
 
-    // expect new dog to be save to table
+    // expect new dog to be saved to table
     const AnimalExampleTable = RepoConfig.table
     expect(AnimalExampleTable.length).toBe(1)
     expect(AnimalExampleTable[0]).toMatchObject(createdAnimal)
+    
   })
 
   it('correctly returns the new animal in the response json', async () => {
     // mock response
-    const mockResponse = {
-      json: jest.fn(),
-      status: jest.fn(() => mockResponse.json)
-    }
+    const response = createResponseMock()
 
     // request body
     const body = {
@@ -61,18 +62,15 @@ describe('CreateAnimal Route Handler', () => {
     }
 
     // call route
-    await createAnimalRoute({ body }, mockResponse)
+    // await createAnimalRoute({ body } as Request, response as Response)
+    await mockRouteHandler(createAnimalRoute, { body }, response)
 
     // expect newly created animal to be sent to client in response json
-    const mockCalls = mockResponse.json.mock.calls
+    const mockCalls = response.json.mock.calls
     expect(mockCalls.length).toBe(1)  // expect to be called 1 time
     expect(mockCalls[0][0]).toMatchObject({ animal: createdAnimal })
 
     // if status is called, it should be called once with 200
-    const statusCalls = mockResponse.status.mock.calls
-    expect(statusCalls.length).toBeLessThanOrEqual(1)
-    expect(statusCalls.length).toBeGreaterThanOrEqual(0)
-    if (statusCalls.length === 1)
-      expect(statusCalls[0][0]).toBe(200)
+    expectStatus200(expect, response)
   })
 })

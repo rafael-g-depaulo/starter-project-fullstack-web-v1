@@ -15,7 +15,7 @@ interface Params {
   id: string,
 }
 
-export const GetAnimalFromParams: (deps: GetAnimalDeps) => RequestHandler<AnimalRequest, Params> = ({
+export const GetAnimalFromParams: (deps: GetAnimalDeps) => RequestHandler<AnimalRequest | undefined, Params> = ({
   AnimalExampleRepo,
 }) => async (req, res, next) => {
 

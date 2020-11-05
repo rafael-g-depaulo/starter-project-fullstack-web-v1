@@ -1,6 +1,7 @@
+import AnimalExample from "Entities/AnimalExample"
 import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
-import { Request, createResponseMock } from "Utils/mockUtils"
-import GetAnimalFromParams from "./GetAnimalFromParams"
+import { MockRequest, createResponseMock, expectStatus200, mockRouteHandler } from "Utils/mockUtils"
+import GetAnimalFromParams, { AnimalRequest } from "./GetAnimalFromParams"
 
 describe('CreateAnimal Route Handler', () => {
   
@@ -13,12 +14,12 @@ describe('CreateAnimal Route Handler', () => {
     id: "cool_id",
     name: "Snake",
     rank: 12,
-  }
+  } as AnimalExample
   const camel = {
     id: "coolerId",
     name: "Camel",
     rank: 82,
-  }
+  } as AnimalExample
   
   // reset route and db between tests
   beforeEach(() => {
@@ -33,16 +34,17 @@ describe('CreateAnimal Route Handler', () => {
     ]
 
     // create mocks
-    const request: Request = {
+    const request: MockRequest<AnimalRequest | undefined, { id: string }> = {
       params: {
         id: snake.id,        
       },
     }
-    const response = createResponseMock(jest)
+    const response = createResponseMock()
     const next = jest.fn()
 
     // call route handler
-    await GetAnimalFromParamsRoute(request, response, next)
+    await mockRouteHandler(GetAnimalFromParamsRoute, request, response, next)
+
     
     // response.json should not be called
     const jsonCalls = response.json.mock.calls
@@ -54,7 +56,9 @@ describe('CreateAnimal Route Handler', () => {
     // next should be called without any arguments
     expect(nextCalls[0].length).toBe(0)
     // and the retrieved animal should be in the request body
-    expect(request.body.animal).toMatchObject(snake)
+    expect(request.body!.animal).toMatchObject(snake)
+    // if status is called, it should be called once with 200
+    expectStatus200(expect, response)
 
   })
 
@@ -63,13 +67,16 @@ describe('CreateAnimal Route Handler', () => {
     RepoConfig.table = []
 
     const request = {}
-    const response = createResponseMock(jest)
+    const response = createResponseMock()
+    const next = jest.fn()
 
     // call route handler (won't find anything, because table is empty)
-    await GetAnimalFromParamsRoute(request, response)
+    await mockRouteHandler(GetAnimalFromParamsRoute, request, response, next)
 
     expect(response.status).toBeCalledTimes(1)
     expect(response.status).toBeCalledWith(400)
+
+    expect(next).not.toBeCalled()
     
     expect(response.json).toBeCalledTimes(1)
     const jsonResponse = response.json.mock.calls[0][0]
@@ -78,13 +85,16 @@ describe('CreateAnimal Route Handler', () => {
 
   it("returns a 404 if the id doesn't correspond to an animal", async () => {
     const request = {}
-    const response = createResponseMock(jest)
+    const response = createResponseMock()
+    const next = jest.fn()
 
     // call route handler
-    await GetAnimalFromParamsRoute(request, response)
+    await mockRouteHandler(GetAnimalFromParamsRoute, request, response, next)
 
     expect(response.status).toBeCalledTimes(1)
     expect(response.status).toBeCalledWith(400)
+    
+    expect(next).not.toBeCalled()
     
     expect(response.json).toBeCalledTimes(1)
     const jsonResponse = response.json.mock.calls[0][0]

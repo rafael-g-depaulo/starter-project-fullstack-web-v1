@@ -56,7 +56,7 @@ describe('TypeORM config', () => {
   describe('Typeorm specific config', () => {
     
     // base for a regex for the location of files in the project
-    const fileRegexBase = "^BASE_FOLDER\\/FOLDER_NAME\\/\\*\\*\\/\\*\\.ts$"
+    const fileRegexBase = "^BASE_FOLDER\\/FOLDER_NAME\\/\\*\\*\\/\\*\\.{ts,js}$"
     // base regex for the folders where the files are to be inserted
     const dirRegexBase = "^BASE_FOLDER\\/FOLDER_NAME$"
 

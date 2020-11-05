@@ -40,10 +40,10 @@ export const getTypeOrmConfig = () => {
     logging: false,
 
     migrations: [
-      `${dbFoldersRoot}/Migrations/**/*.ts`,
+      `${dbFoldersRoot}/Migrations/**/*.{ts,js}`,
     ],
     subscribers: [
-      `${dbFoldersRoot}/Subscribers/**/*.ts`,
+      `${dbFoldersRoot}/Subscribers/**/*.{ts,js}`,
     ],
     cli: {
       entitiesDir: `${dbFoldersRoot}/Entities`,
@@ -52,7 +52,7 @@ export const getTypeOrmConfig = () => {
     },
 
     entities: [
-      `${dbFoldersRoot}/Entities/**/*.ts`,
+      `${dbFoldersRoot}/Entities/**/*.{ts,js}`,
     ],
 
     entitiesDir: `${dbFoldersRoot}/Entities`,

@@ -1,4 +1,7 @@
+import AnimalExample from "Entities/AnimalExample"
 import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
+import { expectStatus200, createResponseMock, mockRouteHandler } from "Utils/mockUtils"
+
 import DeleteAnimal from "./DeleteAnimal"
 
 describe('CreateAnimal Route Handler', () => {
@@ -12,12 +15,12 @@ describe('CreateAnimal Route Handler', () => {
     id: "45",
     name: "Racoon",
     rank: 35,
-  }
+  } as AnimalExample
   const bird = {
     id: "124",
     name: "Bird",
     rank: 69,
-  }
+  } as AnimalExample
   
   // reset route and db between tests
   beforeEach(() => {
@@ -36,12 +39,10 @@ describe('CreateAnimal Route Handler', () => {
       animal: raccoon,
     }
     // mock response object
-    const response = {
-      json: jest.fn(),
-    }
+    const response = createResponseMock()
 
     // call route
-    await DeleteAnimalRoute({ body }, response)
+    await mockRouteHandler(DeleteAnimalRoute, { body }, response)
 
     // expect animal to be deleted from table
     const afterTable = RepoConfig.table
@@ -61,13 +62,10 @@ describe('CreateAnimal Route Handler', () => {
       animal: raccoon,
     }
     // mock response object
-    const response = {
-      json: jest.fn(),
-      status: jest.fn(() => response.json),
-    }
+    const response = createResponseMock()
 
     // call route
-    await DeleteAnimalRoute({ body }, response)
+    await mockRouteHandler(DeleteAnimalRoute, { body }, response)
 
     // expect animal to be deleted from table
     const responseCalls = response.json.mock.calls
@@ -75,10 +73,6 @@ describe('CreateAnimal Route Handler', () => {
     expect(responseCalls[0][0]).toMatchObject({ animal: raccoon })
     
     // if status is called, it should be called once with 200
-    const statusCalls = response.status.mock.calls
-    expect(statusCalls.length).toBeLessThanOrEqual(1)
-    expect(statusCalls.length).toBeGreaterThanOrEqual(0)
-    if (statusCalls.length === 1)
-      expect(statusCalls[0][0]).toBe(200)
+    expectStatus200(expect, response)
   })
 })

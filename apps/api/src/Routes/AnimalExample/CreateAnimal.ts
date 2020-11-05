@@ -1,3 +1,4 @@
+import { DeepPartial } from "typeorm"
 import { RequestHandler } from "Routes"
 
 import AnimalExample from "Entities/AnimalExample"
@@ -7,7 +8,7 @@ interface CreateAnimalInterface {
   AnimalExampleRepo: AnimalExampleRepository,
 }
 
-export const CreateAnimal: (deps: CreateAnimalInterface) => RequestHandler<AnimalExample> = ({
+export const CreateAnimal: (deps: CreateAnimalInterface) => RequestHandler<DeepPartial<AnimalExample>> = ({
   AnimalExampleRepo,
 }: CreateAnimalInterface) => async (req, res) => {
   const {
@@ -18,7 +19,7 @@ export const CreateAnimal: (deps: CreateAnimalInterface) => RequestHandler<Anima
   const animal = AnimalExampleRepo.create({ name, rank })
   await AnimalExampleRepo.save(animal)
 
-  return res.json({ animal })
+  return res.status(200).json({ animal })
 }
 
 export default CreateAnimal
