@@ -16,10 +16,16 @@ export const CreateAnimal: (deps: CreateAnimalInterface) => RequestHandler<DeepP
     rank,
   } = req.body
 
+  // if request body not complete, return 400
+  if (!name || !rank) return res.status(400).json({ error: "Incomplete request body" })
+
+  // if request body has wrong types
+  if (typeof name !== 'string' || typeof rank !== 'number') return res.status(400).json({ error: "Invalid request body" })
+
   const animal = AnimalExampleRepo.create({ name, rank })
   await AnimalExampleRepo.save(animal)
 
-  return res.status(200).json({ animal })
+  return res.status(201).json({ animal })
 }
 
 export default CreateAnimal

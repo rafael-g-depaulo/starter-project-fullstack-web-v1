@@ -1,5 +1,5 @@
 import { createResponseMock, mockRouteHandler, createRequestMock } from "Utils/mockUtils"
-import expectStatus200 from "Utils/expectStatus200"
+import expectStatus from "Utils/expectStatus"
 
 import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
 import CreateAnimal from "./CreateAnimal"
@@ -57,6 +57,6 @@ describe('CreateAnimal Route Handler', () => {
     expect(mockCalls[0][0]).toMatchObject({ animal: dogEntity })
 
     // if status is called, it should be called once with 200
-    expectStatus200(expect, response)
+    expectStatus(201, expect, response)
   })
 })

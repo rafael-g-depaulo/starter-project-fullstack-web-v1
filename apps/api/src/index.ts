@@ -22,6 +22,8 @@ Db()
   app.use("/", Routes({ conn }))
 
   app.get('/hello', (_, res) => res.json({ msg: 'world' }))
+    
+  app.use("*", (_, res) => res.status(400).json({ error: "Route doesn't exist" }))
 
   app.listen(port, () => console.log(`listening PORT ${port}, in typescript!`)) 
 })

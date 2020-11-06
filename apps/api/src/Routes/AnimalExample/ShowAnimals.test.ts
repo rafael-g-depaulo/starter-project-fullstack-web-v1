@@ -1,5 +1,5 @@
 import { createResponseMock, mockRouteHandler } from "Utils/mockUtils"
-import expectStatus200 from "Utils/expectStatus200"
+import expectStatus from "Utils/expectStatus"
 
 import AnimalExample from "Entities/AnimalExample"
 import ShowAnimalRoute from "./ShowAnimal"
@@ -23,7 +23,7 @@ describe('ShowAnimal Route Handler', () => {
 
     await mockRouteHandler(ShowAnimalRoute, request, response)
 
-    expectStatus200(expect, response)
+    expectStatus(200, expect, response)
     expect(response.json).toBeCalledTimes(1)
     expect(response.json.mock.calls[0][0]).toMatchObject({ animal: camel })
   })
