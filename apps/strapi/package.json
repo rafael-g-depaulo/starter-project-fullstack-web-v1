@@ -18,6 +18,7 @@
     "strapi-plugin-content-manager": "3.2.5",
     "strapi-plugin-content-type-builder": "3.2.5",
     "strapi-plugin-email": "3.2.5",
+    "strapi-plugin-entity-relationship-chart": "^3.1.0",
     "strapi-plugin-upload": "3.2.5",
     "strapi-plugin-users-permissions": "3.2.5",
     "strapi-provider-upload-aws-s3": "3.2.5",
