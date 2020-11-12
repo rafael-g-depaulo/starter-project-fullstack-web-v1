@@ -1,6 +1,6 @@
 {
   "name": "@starter-project/logger",
-  "version": "7.0.1",
+  "version": "7.2.0",
   "description": "logging library",
   "keywords": [
     "log"
