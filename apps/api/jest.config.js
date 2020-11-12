@@ -17,6 +17,7 @@ module.exports = {
   ],
 
   // for test reports
+  // TODO: chose between one of them
   reporters: [
     "default",
     [

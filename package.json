@@ -31,8 +31,8 @@
     "start:client": "yarn workspace @starter-project/client run start",
     "start:strapi": "yarn workspace @starter-project/strapi run start",
     "test": "jest",
-    "test:api": "jest api",
-    "test:client": "jest client",
+    "test:api": "yarn workspace @starter-project/api run test",
+    "test:client": "yarn workspace @starter-project/client run test",
     "watch": "jest --watch",
     "watch:client": "jest --watch client",
     "watch:api": "jest --watch api"
