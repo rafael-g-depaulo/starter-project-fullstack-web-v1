@@ -1,7 +1,9 @@
 import React, { FC } from "react"
 
 import { usePeopleExample } from "Api/PeopleExample"
+
 import Loading from "Components/Loading"
+import Display from "./Display"
 
 export const ListAllPeople: FC = () => {
 
@@ -17,11 +19,7 @@ export const ListAllPeople: FC = () => {
   const people = data!
 
   return (
-    <div>
-      <pre>
-        {JSON.stringify(people, null, 2)}
-      </pre>
-    </div>
+    <Display people={people} />
   )
 }
 

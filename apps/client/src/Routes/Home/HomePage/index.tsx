@@ -2,6 +2,7 @@ import React, { FC } from "react"
 
 import { useHelloExample } from "Api/HelloApiExample"
 import Loading from "Components/Loading"
+import Display from "./Display"
 
 export const HomePage: FC = () => {
 
@@ -11,12 +12,7 @@ export const HomePage: FC = () => {
   if (isLoading) return <Loading />
 
   return (
-    <div>
-      <p>home page</p>
-
-      <p>the following message was recieved from the main server api:</p>
-      <pre>{JSON.stringify(data!, null, 2)}</pre>
-    </div>
+    <Display data={data!}/>
   )
 }
 

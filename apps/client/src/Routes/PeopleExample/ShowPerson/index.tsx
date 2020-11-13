@@ -1,7 +1,9 @@
 import React, { FC } from "react"
 
 import { usePersonExample } from "Api/PeopleExample"
+
 import Loading from "Components/Loading"
+import Display from "./Display"
 
 export interface ShowPersonProps {
   id: number  
@@ -22,9 +24,7 @@ export const ShowPerson: FC<ShowPersonProps> = ({
   const person = data!
 
   return (
-    <div>
-      <p>hello, {person.name}, i see you're {person.age}</p>
-    </div>
+    <Display person={person}/>
   )
 }
 
