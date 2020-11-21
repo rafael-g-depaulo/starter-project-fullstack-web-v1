@@ -5,7 +5,7 @@ import { Route, RouteComponentProps, Switch } from "react-router-dom"
 import { Router } from "Routes"
 
 const HomePage = lazy(() => import("./HomePage"))
-const ListItems = lazy(() => import("./ListItems"))
+// const ListItems = lazy(() => import("./ListItems"))
 
 export const Home: Router = ({
   match,
