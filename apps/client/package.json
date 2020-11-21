@@ -32,7 +32,8 @@
     "eject": "react-scripts eject",
     "serve": "serve ./build -l ${PORT:-4000} -s -n",
     "storybook": "start-storybook -p 6006 -s public --no-dll",
-    "build-storybook": "build-storybook -s public --no-dll"
+    "build-storybook": "build-storybook -s public --no-dll",
+    "cy:open": "yarn run cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -61,6 +62,7 @@
     "@storybook/react": "^6.0.28",
     "@types/storybook__addon-a11y": "^5.1.2",
     "babel-loader": "^8.1.0",
+    "cypress": "^5.6.0",
     "react-is": "^17.0.1"
   }
 }
