@@ -7,9 +7,10 @@ context('Actions', () => {
 
   // https://on.cypress.io/interacting-with-elements
 
-  it('test', () => {
+  it('test api response', () => {
     // https://on.cypress.io/type
+    const hello: object = { msg: "world" }
     cy.get('pre')
-      .should('contain.text', JSON.stringify({msg: "world"}, null, 2))
+      .should('contain.text', JSON.stringify(hello, null, 2))
   })
 })
