@@ -8253,6 +8253,13 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
+cypress-react-selector@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/cypress-react-selector/-/cypress-react-selector-2.2.1.tgz#e76ced800097ca77b3a1348cd4d8710123ceeb49"
+  integrity sha512-Fi8ArFHwOHtTcOnjvz6DSdR3Xqyr/+376pxqmZJ+NYW+eu0CNOHqqSxj2KoAXnwzY8DnKO+o1gNrm+XOrzd5dw==
+  dependencies:
+    resq "1.10.0"
+
 cypress@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-5.6.0.tgz#6781755c3ddfd644ce3179fcd7389176c0c82280"
@@ -19112,6 +19119,13 @@ resolve@^1.0.0, resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.12.0
   dependencies:
     is-core-module "^2.1.0"
     path-parse "^1.0.6"
+
+resq@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/resq/-/resq-1.10.0.tgz#40b5e3515ff984668e6b6b7c2401f282b08042ea"
+  integrity sha512-hCUd0xMalqtPDz4jXIqs0M5Wnv/LZXN8h7unFOo4/nvExT9dDPbhwd3udRxLlp0HgBnHcV009UlduE9NZi7A6w==
+  dependencies:
+    fast-deep-equal "^2.0.1"
 
 restore-cursor@^1.0.1:
   version "1.0.1"

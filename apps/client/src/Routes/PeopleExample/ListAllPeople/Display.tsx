@@ -11,9 +11,13 @@ export const Display: FC<DisplayProps> = ({
 }) => {
   return (
     <div>
-      <pre>
-        {JSON.stringify(people, null, 2)}
-      </pre>
+      <ul>
+        {people.map(person => 
+          <li key={`${person.name}.${person.age}`}>
+            <pre>{JSON.stringify(person, null, 2)}</pre>
+          </li>
+        )}
+      </ul>
     </div>
   )
 }
