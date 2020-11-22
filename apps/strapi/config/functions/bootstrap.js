@@ -10,4 +10,10 @@
  * See more details here: https://strapi.io/documentation/v3.x/concepts/configurations.html#bootstrap
  */
 
-module.exports = () => {};
+module.exports = async () => {
+
+  // seed database (only if in development)
+  if (process.env.NODE_ENV === "development" || process.env.STRAPI_SEED_DB === "true") {
+    require("./seeds")(strapi)
+  }
+}
