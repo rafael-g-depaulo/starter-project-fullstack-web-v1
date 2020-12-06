@@ -1,3 +1,5 @@
+let loggedFirstAttempt = false
+
 module.exports = ({ env }) => {
 
   const databaseUrl = env("DATABASE_URL", "")
@@ -11,13 +13,16 @@ module.exports = ({ env }) => {
   const port      = result ? result.groups.port     : env.int('DB_PORT', 5432)
   const database  = result ? result.groups.database : env('DB_NAME', 'starter-project-strapi')
 
-  console.log("DB CONNECTION ATTEMPT with", 
-    `client: ${client}`,
-    `host: ${host}`,
-    `username: ${username}`, 
-    `port: ${port}`,
-    `database: ${database}`,
-  )
+  if (!loggedFirstAttempt) {
+    loggedFirstAttempt = true
+    console.log("DB CONNECTION ATTEMPT with", 
+      `client: ${client}`,
+      `host: ${host}`,
+      `username: ${username}`, 
+      `port: ${port}`,
+      `database: ${database}`,
+    )
+  }
   
   return {
     defaultConnection: 'default',

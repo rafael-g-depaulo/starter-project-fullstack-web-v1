@@ -23,11 +23,11 @@ const isFirstRun = async () => {
 
 module.exports = async () => {
 
+  // setup public role
+  require("./setDefaultPermissions")(strapi)
+
   // if is first fun
   if (await isFirstRun() || true) {
-
-    // setup public role
-    require("./setDefaultPermissions")(strapi)
 
     // seed database (only if in development)
     if (process.env.NODE_ENV === "development" || process.env.STRAPI_SEED_DB === "true") {

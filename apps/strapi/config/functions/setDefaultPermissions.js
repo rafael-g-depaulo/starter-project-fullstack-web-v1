@@ -9,6 +9,19 @@ module.exports = async strapi => {
     )
   const roleId = publicRole.id
 
+  // this is how to get all of the admin permissions. this might be useful later on
+  // console.log(
+  //   await
+  //   // Object.keys(
+  //     strapi
+  //       .admin
+  //       .models
+  //       .role
+  //       .query()
+  //       .then(roles => roles.filter(role => role.code === 'strapi-editor' || role.code === 'strapi-author'))
+  //   // )
+  // )
+
   // allow findOne for all collections
   const permissionsFindOne = strapi
     .query("permission", "users-permissions")
