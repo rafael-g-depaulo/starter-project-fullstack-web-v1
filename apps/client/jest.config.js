@@ -21,4 +21,10 @@ module.exports = {
   moduleNameMapper: {
     "\\.(jpg|css|scss|sass|less|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":  "<rootDir>/jest.mock.js",
   },
+
+  // ignore cypress tests
+  testPathIgnorePatterns: [
+    "/cypress/",
+  ],
+
 }
