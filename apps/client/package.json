@@ -26,9 +26,9 @@
   },
   "scripts": {
     "start": "dotenv -- if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
-    "start:dev": "react-scripts start",
+    "start:dev": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "start:prod": "yarn serve",
-    "build": "react-scripts build",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "test": "react-scripts test",
     "test:watch": "react-scripts test --watch",
     "watch": "react-scripts test",
