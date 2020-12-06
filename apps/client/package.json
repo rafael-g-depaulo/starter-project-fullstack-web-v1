@@ -3,6 +3,7 @@
   "version": "7.4.0",
   "license": "MIT",
   "dependencies": {
+    "@testing-library/dom": "^7.28.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -29,6 +30,8 @@
     "start:prod": "yarn serve",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:watch": "react-scripts test --watch",
+    "watch": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "serve ./build -l ${PORT:-4000} -s -n",
     "storybook": "start-storybook -p 6006 -s public --no-dll",

@@ -14,7 +14,7 @@ export const Display: FC<DisplayProps> = ({
       <p>home page</p>
 
       <p>the following message was recieved from the main server api:</p>
-      <pre>{JSON.stringify(data!, null, 2)}</pre>
+      <pre data-testid="data-json">{JSON.stringify(data!, null, 2)}</pre>
     </div>
   )
 }
