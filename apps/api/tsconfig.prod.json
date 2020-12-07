@@ -3,5 +3,6 @@
   "extends": "./tsconfig",
   "exclude": [
     "**/*.test.ts",
+    "dist/",
   ]
 }
