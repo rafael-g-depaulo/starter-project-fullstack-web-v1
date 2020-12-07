@@ -16,7 +16,7 @@
     "build:all": "yarn build:libs && yarn build:apps",
     "build:libs": "ultra -r -b --filter \"+libs/*\" build",
     "build:libs:watch": "ultra -r -b --filter \"+libs/*\" build:watch",
-    "build:apps": "ultra -r -b --filter \"+apps/*\" build",
+    "build:apps": "yarn build:api & yarn build:strapi & yarn build:client",
     "build:api": "yarn build:libs && yarn build:only:api",
     "build:client": "yarn build:libs && yarn build:only:client",
     "build:strapi": "yarn workspace @starter-project/strapi run build",
