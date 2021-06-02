@@ -20,7 +20,10 @@ export const getApiUrl = () => process.env.NODE_ENV === 'production'
 const getStrapiUrlEnvVar = () => process.env.STRAPI_URL ?? process.env.REACT_APP_STRAPI_URL
 export const getStrapiPort = () => 1337
 
-export const defaultStrapiUrl = `starter-project-strapi-prod.herokuapp.com/`
+export const defaultStrapiHost = `starter-project-strapi-prod.herokuapp.com/`
+export const getStrapiHost = () => process.env.NODE_ENV === 'production'
+  ? defaultStrapiHost : `localhost:${getStrapiPort()}`
+
 export const getStrapiUrl = () => process.env.NODE_ENV === 'production'
-  ? getStrapiUrlEnvVar() ?? defaultStrapiUrl
-  : `http://localhost:${getStrapiPort()}`
+  ? getStrapiUrlEnvVar() ?? getStrapiHost()
+  : `http://${getStrapiHost()}`

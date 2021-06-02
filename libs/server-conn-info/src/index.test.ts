@@ -1,4 +1,4 @@
-import { getApiPort, getApiUrl, defaultApiUrl, defaultStrapiUrl, getStrapiPort, getStrapiUrl } from "."
+import { getApiPort, getApiUrl, defaultApiUrl, defaultStrapiHost, getStrapiPort, getStrapiUrl } from "."
 
 // reset test env inbetween tests
 const resetTestEnv : () => NodeJS.ProcessEnv = () => {
@@ -100,7 +100,7 @@ describe('strapi url', () => {
     delete process.env.REACT_APP_STRAPI_URL
     delete process.env.STRAPI_URL
 
-    expect(getStrapiUrl()).toBe(defaultStrapiUrl)
+    expect(getStrapiUrl()).toBe(defaultStrapiHost)
   })
 
   test('works on dev mode', () => {
