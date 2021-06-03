@@ -1,4 +1,4 @@
-const localhost = `0.0.0.0`
+export const localhost = `0.0.0.0`
 
 // API PORT
 export const getApiPort = () => {

@@ -33,6 +33,7 @@
     "test": "jest",
     "test:api": "yarn workspace @starter-project/api run test",
     "test:client": "yarn workspace @starter-project/client run test",
+    "test:libs": "ultra -r --filter \"libs/*\" test",
     "watch": "jest --watch",
     "watch:client": "jest --watch client",
     "watch:api": "jest --watch api"
