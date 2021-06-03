@@ -1,4 +1,4 @@
-name: Test
+name: Test all apps on pull request
 
 on: 
   push:
