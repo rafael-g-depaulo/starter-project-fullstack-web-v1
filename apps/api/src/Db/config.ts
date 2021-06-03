@@ -15,6 +15,7 @@ export const getDbConnConfig: () => PostgresConnectionOptions = () => {
   return {
     ...baseConfig,
     url: process.env.DATABASE_URL,
+    ssl: process.env.DB_SSL !== "false",
   }
 
   // if DB_* provided
@@ -26,6 +27,7 @@ export const getDbConnConfig: () => PostgresConnectionOptions = () => {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
+    ssl: process.env.DB_SSL !== "false",
   }
 
   // else, throw
