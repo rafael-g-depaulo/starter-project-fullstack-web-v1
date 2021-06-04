@@ -6,21 +6,15 @@ on:
     branches:
       - master
     paths:
-      - '**'
-      - '!.github/workflows'
-      - '.github/workflows/deploy-prod-client.yml'
-      - '!apps/**'
-      - 'apps/client/**'
+      - apps/client/**
+      - libs/**
 
 jobs:
 
-  # test client code
-  test-and-build-client:
-    # Name the Job
-    name: Test Client React App
+  build-and-test:
+    name: Install dependencies, build libs & test libs and client app
     # Set the type of machine to run on
     runs-on: ubuntu-latest
-
     strategy:
       # setup node version
       matrix:
@@ -47,22 +41,19 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
-      # build local libs
-      - name: Build Libs
-        run: yarn build:libs
+      # build libs
+      - run: yarn build:libs
 
-      # test project
+      # test libs & client code
       - name: Test project
-        run: yarn test
+        run: yarn test:libs & yarn test:client
         env:
           CI: true
-  
+
+  # deploy to netlify
   deploy:
-    needs: test-and-build-client
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      
-      # deploy to Netlify
       - name: publish to netlify
         run: curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK_CLIENT_PROD }}
