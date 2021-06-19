@@ -73,7 +73,16 @@
       "filename": true,
       "format": "svg",
     },
-
+    {
+      "icon": "netlify",
+      "extensions": [
+        "netlify.toml",
+        "netlify.prod.toml",
+        "netlify.dev.toml",
+      ],
+      "filename": true,
+      "format": "FileFormat.svg",
+    },
   ],
 
   // always have exactly one newline at the end of files
