@@ -1,6 +1,6 @@
 {
   "name": "starter-project",
-  "version": "10.0.0",
+  "version": "10.1.0",
   "description": "Monorepo of my starter project for fullstack web projects using React.js, Express.js, Sequelize & PostgreSQL",
   "main": "index.js",
   "repository": "git@github.com:rafael-g-depaulo/starter-project-fullstack-web.git",
