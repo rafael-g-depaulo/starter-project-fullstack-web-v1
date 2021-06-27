@@ -1,6 +1,6 @@
 {
   "name": "@starter-project/api",
-  "version": "10.0.0",
+  "version": "10.1.1",
   "description": "express.js api in typescript",
   "keywords": [
     "api",
@@ -38,7 +38,7 @@
     "url": "https://github.com/rafael-g-depaulo/starter-project-fullstack-web/issues"
   },
   "dependencies": {
-    "@starter-project/adder": "^10.0.0",
+    "@starter-project/adder": "^10.1.1",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.7",
     "@types/express": "^4.17.8",
