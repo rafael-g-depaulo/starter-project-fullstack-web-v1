@@ -1,9 +1,9 @@
 {
   "name": "@starter-project/client",
-  "version": "11.0.1",
+  "version": "11.1.0",
   "license": "MIT",
   "dependencies": {
-    "@starter-project/server-conn-info": "^11.0.1",
+    "@starter-project/server-conn-info": "^11.1.0",
     "@testing-library/dom": "^7.28.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
