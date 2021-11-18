@@ -33,7 +33,7 @@
   command = "yarn build:client"
   [context.master.environment]
     REACT_APP_API_URL="https://starter-project-api-prod.herokuapp.com/"
-    REACT_APP_STRAPI_URL="https://starter-project-strapi-prod.herokuapp.com/"
+    REACT_APP_STRAPI_URL="https://starter-project-strapi.herokuapp.com/"
 
 
 # these configurations are added to deploys from the development branch
@@ -41,7 +41,7 @@
   command = "yarn build:client"
   [context.develop.environment]
     REACT_APP_API_URL="https://starter-project-api-dev.herokuapp.com/"
-    REACT_APP_STRAPI_URL="https://starter-project-strapi-dev.herokuapp.com/"
+    REACT_APP_STRAPI_URL="https://starter-project-strapi.herokuapp.com/"
 
 # The following redirect makes the app work as a SPA
 [[redirects]]
