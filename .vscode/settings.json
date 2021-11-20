@@ -46,6 +46,12 @@
         "jobs"
       ]
     },
+    {
+      "icon": "theme",
+      "extensions": [
+        "globalstyles"
+      ]
+    },
   ],
   "vsicons.associations.files": [
     {
