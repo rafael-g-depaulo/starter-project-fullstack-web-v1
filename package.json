@@ -11,6 +11,9 @@
     "libs/*",
     "apps/*"
   ],
+  "nohoist": [
+    "client/babel-jest/**"
+  ],
   "scripts": {
     "build": "${BUILD_SCRIPT:-yarn build:all}",
     "build:all": "yarn build:libs && yarn build:apps",
@@ -46,12 +49,12 @@
     "@babel/preset-typescript": "^7.10.4",
     "@storybook/addon-essentials": "^6.0.28",
     "@testing-library/jest-dom": "^5.11.2",
-    "@types/jest": "^24.9",
+    "@types/jest": "26.0.14",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^24.9.0",
+    "babel-jest": "^26.6.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.11.1",
-    "jest": "^24.9.0",
+    "jest": "^26.6.0",
     "jest-fetch-mock": "^3.0.3",
     "lerna": "^3.22.1",
     "ts-node-dev": "^1.0.0",

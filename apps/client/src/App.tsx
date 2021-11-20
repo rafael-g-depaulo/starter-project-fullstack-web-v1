@@ -1,20 +1,12 @@
-import React from 'react'
+import { useState } from "react"
 
-import GlobalStyles from 'GlobalStyles'
-import Routes from 'Routes'
-import { ThemeProvider } from 'Themes'
-import { showRoutes } from 'FeatureFlags'
-
-export const App = () => {
-
+const App = () => {
+  const [counter, setCounter] = useState(2)
   return (
-    <>
-      <ThemeProvider>
-        <GlobalStyles />
-        { showRoutes && <Routes />}
-        <span>test change</span>
-      </ThemeProvider>
-    </>
+    <div className="App">
+      <p>test {counter}</p>
+      <button onClick={() => setCounter(c => c+1)}>increment</button>
+    </div>
   )
 }
 
