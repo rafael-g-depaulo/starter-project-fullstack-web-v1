@@ -1,16 +1,12 @@
-import { useState } from "react"
-
+import { showRoutes } from "./FeatureFlags"
 import GlobalStyles from "./GlobalStyles"
+import Routes from "./Routes"
 
 const App = () => {
-  const [counter, setCounter] = useState(2)
   return (
     <>
-      <div>
-        <p>test {counter}</p>
-        <button onClick={() => setCounter(c => c+1)}>increment</button>
-      </div>
       <GlobalStyles />
+      { showRoutes && <Routes /> }
     </>
   )
 }
