@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -6,6 +7,11 @@
       "dom.iterable",
       "esnext"
     ],
+    
+    "baseUrl": "src",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,7 +24,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
   },
   "include": [
     "src"
