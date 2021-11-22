@@ -16,7 +16,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Helmet from "react-helmet"
 
 import GlobalStyles from "../src/GlobalStyles"
-// import GlobalContext from "../src/Context"
+import GlobalContext from "../src/Context"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -68,15 +68,15 @@ const injectReactRouter = Story => (
   </BrowserRouter>
 )
 
-// const injectGlobalContext = Story => (
-//   <GlobalContext>
-//     <Story />
-//   </GlobalContext>
-// )
+const injectGlobalContext = Story => (
+  <GlobalContext>
+    <Story />
+  </GlobalContext>
+)
 
 export const decorators = [
   injectGlobalStyles,
   injectGoogleFonts,
   injectReactRouter,
-  // injectGlobalContext,
+  injectGlobalContext,
 ]

@@ -4,4 +4,4 @@ const UseEnvVar = (varName: string, defaultValue: boolean) =>
 
 export const showRoutes = UseEnvVar("REACT_APP_SHOW_ROUTES", true)
 
-// export const showReactQueryDevtools = useEnvVar("REACT_APP_SHOW_RQUERY_DEVTOOLS", true)
+export const showReactQueryDevtools = UseEnvVar("REACT_APP_SHOW_RQUERY_DEVTOOLS", true)

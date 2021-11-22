@@ -15,7 +15,7 @@ declare namespace NodeJS {
       // routes
       REACT_APP_SHOW_ROUTES: flagType,
       // tools
-      // REACT_APP_SHOW_RQUERY_DEVTOOLS: flagType
-    
+      REACT_APP_SHOW_RQUERY_DEVTOOLS: flagType
+
   }
 }

@@ -34,6 +34,8 @@
   [context.master.environment]
     REACT_APP_API_URL="https://starter-project-api-prod.herokuapp.com/"
     REACT_APP_STRAPI_URL="https://starter-project-strapi.herokuapp.com/"
+    REACT_APP_SHOW_ROUTES="true"
+    REACT_APP_SHOW_RQUERY_DEVTOOLS="false"
 
 
 # these configurations are added to deploys from the development branch
@@ -42,6 +44,8 @@
   [context.develop.environment]
     REACT_APP_API_URL="https://starter-project-api-dev.herokuapp.com/"
     REACT_APP_STRAPI_URL="https://starter-project-strapi.herokuapp.com/"
+    REACT_APP_SHOW_ROUTES="true"
+    REACT_APP_SHOW_RQUERY_DEVTOOLS="false"
 
 # The following redirect makes the app work as a SPA
 [[redirects]]
