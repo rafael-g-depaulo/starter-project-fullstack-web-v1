@@ -28,12 +28,8 @@ export const CreateUser: (
   // create and return user
   return UserRepo.createUser(user_info!)
     // .then((user) => { sendConfirmationEmail(user); return user })
-    .then((user) => {
-      // remove password and send user back
-      let { password_hash: _, ...newUser } = user
-      return createdSuccessfully(res, newUser)
-    })
-    .catch((err) => databaseError(res, "Error trying to create user.", err))
+    .then(user => createdSuccessfully(res, user))
+    .catch(err => databaseError(res, "Error trying to create user.", err))
   
 }
 export default CreateUser

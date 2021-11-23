@@ -28,7 +28,11 @@ export class UserRepository extends Repository<User> {
     createdUser.password_hash = await this.generateHash(rawPassword)
 
     // save user
-    return createdUser.save().then(() => createdUser)
+    return createdUser.save()
+      .then(user => {
+        let { password_hash: _, ...newUser } = user
+        return newUser
+      })
   }
 
   //? TODO: implement this right 

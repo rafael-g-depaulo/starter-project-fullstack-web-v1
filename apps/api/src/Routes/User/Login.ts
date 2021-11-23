@@ -9,13 +9,13 @@ import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 
 import { removeCircularity } from "Utils/stringifyCircular"
-import { UserInfo } from "Entities/User"
+import { UserLogin } from "@starter-project/user"
 
 interface LoginUserDeps {
   UserRepo: UserRepository
 }
 
-export const LoginUser = ({ UserRepo }: LoginUserDeps): RouteHandler<Req<UserInfo>> => async (req, res) => {
+export const LoginUser = ({ UserRepo }: LoginUserDeps): RouteHandler<Req<UserLogin>> => async (req, res) => {
   const { email, password } = req.body
 
   if (!email || !password) return badRequestError(res, "Missing information for user creation.")
