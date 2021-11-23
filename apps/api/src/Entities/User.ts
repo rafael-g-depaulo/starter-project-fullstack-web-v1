@@ -5,11 +5,6 @@ import { nanoid } from "nanoid"
 // INFO: check https://github.com/ai/nanoid and https://zelark.github.io/nano-id-cc/ to understand what this is for
 const idSize = 10
 
-export interface UserInfo {
-  email: string
-  password: string
-}
-
 @Entity()
 export class User extends BaseEntity {
 

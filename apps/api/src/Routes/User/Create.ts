@@ -8,8 +8,7 @@ import {
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 
-import { removeCircularity } from "Utils/stringifyCircular"
-import { UserInfo } from "Entities/User"
+import { ParsedUser } from "./ParseUser"
 
 interface CreateUserDeps {
   UserRepo: UserRepository
@@ -18,30 +17,23 @@ interface CreateUserDeps {
 export const CreateUser: (
   deps: CreateUserDeps
 ) => RouteHandler<
-  Req<UserInfo>
+  Req<{}, ParsedUser>
 > = ({ UserRepo }: CreateUserDeps) => async (req, res) => {
-  const { email, password } = req.body
+  const { user_info } = req
 
-  if (!email || !password) return badRequestError(res, "Missing information for user creation.")
-
-  const checkUserExists = await UserRepo.findByEmail(email)
-  if (!!checkUserExists)
+  // semantic validation
+  if (await UserRepo.userExistsWithEmail(user_info!.email))
     return badRequestError(res, "Email address already exists.")
 
-    return UserRepo.createUser(
-      email,
-      password,
-    )
-    //  .then((user) => {
-    //     sendConfirmationEmail(user)
-    //     return user
-    //   })
-      .then((user) => {
-        // remove password and send user back
-        let { password_hash: _, ...newUser } = user
-        return createdSuccessfully(res, removeCircularity(newUser))
-      })
-      .catch((err) => databaseError(res, "Error trying to create user.", err))
+  // create and return user
+  return UserRepo.createUser(user_info!)
+    // .then((user) => { sendConfirmationEmail(user); return user })
+    .then((user) => {
+      // remove password and send user back
+      let { password_hash: _, ...newUser } = user
+      return createdSuccessfully(res, newUser)
+    })
+    .catch((err) => databaseError(res, "Error trying to create user.", err))
   
 }
 export default CreateUser

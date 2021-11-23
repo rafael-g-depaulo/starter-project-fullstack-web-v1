@@ -6,6 +6,7 @@ import UserRepository from "Repository/UserRepository"
 
 import CreateUser from "./Create"
 import ListUsers from "./List"
+import ParseUser from "./ParseUser"
 
 type UserDeps = {
   conn: Connection
@@ -19,9 +20,9 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .Router(options)
     // i'm pretty sure the frontend is using get when it should be using post, but i don't have
     // the time to check and fix it correctly, so this bad code duplication goes here instead
-    .post("/register", CreateUser({ UserRepo }))
-    .post("/login", CreateUser({ UserRepo }))
-    .post("/logout", CreateUser({ UserRepo }))
+    .post("/register", ParseUser, CreateUser({ UserRepo }))
+    // .post("/login", CreateUser({ UserRepo }))
+    // .post("/logout", CreateUser({ UserRepo }))
     .get("/", ListUsers({ UserRepo }))
 }
 
