@@ -9,6 +9,7 @@
   "private": true,
   "workspaces": [
     "libs/*",
+    "entities/*",
     "apps/*"
   ],
   "nohoist": [
@@ -19,6 +20,8 @@
     "build:all": "yarn build:libs && yarn build:apps",
     "build:libs": "ultra -r -b --filter \"+libs/*\" build",
     "build:libs:watch": "ultra -r -b --filter \"+libs/*\" build:watch",
+    "build:entities": "ultra -r -b --filter \"+entities/*\" build",
+    "build:entities:watch": "ultra -r -b --filter \"+entities/*\" build:watch",
     "build:apps": "yarn build:api & yarn build:strapi & yarn build:client",
     "build:api": "yarn build:libs && yarn build:only:api",
     "build:client": "yarn build:libs && yarn build:only:client",
@@ -28,6 +31,7 @@
     "clean": "yarn clean:all",
     "clean:all": "ultra -r clean",
     "clean:libs": "ultra -r --filter \"libs/*\" clean",
+    "clean:entities": "ultra -r --filter \"entities/*\" clean",
     "clean:apps": "ultra -r --filter \"apps/*\" clean",
     "start": "yarn start:client",
     "start:api": "yarn workspace @starter-project/api run start",
@@ -38,6 +42,7 @@
     "test:api": "yarn workspace @starter-project/api run test",
     "test:client": "yarn workspace @starter-project/client run test",
     "test:libs": "ultra -r --filter \"libs/*\" test",
+    "test:entities": "ultra -r --filter \"entities/*\" test",
     "watch": "jest --watch",
     "watch:client": "jest --watch client",
     "watch:api": "jest --watch api"

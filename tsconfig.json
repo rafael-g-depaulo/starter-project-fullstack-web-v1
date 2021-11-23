@@ -37,7 +37,14 @@
   // lib import paths
   "paths": {
     "@starter-project/*": [
-      "packages/libs/*"
+      "packages/libs/*",
+      "packages/entities/*",
+    ],
+    "@libs/*": [
+      "packages/libs/*",
+    ],
+    "@entities/*": [
+      "pachakes/entities/*",
     ],
   },
 
