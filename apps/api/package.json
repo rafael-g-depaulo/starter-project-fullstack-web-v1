@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@starter-project/adder": "^13.0.0",
+    "@starter-project/server-conn-info": "^13.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.7",

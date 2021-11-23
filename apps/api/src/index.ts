@@ -9,6 +9,8 @@ Middewares(app)
 // setup db connection
 import Db from "Db"
 import Routes from "Routes"
+import { actionSuccessful, badRequestError } from 'Utils/endpointReturns'
+import { getApiUrl } from '@starter-project/server-conn-info'
 // import User from 'Db/Entities/User'
 Db()
   .then(async ({ conn }) => {
@@ -20,11 +22,9 @@ Db()
   const port = process.env.PORT ?? 5000
   
   app.use("/", Routes({ conn }))
+  app.get("/", (_, res) => actionSuccessful(res, { msg: 'Hello, world!' }))
+  app.use("*", (_, res) => badRequestError(res, "Route doesn't exist"))
 
-  app.get('/hello', (_, res) => res.json({ msg: 'world' }))
-    
-  app.use("*", (_, res) => res.status(400).json({ error: "Route doesn't exist" }))
-
-  app.listen(port, () => console.log(`listening PORT ${port}, in typescript!`)) 
+  app.listen(port, () => console.log(`API running at ${getApiUrl()}`)) 
 })
 .catch(e => console.error(e))
