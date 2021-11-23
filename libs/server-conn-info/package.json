@@ -19,9 +19,6 @@
     "type": "git",
     "url": "git+https://github.com/rafael-g-depaulo/starter-project-fullstack-web.git"
   },
-  "dependencies": {
-    "tsconfig-paths": "^3.12.0"
-  },
   "keywords": [
     "lib",
     "backend",

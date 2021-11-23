@@ -11,8 +11,5 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "watch": "jest --watch"
-  },
-  "dependencies": {
-    "tsconfig-paths": "^3.12.0"
   }
 }
