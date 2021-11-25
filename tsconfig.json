@@ -34,8 +34,6 @@
 
   },
 
-  // lib import paths
-
   // exclude tests in build
   "exclude": [
     // "**/*.test.ts",
