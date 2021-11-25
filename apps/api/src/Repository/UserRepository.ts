@@ -6,7 +6,7 @@ import { compare } from "bcryptjs"
 import User from "Entities/User"
 import authConfig from "Utils/authConfig"
 
-import { UserCreation } from "@starter-project/user"
+import { UserSignup } from "@starter-project/user"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -21,7 +21,7 @@ export class UserRepository extends Repository<User> {
       .then(user => !!user)
   }
 
-  async createUser({ email, password: rawPassword }: UserCreation) {
+  async createUser({ email, password: rawPassword }: UserSignup) {
     // create user
     const createdUser = new User()
     createdUser.email = email

@@ -11,6 +11,7 @@ import Db from "Db"
 import Routes from "Routes"
 import { actionSuccessful, badRequestError } from 'Utils/endpointReturns'
 import { getApiUrl } from '@starter-project/server-conn-info'
+import { add } from '@starter-project/adder'
 // import User from 'Db/Entities/User'
 Db()
   .then(async ({ conn }) => {
@@ -25,6 +26,6 @@ Db()
   app.get("/", (_, res) => actionSuccessful(res, { msg: 'Hello, world!' }))
   app.use("*", (_, res) => badRequestError(res, "Route doesn't exist"))
 
-  app.listen(port, () => console.log(`API running at ${getApiUrl()}`)) 
+  app.listen(port, () => console.log(`API running at ${getApiUrl()}. ${add(3, 2)}`)) 
 })
 .catch(e => console.error(e))
