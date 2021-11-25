@@ -4403,7 +4403,6 @@ __metadata:
     reflect-metadata: ^0.1.13
     supertest: ^6.0.1
     ts-node-dev: ^1.1.8
-    tsconfig-paths: ^3.9.0
     typeorm: ^0.2.25
   languageName: unknown
   linkType: soft
@@ -26251,7 +26250,6 @@ __metadata:
     lerna: ^4.0.0
     ts-node: ^10.4.0
     ts-node-dev: ^1.0.0
-    tsconfig-paths: ^3.12.0
     typescript: ^4.0.2
     ultra-runner: ^3.5.0
     yup: ^0.32.11
@@ -28053,7 +28051,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig-paths@npm:^3.11.0, tsconfig-paths@npm:^3.12.0, tsconfig-paths@npm:^3.9.0":
+"tsconfig-paths@npm:^3.11.0":
   version: 3.12.0
   resolution: "tsconfig-paths@npm:3.12.0"
   dependencies:

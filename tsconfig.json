@@ -35,18 +35,6 @@
   },
 
   // lib import paths
-  "paths": {
-    "@starter-project/*": [
-      "packages/libs/*",
-      "packages/entities/*",
-    ],
-    "@libs/*": [
-      "packages/libs/*",
-    ],
-    "@entities/*": [
-      "packages/entities/*",
-    ],
-  },
 
   // exclude tests in build
   "exclude": [
