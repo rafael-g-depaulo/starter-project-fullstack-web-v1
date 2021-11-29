@@ -1,49 +1,52 @@
-import { FC, useCallback } from "react"
+import { FC } from "react"
 import { Formik, Form } from "formik"
 
 import { createUserSchemaFront, UserSignupFront } from "@starter-project/user"
-import TextInput from "Atoms/Input/Text"
 import { useSignup } from "Api/User"
+
+import EmailInputGroup from "Molecules/InputGroup/Email"
+import PasswordInputGroup from "Molecules/InputGroup/Password"
+import { useFormikSubmit } from "Utils/formik"
 
 export interface SignupFormProps {
   
 }
 
 const initialValues: UserSignupFront = {
-  email: "email@email",
+  email: "",
   password: "",
   passwordConfirmation: "",
 }
 
 export const SignupForm: FC<SignupFormProps> = () => {
-  const { mutate, error, data, status } = useSignup()
-  const onSubmit = useCallback((info: UserSignupFront) => mutate(info), [])
-
-  console.log({ status, error, data })
+  const { mutateAsync, error, data, isSuccess } = useSignup()
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={onSubmit}
+      onSubmit={useFormikSubmit(mutateAsync)}
       validationSchema={createUserSchemaFront}
     >
       {({ values, errors }) => (
         <Form>
-          <TextInput
-            name="email"
-            autoComplete="email"
+          <EmailInputGroup
+            label="Email:"         
           />
-          <TextInput
+
+          <PasswordInputGroup
+            label="Senha:"
             name="password"
-            type="password"
           />
-          <TextInput
+
+          <PasswordInputGroup
+            label="Senha:"
             name="passwordConfirmation"
-            type="password"
           />
-          
+
           <pre>values: {JSON.stringify(values, null, 2)}</pre>
           <pre>errors: {JSON.stringify({ ...errors, api: error}, null, 2)}</pre>
+          <pre>registered? {JSON.stringify(isSuccess)}</pre>
+          <pre>return data: {JSON.stringify(data, null, 2)}</pre>
           <button type="submit">submit</button>
         </Form>
       )}

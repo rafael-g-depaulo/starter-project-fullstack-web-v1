@@ -12,7 +12,7 @@ export const createUserSchema = loginUserSchema.shape({
 
 export interface UserSignupFront extends Asserts<typeof createUserSchemaFront> {}
 export const createUserSchemaFront = createUserSchema.shape({
-  passwordConfirmation: string().test('passwords-match', function(value) {
+  passwordConfirmation: string().test('passwords-match', 'Senhas não são iguais', function(value) {
     return this.parent.password === value
   })
 })
