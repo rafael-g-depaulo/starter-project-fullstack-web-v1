@@ -4,16 +4,16 @@ import InputGroup, { InputGroupProps } from "Atoms/Input/InputGroup"
 import TextInput from "Atoms/Input/Text"
 import Label from "Atoms/Input/Label"
 
-export interface TextInputGroupProps extends InputGroupProps {
+export interface EmailInputGroupProps extends InputGroupProps {
   id?: string
-  name: string
-  label: string
+  name?: string
+  label?: string
   placeholder?: string
 }
 
-export const TextInputGroup: FC<TextInputGroupProps> = ({
+export const EmailInputGroup: FC<EmailInputGroupProps> = ({
   label,
-  name,
+  name = "email",
   id = name,
   placeholder,
   ...props
@@ -22,12 +22,14 @@ export const TextInputGroup: FC<TextInputGroupProps> = ({
     <InputGroup {...props}>
       <Label htmlFor={name}>{label}</Label>
       <TextInput
-        name={name}
         id={id}
+        name={name}
+        type="email"
+        autoComplete="email"
         placeholder={placeholder}
       />
     </InputGroup>
   )
 }
 
-export default TextInputGroup
+export default EmailInputGroup
