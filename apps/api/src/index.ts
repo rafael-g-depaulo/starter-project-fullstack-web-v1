@@ -24,7 +24,7 @@ Db()
   
   app.use("/", Routes({ conn }))
   app.get("/", (_, res) => actionSuccessful(res, { msg: 'Hello, world!' }))
-  app.use("*", (_, res) => badRequestError(res, "Route doesn't exist"))
+  app.use("*", (req, res) => badRequestError(res, `Route "${req.path}" doesn't exist`))
 
   app.listen(port, () => console.log(`API running at ${getApiUrl()}. ${add(3, 2)}`)) 
 })

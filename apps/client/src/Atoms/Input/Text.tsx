@@ -6,6 +6,7 @@ import { getColor } from "GlobalStyles/cssVar"
 
 type InputProps = InputHTMLAttributes<HTMLInputElement>
 export interface TextInputProps extends InputProps {
+  name: string
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
@@ -14,12 +15,18 @@ const StyledTextInput = styled.input<TextInputProps>`
 `
 
 export const TextInput: FC<TextInputProps> = ({
+  name,
   ...props
 }) => {
   return (
     <Field
+      // establish defaults
       type="input"
+      id={name}
+      // override defaults with given props
+      name={name}
       {...props}
+      // use StyledTextInput for presentation
       as={StyledTextInput}
     />
   )
