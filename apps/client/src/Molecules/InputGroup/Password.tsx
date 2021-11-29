@@ -1,7 +1,7 @@
 import { FC } from "react"
 
 import InputGroup, { InputGroupProps } from "Atoms/Input/InputGroup"
-import TextInput from "Atoms/Input/Text"
+import PasswordInput from "Atoms/Input/Password"
 import Label from "Atoms/Input/Label"
 
 export interface TextInputGroupProps extends InputGroupProps {
@@ -17,7 +17,7 @@ export const TextInputGroup: FC<TextInputGroupProps> = ({
   return (
     <InputGroup {...props}>
       <Label htmlFor={name}>{label}</Label>
-      <TextInput name={name} id={name} />
+      <PasswordInput name={name} id={name} />
     </InputGroup>
   )
 }
