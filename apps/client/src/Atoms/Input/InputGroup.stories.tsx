@@ -1,6 +1,5 @@
 import { storiesOf } from "@storybook/react"
 import { Form, Formik, FormikValues } from "formik"
-import React from "react"
 import InputGroup from "./InputGroup"
 
 import TextInput from "./Text"
