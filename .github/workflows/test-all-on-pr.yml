@@ -34,7 +34,7 @@ jobs:
 
       # install dependencies
       - name: Install packages
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
 
       # build local libs
       - name: Build Libs
