@@ -1,6 +1,6 @@
 {
   "name": "@starter-project/client",
-  "version": "12.0.1",
+  "version": "13.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
