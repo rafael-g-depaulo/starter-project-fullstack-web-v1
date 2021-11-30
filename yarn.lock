@@ -4411,6 +4411,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@starter-project/client@workspace:apps/client"
   dependencies:
+    "@starter-project/entities": ^13.0.0
+    "@starter-project/server-conn-info": ^13.0.0
     "@storybook/addon-a11y": ^6.4.1
     "@storybook/addon-actions": ^6.4.1
     "@storybook/addon-docs": ^6.4.1
@@ -4432,6 +4434,7 @@ __metadata:
     "@types/styled-components": ^5.1.15
     dotenv: ^10.0.0
     dotenv-cli: ^4.1.1
+    formik: ^2.2.9
     if-env: ^1.0.4
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -4443,6 +4446,12 @@ __metadata:
     styled-components: ^5.3.3
     typescript: ^4.1.2
     web-vitals: ^1.0.1
+  languageName: unknown
+  linkType: soft
+
+"@starter-project/entities@^13.0.0, @starter-project/entities@workspace:libs/entities":
+  version: 0.0.0-use.local
+  resolution: "@starter-project/entities@workspace:libs/entities"
   languageName: unknown
   linkType: soft
 
@@ -4475,12 +4484,6 @@ __metadata:
     strapi-plugin-users-permissions: 3.2.5
     strapi-provider-upload-aws-s3: 3.2.5
     strapi-utils: 3.2.5
-  languageName: unknown
-  linkType: soft
-
-"@starter-project/user@workspace:entities/user":
-  version: 0.0.0-use.local
-  resolution: "@starter-project/user@workspace:entities/user"
   languageName: unknown
   linkType: soft
 
@@ -13522,7 +13525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:^2.1.4":
+"formik@npm:^2.1.4, formik@npm:^2.2.9":
   version: 2.2.9
   resolution: "formik@npm:2.2.9"
   dependencies:
