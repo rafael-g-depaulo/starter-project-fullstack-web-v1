@@ -34,6 +34,7 @@
     "start:client": "yarn workspace @starter-project/client run start",
     "start:strapi": "yarn workspace @starter-project/strapi run start",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:api": "yarn workspace @starter-project/api run test",
     "test:client": "yarn workspace @starter-project/client run test",
     "test:libs": "ultra -r --filter \"libs/*\" test",

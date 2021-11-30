@@ -64,6 +64,7 @@
     "jest-html-reporter": "^3.3.0",
     "jest-html-reporters": "^2.1.0",
     "jest-stare": "^2.2.0",
-    "supertest": "^6.0.1"
+    "supertest": "^6.0.1",
+    "ts-node-dev": "^1.1.8"
   }
 }
