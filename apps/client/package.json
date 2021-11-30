@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@starter-project/user": "^12.0.1",
+    "@starter-project/entities": "^12.0.1",
     "@starter-project/server-conn-info": "^12.0.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

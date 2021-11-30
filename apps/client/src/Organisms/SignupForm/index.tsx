@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Formik, Form } from "formik"
 
-import { createUserSchemaFront, UserSignupFront } from "@starter-project/user"
+import { createUserSchema, UserSignup } from "@starter-project/entities"
 import { useSignup } from "Api/User"
 
 import EmailInputGroup from "Molecules/InputGroup/Email"
@@ -12,7 +12,7 @@ export interface SignupFormProps {
   
 }
 
-const initialValues: UserSignupFront = {
+const initialValues: UserSignup = {
   email: "",
   password: "",
   passwordConfirmation: "",
@@ -25,7 +25,7 @@ export const SignupForm: FC<SignupFormProps> = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={useFormikSubmit(mutateAsync)}
-      validationSchema={createUserSchemaFront}
+      validationSchema={createUserSchema}
     >
       {({ values, errors }) => (
         <Form>
