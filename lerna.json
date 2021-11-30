@@ -1,7 +1,6 @@
 {
   "packages": [
     "libs/*",
-    "entities/*",
     "apps/*"
   ],
   "version": "13.0.0",

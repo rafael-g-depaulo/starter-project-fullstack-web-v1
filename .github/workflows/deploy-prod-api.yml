@@ -7,7 +7,6 @@ on:
       - master
     paths:
       - apps/api/**
-      - entities/**
       - libs/**
 
 jobs:

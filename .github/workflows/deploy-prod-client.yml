@@ -7,7 +7,6 @@ on:
       - master
     paths:
       - apps/client/**
-      - entities/**
       - libs/**
       - netlify.toml
 

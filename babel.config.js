@@ -2,7 +2,6 @@ module.exports = {
   babelrcRoots: [
     ".",
     "libs/*",
-    "entities/*",
     "apps/*",
   ],  
   

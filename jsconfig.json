@@ -4,14 +4,12 @@
     "paths": {
       "@starter-project/*": [
         "./libs/*",
-        "./entities/*",
         "./apps/*",
       ]
     }
   },
   "include": [
     "./libs/*",
-    "./entities/*",
     "./apps/*",
   ]
 }
