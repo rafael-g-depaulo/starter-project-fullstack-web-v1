@@ -25,5 +25,9 @@
     "connection",
     "port",
     "url"
-  ]
+  ],
+  "devDependencies": {
+    "jest": "^27.4.2",
+    "typescript": "^4.5.2"
+  }
 }

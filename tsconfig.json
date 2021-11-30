@@ -17,8 +17,11 @@
     // "outDir": "./dist",            // (this should be in the package's tsconfig, not this one)
 
     // build specific config
-    "removeComments": true,
+    "composite": true,
     "declaration": true,
+    "declarationMap": true,
+    "incremental": true,
+    "removeComments": true,
     
     // actual TS sintax config
     "strict": true,

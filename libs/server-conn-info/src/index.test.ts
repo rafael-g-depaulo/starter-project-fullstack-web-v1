@@ -1,4 +1,4 @@
-import { getApiPort, getApiUrl, defaultApiUrl, defaultStrapiHost, getStrapiPort, getStrapiUrl } from "."
+import { getApiPort, getApiUrl, defaultApiUrl, defaultStrapiHost, getStrapiPort, getStrapiUrl, localhost } from "."
 
 // reset test env inbetween tests
 const resetTestEnv : () => NodeJS.ProcessEnv = () => {
@@ -74,7 +74,7 @@ describe('server-conn-info', () => {
 
       const port = getApiPort()
 
-      expect(getApiUrl()).toBe(`http://0.0.0.0:${port}`)
+      expect(getApiUrl()).toBe(`http://${localhost}:${port}`)
     })
   })
 
@@ -107,7 +107,7 @@ describe('server-conn-info', () => {
       process.env.NODE_ENV = "develop"
       const port = getStrapiPort()
 
-      expect(getStrapiUrl()).toBe(`http://0.0.0.0:${port}`)
+      expect(getStrapiUrl()).toBe(`http://${localhost}:${port}`)
     })
   })
 
