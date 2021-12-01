@@ -8,17 +8,21 @@ import {
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 
-import { ParsedUser } from "./ParseUser"
+import { UserRegister } from "@starter-project/entities"
 
-interface CreateUserDeps {
+interface ReqBodyExtension {
+  user_info: UserRegister
+}
+
+interface RegisterUserDeps {
   UserRepo: UserRepository
 }
 
-export const CreateUser: (
-  deps: CreateUserDeps
+export const RegisterUser: (
+  deps: RegisterUserDeps
 ) => RouteHandler<
-  Req<{}, ParsedUser>
-> = ({ UserRepo }: CreateUserDeps) => async (req, res) => {
+  Req<{}, ReqBodyExtension>
+> = ({ UserRepo }: RegisterUserDeps) => async (req, res) => {
   const { user_info } = req
 
   // semantic validation
@@ -32,4 +36,4 @@ export const CreateUser: (
     .catch(err => databaseError(res, "Error trying to create user.", err))
   
 }
-export default CreateUser
+export default RegisterUser

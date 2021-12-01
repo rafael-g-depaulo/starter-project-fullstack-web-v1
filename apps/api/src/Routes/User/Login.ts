@@ -1,15 +1,15 @@
 import UserRepository from "Repository/UserRepository"
 
 import {
-  createdSuccessfully,
   badRequestError,
   databaseError,
+  failedLoginError,
+  loggedInSuccessfully,
 } from "Utils/endpointReturns"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 
-import { removeCircularity } from "Utils/stringifyCircular"
-import { UserLogin } from "@starter-project/user"
+import { UserLogin } from "@starter-project/entities"
 
 interface LoginUserDeps {
   UserRepo: UserRepository
@@ -20,24 +20,13 @@ export const LoginUser = ({ UserRepo }: LoginUserDeps): RouteHandler<Req<UserLog
 
   if (!email || !password) return badRequestError(res, "Missing information for user creation.")
 
-  const checkUserExists = await UserRepo.findByEmail(email)
-  if (!!checkUserExists)
-    return badRequestError(res, "Email address already exists.")
+  return UserRepo.checkCredentials(email, password)
+    .then(user => {
+      if (!user) return failedLoginError(res, "Login errado")
+      const token = UserRepo.generateToken(user)
+      return loggedInSuccessfully(res, { token })
+    })
+    .catch(err => databaseError(res, "Error trying to create user.", err as object))
 
-    return UserRepo.createUser(
-      email,
-      password,
-    )
-    //  .then((user) => {
-    //     sendConfirmationEmail(user)
-    //     return user
-    //   })
-      .then((user) => {
-        // remove password and send user back
-        let { password_hash: _, ...newUser } = user
-        return createdSuccessfully(res, removeCircularity(newUser))
-      })
-      .catch((err) => databaseError(res, "Error trying to create user.", err))
-  
 }
 export default LoginUser

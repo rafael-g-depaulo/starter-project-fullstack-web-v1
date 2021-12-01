@@ -31,8 +31,8 @@ export const ErrorObj: ErrorObjFn = (code, message, data) => {
 }
 
 export const SuccessObj: SuccessObjFn = (code, data) => ({
-  status: "success",
   code,
+  status: "success",
   data,
 })
 

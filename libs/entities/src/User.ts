@@ -5,7 +5,7 @@ const id = string().required().min(10).max(10)
 // const id = string().required().uuid().min(10).max(10)
 const email = string().required().email()
 const password = string().required().min(6)
-const passwordConfirmation = string().test('passwords-match', 'Senhas não são iguais', function(value) {
+const passwordConfirmation = string().required().test('passwords-match', 'Senhas não são iguais', function(value) {
   return this.parent.password === value
 })
 
@@ -24,8 +24,8 @@ export const loginUserSchema = object({
 })
 
 // register/signup
-export interface UserSignup extends Asserts<typeof createUserSchema> {}
-export const createUserSchema = object({
+export interface UserRegister extends Asserts<typeof registerUserSchema> {}
+export const registerUserSchema = object({
   email,
   password,
   passwordConfirmation,

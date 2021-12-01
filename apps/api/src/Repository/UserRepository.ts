@@ -6,7 +6,7 @@ import { compare } from "bcryptjs"
 import User from "Entities/User"
 import authConfig from "Utils/authConfig"
 
-import { UserSignup } from "@starter-project/user"
+import { SerializedUser, UserRegister } from "@starter-project/entities"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -21,7 +21,7 @@ export class UserRepository extends Repository<User> {
       .then(user => !!user)
   }
 
-  async createUser({ email, password: rawPassword }: UserSignup) {
+  async createUser({ email, password: rawPassword }: UserRegister) {
     // create user
     const createdUser = new User()
     createdUser.email = email
@@ -62,14 +62,23 @@ export class UserRepository extends Repository<User> {
     return compare(password, userPassword)
   }
 
-  async generateToken(email: string) {
+  checkCredentials(email: string, password: string) {
+    return this.findByEmail(email)
+      .then(user => !!user && compare(password, user.password_hash)
+        ? user
+        : null
+      )
+  }
+
+  generateToken(user: User) {
     const { secret, expiresIn } = authConfig.jwt
+    return sign({ id: user.id }, secret, { expiresIn })
+  }
 
-    const user = await this.findOne({ where: { email } })
-    if (!user) throw new Error("No user found")
-
-    const token = sign({ id: user.id }, secret, { expiresIn })
-    return token
+  serialize(user: User): SerializedUser {
+    const { email, id } = user
+    const serializedUser: SerializedUser = { email, id }
+    return serializedUser
   }
 
   async generateResetPasswordToken(email: string) {
