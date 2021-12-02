@@ -4537,7 +4537,7 @@ __metadata:
     "@testing-library/jest-dom": ^5.11.4
     "@testing-library/react": ^11.1.0
     "@testing-library/user-event": ^12.1.10
-    "@types/jest": ^26.0.15
+    "@types/jest": ^26.0.24
     "@types/node": ^12.0.0
     "@types/react": ^17.0.0
     "@types/react-dom": ^17.0.0
@@ -4557,7 +4557,7 @@ __metadata:
     react-router-dom: ^6.0.2
     react-scripts: 4.0.3
     styled-components: ^5.3.3
-    typescript: ^4.1.2
+    typescript: ^4.5.2
     web-vitals: ^1.0.1
   languageName: unknown
   linkType: soft
@@ -5956,7 +5956,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:^5.11.2, @testing-library/jest-dom@npm:^5.11.4":
+"@testing-library/jest-dom@npm:^5.11.4":
   version: 5.15.1
   resolution: "@testing-library/jest-dom@npm:5.15.1"
   dependencies:
@@ -6328,16 +6328,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:26.0.14":
-  version: 26.0.14
-  resolution: "@types/jest@npm:26.0.14"
-  dependencies:
-    jest-diff: ^25.2.1
-    pretty-format: ^25.2.1
-  checksum: 9d9c4bd3ae68c95b71c22b6d340d6174e9c9d017ffe15fc66dae29dc0486f7d862706d6450a1bff1dcc26916c445d527f98233c319eef1ec78c36c7ab6195b12
-  languageName: node
-  linkType: hard
-
 "@types/jest@npm:^25.1.4":
   version: 25.2.3
   resolution: "@types/jest@npm:25.2.3"
@@ -6348,7 +6338,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^26.0.15, @types/jest@npm:^26.0.24":
+"@types/jest@npm:^26.0.24":
   version: 26.0.24
   resolution: "@types/jest@npm:26.0.24"
   dependencies:
@@ -16783,7 +16773,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-cli@npm:^26.6.0, jest-cli@npm:^26.6.3":
+"jest-cli@npm:^26.6.0":
   version: 26.6.3
   resolution: "jest-cli@npm:26.6.3"
   dependencies:
@@ -17807,19 +17797,6 @@ __metadata:
   bin:
     jest: bin/jest.js
   checksum: e0d3efff0dc2a31c453a3f7d87586e5d6c0f008c9b827bb9204edde09288f922ddfb3a8917480bf68f4ac0298be28637daef98ebaaac65ea23d3cb754a6620c4
-  languageName: node
-  linkType: hard
-
-"jest@npm:^26.6.0":
-  version: 26.6.3
-  resolution: "jest@npm:26.6.3"
-  dependencies:
-    "@jest/core": ^26.6.3
-    import-local: ^3.0.2
-    jest-cli: ^26.6.3
-  bin:
-    jest: bin/jest.js
-  checksum: 3a9b4c70e9bd5391e7367a0036045c1d3545c2a39e1439a71fb4b59b1748bc34e2ccb324faa1046b99bffc8dc2ed7b3c59016c462255b2646f5fa9300351f914
   languageName: node
   linkType: hard
 
@@ -26806,8 +26783,8 @@ __metadata:
     "@babel/preset-typescript": ^7.10.4
     "@preconstruct/cli": ^1.1.20
     "@storybook/addon-essentials": ^6.0.28
-    "@testing-library/jest-dom": ^5.11.2
-    "@types/jest": 26.0.14
+    "@testing-library/jest-dom": ^5.11.4
+    "@types/jest": ^26.0.24
     "@types/node": ^16.11.11
     "@types/yup": ^0.29.13
     babel-core: 7.0.0-bridge.0
@@ -26815,12 +26792,12 @@ __metadata:
     babel-loader: ^8.2.3
     babel-plugin-module-resolver: ^4.0.0
     babel-plugin-styled-components: ^1.11.1
-    jest: ^26.6.0
+    jest: ^27.4.2
     jest-fetch-mock: ^3.0.3
     lerna: ^4.0.0
     ts-node: ^10.4.0
     ts-node-dev: ^1.0.0
-    typescript: ^4.0.2
+    typescript: ^4.5.2
     ultra-runner: ^3.5.0
     yup: ^0.32.11
   languageName: unknown
@@ -28915,7 +28892,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.0.2, typescript@npm:^4.1.2, typescript@npm:^4.5.2":
+"typescript@npm:^4.5.2":
   version: 4.5.2
   resolution: "typescript@npm:4.5.2"
   bin:
@@ -28925,7 +28902,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.0.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.1.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.5.2#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.5.2#~builtin<compat/typescript>":
   version: 4.5.2
   resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"
   bin:
