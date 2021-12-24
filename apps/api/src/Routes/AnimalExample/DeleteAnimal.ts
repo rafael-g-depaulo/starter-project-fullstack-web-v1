@@ -1,13 +1,15 @@
-import { RequestHandler } from "Routes"
-
 import AnimalExampleRepository from "Repository/AnimalExampleRepository"
+
+import { Req } from "Utils/request"
+import { RouteHandler } from "Utils/routeHandler"
+
 import { AnimalRequest } from "./GetAnimalFromParams"
 
 interface DeleteAnimalDeps {
   AnimalExampleRepo: AnimalExampleRepository
 }
 
-export const DeleteAnimal: (deps: DeleteAnimalDeps) => RequestHandler<AnimalRequest> = ({
+export const DeleteAnimal: (deps: DeleteAnimalDeps) => RouteHandler<Req<AnimalRequest>> = ({
   AnimalExampleRepo,
 }) => async (req, res) => {
   

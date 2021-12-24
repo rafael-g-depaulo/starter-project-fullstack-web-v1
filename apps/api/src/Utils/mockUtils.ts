@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express"
-import { RequestHandler } from "Routes"
+import { Req } from "./request"
+import { RouteHandler } from "./routeHandler"
 
 export interface MockNext {
   (): void
@@ -33,5 +34,8 @@ export const createResponseMock = (_jest: Jest = jest) => {
   return responseMock
 }
 
-export const mockRouteHandler = <ReqBody = {}, ReqParams = {}>(handler: RequestHandler<ReqBody, ReqParams>, request: MockRequest<ReqBody, ReqParams>, response: MockResponse, next?: MockNext) =>
+// export const mockRouteHandler = <ReqBody = {}, ReqParams = {}>(handler: RequestHandler<ReqBody, ReqParams>, request: MockRequest<ReqBody, ReqParams>, response: MockResponse, next?: MockNext) =>
+//   handler(request as Request<ReqParams>, response as unknown as Response, next as NextFunction)
+
+export const mockRouteHandler = <ReqBody extends object = {}, ReqParams extends {[s: string]: string} = {}>(handler: RouteHandler<Req<ReqBody, {}, ReqParams>>, request: MockRequest<ReqBody, ReqParams>, response: MockResponse, next?: MockNext) =>
   handler(request as Request<ReqParams>, response as unknown as Response, next as NextFunction)

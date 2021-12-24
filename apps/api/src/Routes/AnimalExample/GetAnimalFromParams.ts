@@ -1,7 +1,7 @@
-import { RequestHandler } from "Routes"
-
 import AnimalExample from "Entities/AnimalExample"
 import AnimalExampleRepository from "Repository/AnimalExampleRepository"
+import { RouteHandler } from "Utils/routeHandler"
+import { ParamsType, Req } from "Utils/request"
 
 interface GetAnimalDeps {
   AnimalExampleRepo: AnimalExampleRepository,
@@ -11,11 +11,11 @@ export interface AnimalRequest {
   animal: AnimalExample
 }
 
-export interface AnimalIdParams {
+export interface AnimalIdParams extends ParamsType {
   id: string,
 }
 
-export const GetAnimalFromParams: (deps: GetAnimalDeps) => RequestHandler<AnimalRequest | undefined, AnimalIdParams> = ({
+export const GetAnimalFromParams: (deps: GetAnimalDeps) => RouteHandler<Req<AnimalRequest, {}, AnimalIdParams>> = ({
   AnimalExampleRepo,
 }) => async (req, res, next) => {
 

@@ -35,7 +35,7 @@ describe('AnimalExample Router', () => {
   })
   
   describe('AnimalExample Creation', () => {
-    it("should 201 with a valid AnimalExample in the request body", async (done) => {
+    it("should 201 with a valid AnimalExample in the request body", (done) => {
       agent
         .post("/animal-example/create")
         .send(dogInfo)
@@ -47,7 +47,7 @@ describe('AnimalExample Router', () => {
           done()
         })
     })
-    it("should 400 with an incomplete AnimalExample in the request body", async (done) => {
+    it("should 400 with an incomplete AnimalExample in the request body", (done) => {
       const emptyBody = agent
         .post("/animal-example/create")
         .send({})   // send incomplete request body
@@ -75,7 +75,7 @@ describe('AnimalExample Router', () => {
         .then(() => done())
     })
 
-    it("should 400 with a request body containing invalid information", async (done) => {
+    it("should 400 with a request body containing invalid information", (done) => {
       agent
         .post("/animal-example/create")
         .send({ name: 12, rank: true })
@@ -85,14 +85,14 @@ describe('AnimalExample Router', () => {
         .then(() => done())
     })
 
-    // it("should 503 if database can't be reached", async (done) => {
+    // it("should 503 if database can't be reached", (done) => {
     // TODO: add a way to mock this and test it
     // })
   })
 
   describe('List All AnimalExamples', () => {
 
-    it("should 200 if everything's ok", async (done) => {
+    it("should 200 if everything's ok", (done) => {
       RepoConfig.table = [snake, camel]
       agent
         .get("/animal-example")
@@ -101,13 +101,13 @@ describe('AnimalExample Router', () => {
         .then(() => done())
     })
 
-    // it("should 503 if database can't be reached", async (done) => {
+    // it("should 503 if database can't be reached", (done) => {
     // TODO: add a way to mock this and test it
     // })
   })
   
   describe('Show single AnimalExample', () => {
-    it("should 200 if the provided id is valid", async (done) => {
+    it("should 200 if the provided id is valid", (done) => {
       RepoConfig.table = [snake]
       agent
         .get(`/animal-example/${snake.id}`)
@@ -116,7 +116,7 @@ describe('AnimalExample Router', () => {
         .then(() => done())
     })
 
-    it("should 404 if the id is invalid", async (done) => {
+    it("should 404 if the id is invalid", (done) => {
       RepoConfig.table = [camel]
       agent
         .get(`/animal-example/invalid-id`)
@@ -125,13 +125,13 @@ describe('AnimalExample Router', () => {
         .then(() => done())
     })
 
-    // it("should 503 if database can't be reached", async (done) => {
+    // it("should 503 if database can't be reached", (done) => {
     // TODO: add a way to mock this and test it
     // })
   })
 
   describe('Delete single AnimalExample', () => {
-    it("should 200 if the provided id is valid", async (done) => {
+    it("should 200 if the provided id is valid", (done) => {
       RepoConfig.table = [snake, dog]
       agent
         .delete(`/animal-example/${dog.id}`)
@@ -143,7 +143,7 @@ describe('AnimalExample Router', () => {
           done()
         })
     })
-    it("should 404 if the id is invalid", async (done) => {
+    it("should 404 if the id is invalid", (done) => {
       
       RepoConfig.table = [snake, dog]
       agent
@@ -152,14 +152,14 @@ describe('AnimalExample Router', () => {
         .expect(404)
         .then(() => done())
     })
-    // it("should 503 if database can't be reached", async (done) => {
+    // it("should 503 if database can't be reached", (done) => {
     // TODO: add a way to mock this and test it
     // })
   })
 
   describe('AnimalExample CRUD Lifecycle', () => {
 
-    it('should work', async (done) => {      
+    it('should work', async () => {      
       // create animals
       await agent
         .post("/animal-example/create")
@@ -187,8 +187,6 @@ describe('AnimalExample Router', () => {
         .expect(200, { animal: snake })
       
       expect(RepoConfig.table).toEqual([dog])
-      done()
-
     })
   })
 })
