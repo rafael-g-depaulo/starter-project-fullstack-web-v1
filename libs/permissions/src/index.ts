@@ -1,4 +1,4 @@
 export * from "./types"
+export * from "./ac"
 
-export { acConfig, can } from "./ac"
-export { acConfig as default } from "./ac"
+export { getAc as default } from "./ac"

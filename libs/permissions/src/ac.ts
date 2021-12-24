@@ -6,10 +6,15 @@ export const acConfig: GrantConfig = {
     account: {
       "create:own": ['*']
     }
-  }
+  },
+  [Roles.LOGGED_USER]: {
+    account: {
+      "delete:own": ['*']
+    }
+  },
 }
 
-const getAc = () => {
+export const getAc = () => {
   const ac = new AccessControl(acConfig)
   ac.lock()
   
