@@ -1,3 +1,4 @@
-export const add = (a: number, b: number) => a + b
+export * from "./types"
 
-export default add
+export { acConfig, can } from "./ac"
+export { acConfig as default } from "./ac"
