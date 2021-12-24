@@ -20,11 +20,11 @@ Db()
   // const users = await conn.manager.find(User)
   // console.log("Loaded users: ", users)
 
-  const port = process.env.PORT ?? 5000
+  const port = !!process.env.PORT && /^\d+$/.test(process.env.PORT) ? Number(process.env.PORT) : 5000
   
   app.use("/", Routes({ conn }))
   app.get("/", (_, res) => actionSuccessful(res, { msg: 'Hello, world!' }))
-  app.use("*", (req, res) => badRequestError(res, `Route "${req.path}" doesn't exist`))
+  app.use("*", (req, res) => badRequestError(res, `Route "${req.originalUrl}" doesn't exist`))
 
   app.listen(port, () => console.log(`API running at ${getApiUrl()}. ${add(3, 2)}`)) 
 })
