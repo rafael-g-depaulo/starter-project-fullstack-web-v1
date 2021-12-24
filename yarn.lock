@@ -4478,7 +4478,7 @@ __metadata:
   resolution: "@starter-project/adder@workspace:libs/adder"
   dependencies:
     jest: ^27.4.2
-    typescript: ^4.5.2
+    typescript: ^4.5.4
   languageName: unknown
   linkType: soft
 
@@ -4559,7 +4559,7 @@ __metadata:
     react-router-dom: ^6.0.2
     react-scripts: 4.0.3
     styled-components: ^5.3.3
-    typescript: ^4.5.2
+    typescript: ^4.5.4
     web-vitals: ^1.0.1
   languageName: unknown
   linkType: soft
@@ -4569,7 +4569,17 @@ __metadata:
   resolution: "@starter-project/entities@workspace:libs/entities"
   dependencies:
     jest: ^27.4.2
-    typescript: ^4.5.2
+    typescript: ^4.5.4
+  languageName: unknown
+  linkType: soft
+
+"@starter-project/permissions@workspace:libs/permissions":
+  version: 0.0.0-use.local
+  resolution: "@starter-project/permissions@workspace:libs/permissions"
+  dependencies:
+    accesscontrol: ^2.2.1
+    jest: ^27.4.2
+    typescript: ^4.5.4
   languageName: unknown
   linkType: soft
 
@@ -4578,7 +4588,7 @@ __metadata:
   resolution: "@starter-project/server-conn-info@workspace:libs/server-conn-info"
   dependencies:
     jest: ^27.4.2
-    typescript: ^4.5.2
+    typescript: ^4.5.4
   languageName: unknown
   linkType: soft
 
@@ -4587,7 +4597,7 @@ __metadata:
   resolution: "@starter-project/strapi-utils@workspace:libs/strapi-utils"
   dependencies:
     jest: ^27.4.2
-    typescript: ^4.5.2
+    typescript: ^4.5.4
   languageName: unknown
   linkType: soft
 
@@ -7223,6 +7233,15 @@ __metadata:
     mime-types: ~2.1.24
     negotiator: 0.6.2
   checksum: 27fc8060ffc69481ff6719cd3ee06387d2b88381cb0ce626f087781bbd02201a645a9febc8e7e7333558354b33b1d2f922ad13560be4ec1b7ba9e76fc1c1241d
+  languageName: node
+  linkType: hard
+
+"accesscontrol@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "accesscontrol@npm:2.2.1"
+  dependencies:
+    notation: ^1.3.6
+  checksum: f8649e2769ab72e6ce555d0ae862a590422d94644ae4149932e719bc2687f2fb97e2be13cd890148dfad2a60c9886c26a22ca0a5138f8f0a6435c4c240654e9d
   languageName: node
   linkType: hard
 
@@ -20655,6 +20674,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"notation@npm:^1.3.6":
+  version: 1.3.6
+  resolution: "notation@npm:1.3.6"
+  checksum: 2146f7a970252688cafdb62435a596794731d917e9573a61361093488bf5a0e51f1b9c0950ffd7bc1876f488959a2b4c50def3f8a9ecb1aa434339d74c0cbac6
+  languageName: node
+  linkType: hard
+
 "npm-bundled@npm:^1.1.1":
   version: 1.1.2
   resolution: "npm-bundled@npm:1.1.2"
@@ -26799,7 +26825,7 @@ __metadata:
     lerna: ^4.0.0
     ts-node: ^10.4.0
     ts-node-dev: ^1.0.0
-    typescript: ^4.5.2
+    typescript: ^4.5.4
     ultra-runner: ^3.5.0
     yup: ^0.32.11
   languageName: unknown
@@ -28894,16 +28920,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.5.2":
-  version: 4.5.2
-  resolution: "typescript@npm:4.5.2"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 74f9ce65d532bdf5d0214b3f60cf37992180023388c87a11ee6f838a803067ef0b63c600fa501b0deb07f989257dce1e244c9635ed79feca40bbccf6e0aa1ebc
-  languageName: node
-  linkType: hard
-
 "typescript@npm:^4.5.4":
   version: 4.5.4
   resolution: "typescript@npm:4.5.4"
@@ -28911,16 +28927,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 59f3243f9cd6fe3161e6150ff6bf795fc843b4234a655dbd938a310515e0d61afd1ac942799e7415e4334255e41c2c49b7dd5d9fd38a17acd25a6779ca7e0961
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^4.5.2#~builtin<compat/typescript>":
-  version: 4.5.2
-  resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 53838d56aba6fcc947d63aa0771e5d966b1b648fddafed6e221d7f38c71219c4e036ece8cfe9e35ed80cf5a35ff4eb958934c993f99c3233773ec4f9ccd53f69
   languageName: node
   linkType: hard
 
