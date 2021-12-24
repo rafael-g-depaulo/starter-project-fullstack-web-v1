@@ -1,0 +1,212 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2021-12-24T04:11:56.366Z",
+  "__export_source": "insomnia.desktop.app:v2021.7.2",
+  "resources": [
+    {
+      "_id": "req_5c15b729a89742cca85278ba6c2e61de",
+      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
+      "modified": 1640319087393,
+      "created": 1640319087393,
+      "url": "{{ _.baseRoute }}",
+      "name": "Hello World",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1640310565118,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_df5ac18532354be5b01c6988767ec469",
+      "parentId": null,
+      "modified": 1640319087371,
+      "created": 1640319087371,
+      "name": "starter-project",
+      "description": "",
+      "scope": "design",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_969968dd05ee4ab28483b3d80ab271e6",
+      "parentId": "fld_808dee011e914d6ea91acf690b81c670",
+      "modified": 1640319087387,
+      "created": 1640319087387,
+      "url": "{{baseRoute}}/",
+      "name": "List Users",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1640310540665,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_808dee011e914d6ea91acf690b81c670",
+      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
+      "modified": 1640319087385,
+      "created": 1640319087385,
+      "name": "User",
+      "description": "",
+      "environment": {
+        "baseRoute": "{{baseUrl}}{{ _.userModule }}"
+      },
+      "environmentPropertyOrder": {
+        "&": [
+          "baseRoute"
+        ]
+      },
+      "metaSortKey": -1640310229078,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_ee3c588473624a8e9dfe0f5b64014cf1",
+      "parentId": "fld_808dee011e914d6ea91acf690b81c670",
+      "modified": 1640319087389,
+      "created": 1640319087389,
+      "url": "{{baseRoute}}/me",
+      "name": "Show Current User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1640310540615,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_8f219b56668842a9acb2130f801ad1d2",
+      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
+      "modified": 1640319087372,
+      "created": 1640319087372,
+      "name": "Base Environment",
+      "data": {
+        "protocol": "http",
+        "host": "localhost",
+        "port": 5000,
+        "basePath": "",
+        "baseUrl": "{{ _.protocol }}://{{ host }}:{{ _.port }}{{ _.basePath }}",
+        "AAAa": "{{ protocol }}",
+        "baseRoute": "{{ _.baseUrl }}",
+        "userModule": "/user",
+        "sessionModule": "/sessions"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "protocol",
+          "host",
+          "port",
+          "basePath",
+          "baseUrl",
+          "AAAa",
+          "baseRoute",
+          "userModule",
+          "sessionModule"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1640310073046,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_c5842bbefecf4a918db5e746e3f46148",
+      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
+      "modified": 1640319087378,
+      "created": 1640319087378,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_946bbeee8b3d476da5d2a65580f0023b",
+      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
+      "modified": 1640319087417,
+      "created": 1640319087381,
+      "fileName": "starter-project",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "uts_da57fc00c2114c058c9c93dbf84573fb",
+      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
+      "modified": 1640319087397,
+      "created": 1640319087397,
+      "name": "New Suite",
+      "_type": "unit_test_suite"
+    },
+    {
+      "_id": "env_239de49fec6f4c50a84ca99a33c5c53f",
+      "parentId": "env_8f219b56668842a9acb2130f801ad1d2",
+      "modified": 1640319087373,
+      "created": 1640319087373,
+      "name": "starter-project",
+      "data": {
+        "protocol": "http",
+        "host": "localhost",
+        "port": 5000,
+        "basePath": "",
+        "baseUrl": "{{ _.protocol }}://{{ host }}:{{ _.port }}{{ _.basePath }}",
+        "AAAa": "{{ protocol }}",
+        "baseRoute": "{{ _.baseUrl }}",
+        "userModule": "/user",
+        "sessionModule": "/sessions"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "protocol",
+          "host",
+          "port",
+          "basePath",
+          "baseUrl",
+          "AAAa",
+          "baseRoute",
+          "userModule",
+          "sessionModule"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1640310264168,
+      "_type": "environment"
+    },
+    {
+      "_id": "ut_e63c37283ebf4a75b5ab18bc4f790b06",
+      "parentId": "uts_da57fc00c2114c058c9c93dbf84573fb",
+      "modified": 1640319087400,
+      "created": 1640319087400,
+      "requestId": "req_c3b5d01b4ea94309801f96e85eba0642",
+      "name": "Hellow World works",
+      "code": "const response1 = await insomnia.send();\nexpect(response1.status).to.equal(200);",
+      "_type": "unit_test"
+    }
+  ]
+}
