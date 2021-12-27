@@ -1,6 +1,7 @@
 import { BaseEntity, BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm"
 import { IsEmail, IsUUID } from "class-validator"
 import { nanoid } from "nanoid"
+import { Roles } from "@starter-project/permissions";
 
 // INFO: check https://github.com/ai/nanoid and https://zelark.github.io/nano-id-cc/ to understand what this is for
 const idSize = 10
@@ -18,6 +19,13 @@ export class User extends BaseEntity {
 
   @Column()
   password_hash: string;
+  
+  @Column({
+    type: "enum",
+    enum: Roles,
+    default: Roles.LOGGED_USER,
+  })
+  role: Roles;
 
   // add id to Animal
   @BeforeInsert()
