@@ -4707,6 +4707,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@starter-project/entities@workspace:libs/entities"
   dependencies:
+    "@starter-project/permissions": "workspace:*"
     jest: ^27.4.2
     typescript: ^4.5.4
   languageName: unknown
