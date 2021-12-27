@@ -1,10 +1,12 @@
-import { Asserts, object, string,  } from "yup"
+import { Roles } from "@starter-project/permissions"
+import { Asserts, mixed, object, string,  } from "yup"
 
 // fields
 const id = string().required().min(10).max(10)
 // const id = string().required().uuid().min(10).max(10)
 const email = string().required().email()
 const password = string().required().min(6)
+const role = mixed<Roles>().oneOf(Object.values(Roles))
 const passwordConfirmation = string().required().test('passwords-match', 'Senhas não são iguais', function(value) {
   return this.parent.password === value
 })
@@ -14,6 +16,7 @@ export interface SerializedUser extends Asserts<typeof userSchema> {}
 export const userSchema = object({
   id,
   email,
+  role,
 })
 
 // login
@@ -23,7 +26,7 @@ export const loginUserSchema = object({
   password,
 })
 
-// register/signup
+// register
 export interface UserRegister extends Asserts<typeof registerUserSchema> {}
 export const registerUserSchema = object({
   email,
