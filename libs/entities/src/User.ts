@@ -6,7 +6,7 @@ const id = string().required().min(10).max(10)
 // const id = string().required().uuid().min(10).max(10)
 const email = string().required().email()
 const password = string().required().min(6)
-const role = mixed<Roles>().oneOf(Object.values(Roles))
+const role = mixed<Roles>().required().oneOf(Object.values(Roles))
 const passwordConfirmation = string().required().test('passwords-match', 'Senhas não são iguais', function(value) {
   return this.parent.password === value
 })
