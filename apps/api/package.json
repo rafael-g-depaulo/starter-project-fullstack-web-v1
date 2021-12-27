@@ -27,7 +27,7 @@
     "build:server": "tsc --project tsconfig.prod.json",
     "build:db": "yarn db:build || yarn db:build:force",
     "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm --config ./src/Db/config.cli",
+    "typeorm": "ts-node --project ./tsconfig.json -r tsconfig-paths/register $(yarn bin typeorm) --config ./src/Db/config.cli",
     "test": "jest --reporters=\"default\"",
     "test:watch": "yarn test --watch",
     "watch": "yarn test:watch",
@@ -37,7 +37,8 @@
     "db:build": "yarn typeorm migration:run",
     "db:build:force": "if-env NODE_ENV=development && yarn typeorm schema:sync",
     "db:build:force:extreme": "yarn typeorm schema:sync",
-    "db:reset": "yarn db:drop && yarn db:build"
+    "db:reset": "yarn db:drop && yarn db:build",
+    "db:migration:generate": "yarn typeorm migration:generate"
   },
   "bugs": {
     "url": "https://github.com/rafael-g-depaulo/starter-project-fullstack-web/issues"
