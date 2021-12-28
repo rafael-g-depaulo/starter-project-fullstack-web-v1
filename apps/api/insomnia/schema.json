@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2021-12-27T00:40:27.317Z",
+  "__export_date": "2021-12-28T03:24:27.050Z",
   "__export_source": "insomnia.desktop.app:v2021.7.2",
   "resources": [
     {
@@ -104,7 +104,7 @@
     {
       "_id": "req_a36105fdf1e84dbba68324015f27ea25",
       "parentId": "fld_808dee011e914d6ea91acf690b81c670",
-      "modified": 1640565566746,
+      "modified": 1640661773787,
       "created": 1640565404661,
       "url": "{{baseRoute}}/register",
       "name": "Register",
@@ -124,6 +124,38 @@
       ],
       "authentication": {},
       "metaSortKey": -1640310540715,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b1502c8f891949f8963a96da6d1785a1",
+      "parentId": "fld_808dee011e914d6ea91acf690b81c670",
+      "modified": 1640661779411,
+      "created": 1640661329140,
+      "url": "{{baseRoute}}/login",
+      "name": "Login",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"{% response 'body', 'req_a36105fdf1e84dbba68324015f27ea25', 'b64::JC5kYXRhLmVtYWls::46b', 'never', 60 %}\",\n\t\"password\": \"123456\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_229b972155634d8f829c9523e308227b"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1640310540690,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
