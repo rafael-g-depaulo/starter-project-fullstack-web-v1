@@ -1,20 +1,23 @@
-import { FC, createContext, useMemo, useContext } from "react"
+import { FC, createContext, useMemo, useContext, useCallback } from "react"
 
 import useLocalStorage from 'Hooks/useLocalStorage'
 
+type baseFunctions = {
+  login: (token: string) => void
+  logout: () => void
+}
+
 type notLoggedIn = {
-  setToken: (t: string | undefined) => void
   token: undefined
   isLoggedIn: false
 }
 
 type loggedIn = {
-  setToken: (t: string | undefined) => void
   token: string
   isLoggedIn: true
 }
 
-export type CurrentUser = notLoggedIn | loggedIn
+export type CurrentUser = baseFunctions & (notLoggedIn | loggedIn)
 
 export const CurrentUserContext = createContext<CurrentUser>({} as CurrentUser)
 export const useCurrentUser = () => useContext(CurrentUserContext)
@@ -24,12 +27,16 @@ export const CurrentUserProvider: FC = ({
 }) => {
   const [ token, setToken ] = useLocalStorage<string | undefined>('token', undefined)
 
+  const login = useCallback((token: string) => setToken(token), [setToken])
+  const logout = useCallback(() => setToken(undefined), [setToken])
+
   const currentUserValue = useMemo<CurrentUser>(() => ({
       token,
-      setToken,
+      login,
+      logout,
       isLoggedIn: !!token,
     }) as CurrentUser
-    , [token, setToken])
+    , [token])
 
   // if (process.env.NODE_ENV === 'development') console.log("user context.", currentUserValue)
 

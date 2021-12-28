@@ -20,11 +20,11 @@ const initialValues: UserLogin = {
 
 export const LoginForm: FC<LoginFormProps> = () => {
   const { mutateAsync, error, data } = useLogin()
-  const { setToken, token } = useCurrentUser()
+  const { login, token } = useCurrentUser()
 
   const onSubmit = useCallback<FormikOnSubmit<UserLogin>>((values, { }) =>
     mutateAsync(values)
-      .then(user => setToken(user.token))
+      .then(user => login(user.token))
   , [])
 
   return (
