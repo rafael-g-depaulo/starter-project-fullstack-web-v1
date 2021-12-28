@@ -18,3 +18,5 @@ When ready for a release, run `yarn workspaces foreach version major|minor|patch
 Use either "major", "minor" or "patch" to signal what semver change you're making.
 
 `yarn version check -i` should be used instead if you don't plan to update all of the packages.
+
+Also when committing remember to `git tag vX.X.X`.
