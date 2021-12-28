@@ -25,6 +25,9 @@ export const loginUserSchema = object({
   email,
   password,
 })
+export interface UserLoginReturn {
+  token: string
+}
 
 // register
 export interface UserRegister extends Asserts<typeof registerUserSchema> {}
