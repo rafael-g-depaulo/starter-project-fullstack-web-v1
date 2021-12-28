@@ -1,7 +1,7 @@
 {
   "name": "@starter-project/strapi",
   "private": true,
-  "version": "13.0.0",
+  "version": "13.1.0",
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
