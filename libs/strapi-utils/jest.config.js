@@ -5,4 +5,9 @@ module.exports = {
     color: 'cyan',
   },
   
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/dist/",
+  ]
+  
 }
