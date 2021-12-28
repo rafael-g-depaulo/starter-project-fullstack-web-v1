@@ -6,7 +6,7 @@ import { extractApiData, throwApiError } from "Utils/handleApiResponse"
 
 export const Signup = (userInfo: UserRegister) => api
   .post<SuccessObject<SerializedUser>>("/users/register", userInfo)
-  .then<SerializedUser>(extractApiData)
+  .then(extractApiData)
   .catch(throwApiError)
 
 export const useSignup = () => useMutateApi("/users/register", Signup)
