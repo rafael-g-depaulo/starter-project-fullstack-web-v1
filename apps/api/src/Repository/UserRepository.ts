@@ -62,12 +62,11 @@ export class UserRepository extends Repository<User> {
     return compare(password, userPassword)
   }
 
-  checkCredentials(email: string, password: string) {
-    return this.findByEmail(email)
-      .then(user => !!user && compare(password, user.password_hash)
-        ? user
-        : null
-      )
+  async checkCredentials(email: string, password: string) {
+    const user = await this.findByEmail(email)
+    if (!user || !await this.compareHash(password, user.password_hash))
+      return null
+    return user
   }
 
   generateToken(user: User) {
