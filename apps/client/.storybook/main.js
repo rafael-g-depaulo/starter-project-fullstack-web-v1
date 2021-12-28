@@ -1,6 +1,7 @@
 module.exports = {
   stories: [
     "../src/**/*.stories.mdx",
+    "../src/**/*.stories.(js|jsx|ts|tsx)",
     "../src/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
@@ -10,6 +11,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
   ],
+  staticDirs: ['../public'],
   // webPackFinal: async (config) => {
   //   console.log("CONFIG IS", config)
   //   return config

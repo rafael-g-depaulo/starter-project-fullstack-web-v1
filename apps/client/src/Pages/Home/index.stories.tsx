@@ -1,14 +1,15 @@
-import { storiesOf } from "@storybook/react"
+import Home from '.'
 
-import Home from "."
-// import { HomepageBannerInfo } from "Api/HomepageBannerInfo"
-// import { mockImage } from "Utils/Image"
+export default {
+  title: 'Pages/Home',
 
-// const data: HomepageBannerInfo = {
-//   title: "LABFAZ",
-//   subtitle: "LoremIpsum",
-// }
+  parameters: {
+    component: Home,
+  },
+}
 
-storiesOf("Pages/Home", module)
-  .addParameters({ component: Home })
-  .add("default", () => <Home />)
+export const Default = () => <Home />
+
+Default.story = {
+  name: 'default',
+}

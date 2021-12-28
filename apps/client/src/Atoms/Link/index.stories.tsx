@@ -1,9 +1,22 @@
-import { storiesOf } from "@storybook/react"
+import NavigationLink from './NavigationLink'
+import StyledLink from './StyledLink'
 
-import NavigationLink from "./NavigationLink"
-import StyledLink from "./StyledLink"
+export default {
+  title: 'Atoms/Link',
 
-storiesOf("Atoms/Link", module)
-  .addParameters({ component: NavigationLink })
-  .add("StyledLink", () => <StyledLink to="." >Styled Link</StyledLink>)
-  .add("NavigationLink", () => <NavigationLink to="/">Navigation Link</NavigationLink>)
+  parameters: {
+    component: NavigationLink,
+  },
+}
+
+export const _StyledLink = () => <StyledLink to=".">Styled Link</StyledLink>
+
+_StyledLink.story = {
+  name: 'StyledLink',
+}
+
+export const _NavigationLink = () => <NavigationLink to="/">Navigation Link</NavigationLink>
+
+_NavigationLink.story = {
+  name: 'NavigationLink',
+}
