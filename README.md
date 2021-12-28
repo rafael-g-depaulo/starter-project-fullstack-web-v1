@@ -15,4 +15,6 @@ We use syncpack to ensure that packages use the same version of shared dependenc
 ## Releasing
 When ready for a release, run `yarn workspaces foreach version major|minor|patch -d`, followed by `yarn version apply --all`, or `yarn workspaces foreach version major|minor|patch -i`. the -d (--deferred) flag means that changes only happen after `yarn version apply --all` is run, while the -i (--immediate) flag makes things happen immediately.
 
-use either "major", "minor" or "patch" to signal what semver change you're making.
+Use either "major", "minor" or "patch" to signal what semver change you're making.
+
+`yarn version check -i` should be used instead if you don't plan to update all of the packages.
