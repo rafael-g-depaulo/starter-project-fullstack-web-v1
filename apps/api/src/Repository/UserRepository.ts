@@ -76,8 +76,8 @@ export class UserRepository extends Repository<User> {
   }
 
   serialize(user: User): SerializedUser {
-    const { email, id } = user
-    const serializedUser: SerializedUser = { email, id }
+    const { email, id, role } = user
+    const serializedUser: SerializedUser = { email, id, role }
     return serializedUser
   }
 

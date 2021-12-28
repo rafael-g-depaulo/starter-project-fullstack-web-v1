@@ -36,7 +36,7 @@ describe('CreateAnimal Route Handler', () => {
     ]
 
     // create mocks
-    const request = createRequestMock<AnimalRequest | undefined, AnimalIdParams>(undefined, {
+    const request = createRequestMock<AnimalRequest, AnimalIdParams>(undefined, {
       id: snake.id,
     })
     const response = createResponseMock()
@@ -84,7 +84,7 @@ describe('CreateAnimal Route Handler', () => {
   })
 
   it("returns a 404 if the id doesn't correspond to an animal", async () => {
-    const request = createRequestMock(undefined, { id: "wrong id" })
+    const request = createRequestMock<AnimalRequest, { id: string; }>(undefined, { id: "wrong id" })
     const response = createResponseMock()
     const next = jest.fn()
 
