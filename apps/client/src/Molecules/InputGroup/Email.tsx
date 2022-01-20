@@ -18,6 +18,7 @@ export const EmailInputGroup: FC<EmailInputGroupProps> = ({
   placeholder,
   ...props
 }) => {
+
   return (
     <InputGroup {...props}>
       <Label htmlFor={name}>{label}</Label>

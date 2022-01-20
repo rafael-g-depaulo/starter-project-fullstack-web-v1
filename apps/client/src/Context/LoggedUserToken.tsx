@@ -36,7 +36,7 @@ export const CurrentUserProvider: FC = ({
       logout,
       isLoggedIn: !!token,
     }) as CurrentUser
-    , [token])
+    , [token, login, logout])
 
   // if (process.env.NODE_ENV === 'development') console.log("user context.", currentUserValue)
 
