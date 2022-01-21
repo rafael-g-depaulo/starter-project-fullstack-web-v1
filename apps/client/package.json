@@ -33,7 +33,7 @@
     "serve": "# serve ./build -l ${PORT:-4000} -s -n",
     "storybook": "start-storybook -p 6006 --no-dll",
     "build-storybook": "build-storybook --no-dll",
-    "cy:open": "# yarn run cypress open"
+    "cy:open": "yarn run cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "@storybook/addon-a11y": "^6.4.9",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-docs": "^6.4.9",
@@ -70,8 +71,10 @@
     "@types/react-router-dom": "^5.3.2",
     "@types/storybook__addon-a11y": "^5.1.2",
     "@types/styled-components": "^5.1.15",
+    "cypress": "^9.3.1",
     "dotenv": "^10.0.0",
     "dotenv-cli": "^4.1.1",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "webpack": "^5.66.0"
   }
 }

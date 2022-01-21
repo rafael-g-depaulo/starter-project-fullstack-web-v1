@@ -3,6 +3,22 @@
 
 # TODO: document this whole thing
 
+# Instalation/Environment Setup
+
+## Api
+
+### Postgres:
+  - install it and have the process running
+  - add the credentials to api .env
+
+### AWS:
+  - add credentials to api .env
+
+## Client
+
+### Cypress:
+  - run `sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb` on linux (or check [the oficiel docks](https://docs.cypress.io/guides/getting-started/installing-cypress) otherwise)
+  - if on WSL on Windows 10, google how to run linux GUI apps on WSL.
 
 # Tools:
 
