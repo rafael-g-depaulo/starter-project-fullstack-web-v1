@@ -1,5 +1,5 @@
 import { Roles } from "@starter-project/permissions"
-import { userSchema, SerializedUser } from "."
+import { userSchema, SerializedUser } from "./serializedSchema"
 
 describe("user entity", () => {
 
