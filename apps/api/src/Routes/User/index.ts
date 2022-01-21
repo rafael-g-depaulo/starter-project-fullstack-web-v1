@@ -12,6 +12,7 @@ import { loginUserSchema, registerUserSchema } from "@starter-project/entities"
 import RegisterUser from "./Register"
 import LoginUsers from "./Login"
 import ListUsers from "./List"
+import ShowCurrentUser from "./ShowCurrentUser"
 
 type UserDeps = {
   conn: Connection
@@ -26,6 +27,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .post("/register", ParseBody(registerUserSchema, "user_info"), RegisterUser({ UserRepo }))
     .post("/login", ParseBody(loginUserSchema, "user_info"), LoginUsers({ UserRepo }))
     // .post("/logout", RegisterUser({ UserRepo }))
+    .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
     .get("/", ensureAuthenticated, ListUsers({ UserRepo }))
 }
 

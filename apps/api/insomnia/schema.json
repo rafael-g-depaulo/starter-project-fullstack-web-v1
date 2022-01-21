@@ -1,14 +1,14 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2021-12-28T03:24:27.050Z",
+  "__export_date": "2022-01-21T13:54:57.745Z",
   "__export_source": "insomnia.desktop.app:v2021.7.2",
   "resources": [
     {
-      "_id": "req_5c15b729a89742cca85278ba6c2e61de",
-      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
-      "modified": 1640319087393,
-      "created": 1640319087393,
+      "_id": "req_c3b5d01b4ea94309801f96e85eba0642",
+      "parentId": "wrk_f59d08ac7c07425eb7260938b727032b",
+      "modified": 1640310567014,
+      "created": 1640310565118,
       "url": "{{ _.baseRoute }}",
       "name": "Hello World",
       "description": "",
@@ -28,98 +28,34 @@
       "_type": "request"
     },
     {
-      "_id": "wrk_df5ac18532354be5b01c6988767ec469",
+      "_id": "wrk_f59d08ac7c07425eb7260938b727032b",
       "parentId": null,
-      "modified": 1640319087371,
-      "created": 1640319087371,
-      "name": "starter-project",
+      "modified": 1640310073040,
+      "created": 1640310073040,
+      "name": "starter-project-api-spec",
       "description": "",
       "scope": "design",
       "_type": "workspace"
     },
     {
-      "_id": "req_969968dd05ee4ab28483b3d80ab271e6",
-      "parentId": "fld_808dee011e914d6ea91acf690b81c670",
-      "modified": 1640319087387,
-      "created": 1640319087387,
-      "url": "{{baseRoute}}/",
-      "name": "List Users",
-      "description": "",
-      "method": "GET",
-      "body": {},
-      "parameters": [],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1640310540665,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
-      "_type": "request"
-    },
-    {
-      "_id": "fld_808dee011e914d6ea91acf690b81c670",
-      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
-      "modified": 1640565536839,
-      "created": 1640319087385,
-      "name": "User",
-      "description": "",
-      "environment": {
-        "baseRoute": "{{baseUrl}}{{ _.userModule }}"
-      },
-      "environmentPropertyOrder": {
-        "&": [
-          "baseRoute"
-        ]
-      },
-      "metaSortKey": -1640310229078,
-      "_type": "request_group"
-    },
-    {
-      "_id": "req_ee3c588473624a8e9dfe0f5b64014cf1",
-      "parentId": "fld_808dee011e914d6ea91acf690b81c670",
-      "modified": 1640319087389,
-      "created": 1640319087389,
-      "url": "{{baseRoute}}/me",
-      "name": "Show Current User",
-      "description": "",
-      "method": "GET",
-      "body": {},
-      "parameters": [],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1640310540615,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
-      "_type": "request"
-    },
-    {
-      "_id": "req_a36105fdf1e84dbba68324015f27ea25",
-      "parentId": "fld_808dee011e914d6ea91acf690b81c670",
-      "modified": 1640661773787,
-      "created": 1640565404661,
+      "_id": "req_cdcefdf919914eaa94540a1600060aa7",
+      "parentId": "fld_09a7c21fb74c490981dea1fb1ffad4c3",
+      "modified": 1642772495822,
+      "created": 1642771770426,
       "url": "{{baseRoute}}/register",
       "name": "Register",
       "description": "",
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"123456\",\n\t\"passwordConfirmation\": \"123456\"\n}"
+        "text": "{\n\t\"email\": \"lalala@lalala.com\",\n\t\"password\": \"123456\",\n\t\"passwordConfirmation\": \"123456\"\n}"
       },
       "parameters": [],
       "headers": [
         {
           "name": "Content-Type",
           "value": "application/json",
-          "id": "pair_6c5cbdc7746c46cfb9fbd9495cb8695b"
+          "id": "pair_b01a4ac3a9ea4a58a4890bdddf94f0f9"
         }
       ],
       "authentication": {},
@@ -134,24 +70,42 @@
       "_type": "request"
     },
     {
-      "_id": "req_b1502c8f891949f8963a96da6d1785a1",
-      "parentId": "fld_808dee011e914d6ea91acf690b81c670",
-      "modified": 1640661779411,
-      "created": 1640661329140,
+      "_id": "fld_09a7c21fb74c490981dea1fb1ffad4c3",
+      "parentId": "wrk_f59d08ac7c07425eb7260938b727032b",
+      "modified": 1642772210869,
+      "created": 1640310229078,
+      "name": "User",
+      "description": "",
+      "environment": {
+        "baseRoute": "{{baseUrl}}{{ _.userModule }}"
+      },
+      "environmentPropertyOrder": {
+        "&": [
+          "baseRoute"
+        ]
+      },
+      "metaSortKey": -1640310229078,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_d73239b920b140388772115a259158c9",
+      "parentId": "fld_09a7c21fb74c490981dea1fb1ffad4c3",
+      "modified": 1642772500930,
+      "created": 1642772462201,
       "url": "{{baseRoute}}/login",
       "name": "Login",
       "description": "",
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"{% response 'body', 'req_a36105fdf1e84dbba68324015f27ea25', 'b64::JC5kYXRhLmVtYWls::46b', 'never', 60 %}\",\n\t\"password\": \"123456\"\n}"
+        "text": "{\n\t\"email\": \"lalala@lalala.com\",\n\t\"password\": \"123456\"\n}"
       },
       "parameters": [],
       "headers": [
         {
           "name": "Content-Type",
           "value": "application/json",
-          "id": "pair_229b972155634d8f829c9523e308227b"
+          "id": "pair_052a93fdc8f74d799a8a1e0699f63f21"
         }
       ],
       "authentication": {},
@@ -166,10 +120,62 @@
       "_type": "request"
     },
     {
-      "_id": "env_8f219b56668842a9acb2130f801ad1d2",
-      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
-      "modified": 1640319087372,
-      "created": 1640319087372,
+      "_id": "req_6893ad2f71ff4f0dbe65a7d066f14164",
+      "parentId": "fld_09a7c21fb74c490981dea1fb1ffad4c3",
+      "modified": 1642772988332,
+      "created": 1640310540665,
+      "url": "{{baseRoute}}/",
+      "name": "List Users",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{% response 'body', 'req_d73239b920b140388772115a259158c9', 'b64::JC5kYXRhLnRva2Vu::46b', 'never', 60 %}"
+      },
+      "metaSortKey": -1640310540665,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_64c77a98f6f740d694979b0f438f7c56",
+      "parentId": "fld_09a7c21fb74c490981dea1fb1ffad4c3",
+      "modified": 1642773005729,
+      "created": 1642772997895,
+      "url": "{{baseRoute}}/me",
+      "name": "Show Current User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{% response 'body', 'req_d73239b920b140388772115a259158c9', 'b64::JC5kYXRhLnRva2Vu::46b', 'never', 60 %}"
+      },
+      "metaSortKey": -1640310540640,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_b01f9c43de33358182efc65f19bc6b18fc4ebbd8",
+      "parentId": "wrk_f59d08ac7c07425eb7260938b727032b",
+      "modified": 1640310504626,
+      "created": 1640310073046,
       "name": "Base Environment",
       "data": {
         "protocol": "http",
@@ -201,37 +207,37 @@
       "_type": "environment"
     },
     {
-      "_id": "jar_c5842bbefecf4a918db5e746e3f46148",
-      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
-      "modified": 1640319087378,
-      "created": 1640319087378,
+      "_id": "jar_b01f9c43de33358182efc65f19bc6b18fc4ebbd8",
+      "parentId": "wrk_f59d08ac7c07425eb7260938b727032b",
+      "modified": 1640310073048,
+      "created": 1640310073048,
       "name": "Default Jar",
       "cookies": [],
       "_type": "cookie_jar"
     },
     {
-      "_id": "spc_946bbeee8b3d476da5d2a65580f0023b",
-      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
-      "modified": 1640319087417,
-      "created": 1640319087381,
+      "_id": "spc_dfc5f8b295d84282b0cfe2d6442991d0",
+      "parentId": "wrk_f59d08ac7c07425eb7260938b727032b",
+      "modified": 1640311196394,
+      "created": 1640310073041,
       "fileName": "starter-project",
       "contents": "",
       "contentType": "yaml",
       "_type": "api_spec"
     },
     {
-      "_id": "uts_da57fc00c2114c058c9c93dbf84573fb",
-      "parentId": "wrk_df5ac18532354be5b01c6988767ec469",
-      "modified": 1640319087397,
-      "created": 1640319087397,
+      "_id": "uts_215d94dc9b734de2b63413692609e819",
+      "parentId": "wrk_f59d08ac7c07425eb7260938b727032b",
+      "modified": 1640313840280,
+      "created": 1640313840280,
       "name": "New Suite",
       "_type": "unit_test_suite"
     },
     {
-      "_id": "env_239de49fec6f4c50a84ca99a33c5c53f",
-      "parentId": "env_8f219b56668842a9acb2130f801ad1d2",
-      "modified": 1640565546365,
-      "created": 1640319087373,
+      "_id": "env_680a20def6ad43d59bb96a0cfa4d3eb1",
+      "parentId": "env_b01f9c43de33358182efc65f19bc6b18fc4ebbd8",
+      "modified": 1642772218674,
+      "created": 1640310264168,
       "name": "starter-project",
       "data": {
         "protocol": "http",
@@ -263,10 +269,10 @@
       "_type": "environment"
     },
     {
-      "_id": "ut_e63c37283ebf4a75b5ab18bc4f790b06",
-      "parentId": "uts_da57fc00c2114c058c9c93dbf84573fb",
-      "modified": 1640319087400,
-      "created": 1640319087400,
+      "_id": "ut_3241f9bc7ee549fe882475a36b3e8447",
+      "parentId": "uts_215d94dc9b734de2b63413692609e819",
+      "modified": 1640313942883,
+      "created": 1640313855649,
       "requestId": "req_c3b5d01b4ea94309801f96e85eba0642",
       "name": "Hellow World works",
       "code": "const response1 = await insomnia.send();\nexpect(response1.status).to.equal(200);",
