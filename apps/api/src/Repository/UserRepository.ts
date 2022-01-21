@@ -27,12 +27,9 @@ export class UserRepository extends Repository<User> {
     createdUser.email = email
     createdUser.password_hash = await this.generateHash(rawPassword)
 
-    // save user
+    // save user and return serialized version
     return createdUser.save()
-      .then(user => {
-        let { password_hash: _, ...newUser } = user
-        return newUser
-      })
+      .then(user => this.serialize(user))
   }
 
   //? TODO: implement this right 

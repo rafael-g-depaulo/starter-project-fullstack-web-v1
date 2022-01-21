@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@starter-project/adder": "workspace:*",
+    "@starter-project/entities": "workspace:*",
     "@starter-project/permissions": "workspace:*",
     "@starter-project/server-conn-info": "workspace:*",
     "@types/bcryptjs": "^2.4.2",
@@ -80,6 +81,7 @@
     "jest-html-reporters": "^2.1.0",
     "jest-stare": "^2.2.0",
     "supertest": "^6.0.1",
-    "ts-node-dev": "^1.1.8"
+    "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.12.0"
   }
 }

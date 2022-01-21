@@ -1,6 +1,6 @@
 export enum Roles {
   NON_LOGGED_USER = 'non-logged-user',
-  LOGGED_USER = 'logger-user',
+  LOGGED_USER = 'logged-user',
 }
 
 export enum Resources {

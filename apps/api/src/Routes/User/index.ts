@@ -23,8 +23,6 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 
   return express
     .Router(options)
-    // i'm pretty sure the frontend is using get when it should be using post, but i don't have
-    // the time to check and fix it correctly, so this bad code duplication goes here instead
     .post("/register", ParseBody(registerUserSchema, "user_info"), RegisterUser({ UserRepo }))
     .post("/login", ParseBody(loginUserSchema, "user_info"), LoginUsers({ UserRepo }))
     // .post("/logout", RegisterUser({ UserRepo }))

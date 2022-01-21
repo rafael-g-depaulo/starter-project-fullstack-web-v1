@@ -8,6 +8,7 @@ export const loginUserSchema = object({
   email,
   password,
 })
+
 export interface UserLoginReturn {
   token: string
 }
