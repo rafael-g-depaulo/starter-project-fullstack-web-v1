@@ -6,7 +6,7 @@ import { compare } from "bcryptjs"
 import User from "Entities/User"
 import authConfig from "Utils/authConfig"
 
-import { SerializedUser, UserRegister } from "@starter-project/entities"
+import { SerializedUser, UserRegister,  } from "@starter-project/entities"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
