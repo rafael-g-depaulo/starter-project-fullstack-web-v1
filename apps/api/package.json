@@ -44,7 +44,6 @@
     "url": "https://github.com/rafael-g-depaulo/starter-project-fullstack-web/issues"
   },
   "dependencies": {
-    "@starter-project/adder": "workspace:*",
     "@starter-project/entities": "workspace:*",
     "@starter-project/permissions": "workspace:*",
     "@starter-project/server-conn-info": "workspace:*",

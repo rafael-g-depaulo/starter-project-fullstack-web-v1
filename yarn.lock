@@ -4377,22 +4377,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@starter-project/adder@workspace:*, @starter-project/adder@workspace:libs/adder":
-  version: 0.0.0-use.local
-  resolution: "@starter-project/adder@workspace:libs/adder"
-  dependencies:
-    jest: ^27.4.2
-    typescript: <4.5.0
-  languageName: unknown
-  linkType: soft
-
 "@starter-project/api@workspace:apps/api":
   version: 0.0.0-use.local
   resolution: "@starter-project/api@workspace:apps/api"
   dependencies:
     "@babel/plugin-proposal-class-properties": ^7.12.1
     "@babel/plugin-proposal-decorators": ^7.12.1
-    "@starter-project/adder": "workspace:*"
     "@starter-project/entities": "workspace:*"
     "@starter-project/permissions": "workspace:*"
     "@starter-project/server-conn-info": "workspace:*"
