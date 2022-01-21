@@ -1,11 +1,11 @@
-import { SerializedUser, UserRegister } from "@starter-project/entities"
+import { UserRegister, UserRegisterReturn } from "@starter-project/entities"
 
 import { api, SuccessObject } from "Api"
 import { useMutateApi } from "Hooks/useMutateApi"
 import { extractApiData, throwApiError } from "Utils/handleApiResponse"
 
 export const Signup = (userInfo: UserRegister) => api
-  .post<SuccessObject<SerializedUser>>("/users/register", userInfo)
+  .post<SuccessObject<UserRegisterReturn>>("/users/register", userInfo)
   .then(extractApiData)
   .catch(throwApiError)
 
