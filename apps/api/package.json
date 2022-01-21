@@ -26,7 +26,7 @@
     "build": "yarn build:server & yarn build:db",
     "build:server": "tsc --project tsconfig.prod.json",
     "build:db": "yarn db:build || yarn db:build:force",
-    "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
+    "clean": "rm -fr dist; rm -f tsconfig.tsbuildinfo",
     "typeorm": "ts-node --project ./tsconfig.json -r tsconfig-paths/register $(yarn bin typeorm) --config ./src/Db/config.cli",
     "test": "jest --reporters=\"default\"",
     "test:watch": "yarn test --watch",

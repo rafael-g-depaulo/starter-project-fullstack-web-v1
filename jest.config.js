@@ -4,6 +4,11 @@ module.exports = {
     "<rootDir>/apps/*",
   ],
   
+  displayName: {
+    name: 'ROOT PROJECT',
+    color: 'grey',
+  },
+  
   coveragePathIgnorePatterns: [
     "jest.config.{js,ts}",
     "/node_modules/",

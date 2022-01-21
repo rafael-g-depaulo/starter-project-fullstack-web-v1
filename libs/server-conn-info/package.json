@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
+    "clean": "rm -fr dist; rm -f tsconfig.tsbuildinfo",
     "test": "jest",
     "test:watch": "jest --watch",
     "watch": "jest --watch"
