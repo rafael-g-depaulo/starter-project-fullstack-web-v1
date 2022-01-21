@@ -5,6 +5,9 @@
 
 # Instalation/Environment Setup
 
+## Node version
+If you use nvm, you can just run `nvm use` here on the project's root, and that will install and use the version from .nvmrc
+
 ## Api
 
 ### Postgres:
