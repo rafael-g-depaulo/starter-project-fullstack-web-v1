@@ -9,6 +9,7 @@ export const createdSuccessfully = successfulReturn(201)
 
 // error returns
 export const badRequestError = errorReturn(400)
+export const fileParseError = errorReturn(400)
 export const failedLoginError = errorReturn(401)
 export const unauthenticatedError = errorReturn(401)
 export const unauthorizedError = errorReturn(401)

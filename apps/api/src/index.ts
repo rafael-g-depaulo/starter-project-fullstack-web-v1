@@ -11,6 +11,10 @@ import Db from "Db"
 import Routes from "Routes"
 import { actionSuccessful, badRequestError } from 'Utils/endpointReturns'
 import { getApiUrl } from '@starter-project/server-conn-info'
+
+import { errorHandler } from 'Middlewares/ErrorHandler'
+import { fileParseErrorHandler } from 'Middlewares/fileParseErrorHandler'
+
 // import User from 'Db/Entities/User'
 
 Db()
@@ -25,6 +29,10 @@ Db()
   app.use("/", Routes({ conn }))
   app.get("/", (_, res) => actionSuccessful(res, { msg: 'Hello, world!' }))
   app.use("*", (req, res) => badRequestError(res, `Route "${req.originalUrl}" doesn't exist`))
+
+  // error handling
+  app.use(fileParseErrorHandler)
+  app.use(errorHandler)
 
   app.listen(port, () => console.log(`API running at ${getApiUrl()}`)) 
 })
