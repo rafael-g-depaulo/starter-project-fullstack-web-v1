@@ -20,9 +20,9 @@ export class User extends BaseEntity {
   @Column()
   password_hash: string;
 
-  @Column()
+  @Column({ nullable: true })
   @IsUrl()
-  profile_picture_url: string
+  profile_picture_url?: string
   
   @Column({
     type: "enum",
