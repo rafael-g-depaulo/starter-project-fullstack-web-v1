@@ -4,9 +4,11 @@ import { hash } from "bcryptjs"
 import { compare } from "bcryptjs"
 
 import User from "Entities/User"
-import authConfig from "Utils/authConfig"
 
-import { SerializedUser, UserRegister,  } from "@starter-project/entities"
+import authConfig from "Utils/authConfig"
+import { UploadedFile } from "Utils/aws"
+
+import { SerializedUser, UserRegister } from "@starter-project/entities"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -21,11 +23,12 @@ export class UserRepository extends Repository<User> {
       .then(user => !!user)
   }
 
-  async createUser({ email, password: rawPassword }: UserRegister) {
+  async createUser({ email, password: rawPassword }: UserRegister, profilePicture?: UploadedFile) {
     // create user
     const createdUser = new User()
     createdUser.email = email
     createdUser.password_hash = await this.generateHash(rawPassword)
+    createdUser.profile_picture_url = profilePicture?.url
 
     // save user and return serialized version
     return createdUser.save()
@@ -72,8 +75,13 @@ export class UserRepository extends Repository<User> {
   }
 
   serialize(user: User): SerializedUser {
-    const { email, id, role } = user
-    const serializedUser: SerializedUser = { email, id, role }
+    const { email, id, role, profile_picture_url } = user
+    const serializedUser: SerializedUser = {
+      email,
+      id,
+      role,
+      profilePictureUrl: profile_picture_url,
+    }
     return serializedUser
   }
 
