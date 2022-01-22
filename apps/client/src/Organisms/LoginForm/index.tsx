@@ -43,12 +43,14 @@ export const LoginForm: FC<LoginFormProps> = () => {
             label="Senha:"
           />
 
+          <br />
+          <button type="submit">submit</button>
+
           <pre>values: {JSON.stringify(values, null, 2)}</pre>
           <pre>errors: {JSON.stringify({ ...errors, api: error}, null, 2)}</pre>
           <pre>loggedIn? {`${!!token}`}</pre>
           <pre>JWT: {token}</pre>
           <pre>return data: {JSON.stringify(data, null, 2)}</pre>
-          <button type="submit">submit</button>
         </Form>
       )}
     </Formik>
