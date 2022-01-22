@@ -1,6 +1,6 @@
 import { Asserts, object } from "yup"
 
-import { email, password, passwordConfirmation } from "../schemaFields"
+import { email, password, passwordConfirmation, profilePictureFile } from "../schemaFields"
 import { SerializedUser } from "../serializedSchema"
 
 // register
@@ -9,6 +9,7 @@ export const registerUserSchema = object({
   email,
   password,
   passwordConfirmation,
+  profilePicture: profilePictureFile,
 })
 
 export interface UserRegisterReturn extends SerializedUser {}

@@ -7,7 +7,7 @@ import UserRepository from "Repository/UserRepository"
 import ensureAuthenticated from "Middlewares/ensureAuthenticated"
 import ParseBody from "Middlewares/parseBody"
 
-import { loginUserSchema, registerUserSchema } from "@starter-project/entities"
+import { loginUserSchema, registerUserSchema, maxProfilePictureSize } from "@starter-project/entities"
 
 import RegisterUser from "./Register"
 import LoginUsers from "./Login"
@@ -27,7 +27,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .Router(options)
     .post("/register", 
       parseFiles([
-        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 15 * 1024 * 1024 },
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: maxProfilePictureSize },
       ]),
       ParseBody(registerUserSchema, "user_info"),
       RegisterUser({ UserRepo })
