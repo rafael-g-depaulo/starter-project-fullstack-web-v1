@@ -25,7 +25,7 @@ export const HiddenFileInput = ({
 }: HiddenFileInputProps) => {
 
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const clickInput = useCallback(() => fileInputRef.current?.click(), [fileInputRef.current])
+  const clickInput = useCallback(() => fileInputRef.current?.click(), [])
   const childProps = useMemo<childProps>(() => ({ clickInput }), [clickInput])
 
   return (
