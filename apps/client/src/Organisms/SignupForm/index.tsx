@@ -7,6 +7,7 @@ import { useSignup } from "Api/RegisterUser"
 import EmailInputGroup from "Molecules/InputGroup/Email"
 import PasswordInputGroup from "Molecules/InputGroup/Password"
 import { useFormikSubmit } from "Utils/formik"
+import FileInputButton from "Atoms/Input/FileInputButton"
 
 export interface SignupFormProps {
   
@@ -28,7 +29,7 @@ export const SignupForm: FC<SignupFormProps> = () => {
       onSubmit={useFormikSubmit(mutateAsync)}
       validationSchema={registerUserSchema}
     >
-      {({ values, errors, setFieldValue }) => (
+      {({ values, errors }) => (
         <Form>
           <EmailInputGroup
             label="Email:"         
@@ -42,12 +43,12 @@ export const SignupForm: FC<SignupFormProps> = () => {
             label="Senha:"
             name="passwordConfirmation"
           />
-          
-          <input
-            name="profilePicture"
-            type="file"
-            onChange={e => setFieldValue("profilePicture", e.target.files?.[0])}
-          />
+
+          <FileInputButton
+            name='profilePicture'
+          >
+            Upload Profile Picture
+          </FileInputButton>
 
           <pre>values: {JSON.stringify(values, null, 2)}</pre>
           <pre>errors: {JSON.stringify({ ...errors, api: error}, null, 2)}</pre>

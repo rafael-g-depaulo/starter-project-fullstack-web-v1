@@ -15,7 +15,7 @@ export const passwordConfirmation = string().required().test('passwords-match', 
 })
 export const profilePictureFile: MixedSchema<File | undefined, AnyObject, File | undefined>
 = mixed<File>()
-  .test("fileSize", "File too Large", (value?: File) => !!value && value!.size <= maxProfilePictureSize)
+  .test("fileSize", "File too Large", (value?: File) => !!value && value.size <= maxProfilePictureSize)
   .optional()
 
 export const profilePictureUrl = string().optional().url()
