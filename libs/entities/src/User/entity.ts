@@ -7,4 +7,5 @@ export class User extends Entity<typeof userSchema, SerializedUser> implements S
   id!: string
   email!: string
   role!: Roles
+  profilePictureUrl!: string | undefined
 }

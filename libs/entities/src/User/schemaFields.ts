@@ -9,3 +9,5 @@ export const role = mixed<Roles>().required().oneOf(Object.values(Roles))
 export const passwordConfirmation = string().required().test('passwords-match', 'Senhas não são iguais', function(value) {
   return this.parent.password === value
 })
+
+export const profilePictureUrl = string().optional().url()
