@@ -30,6 +30,7 @@ export const FileInputButton: FC<FileInputButtonProps> = ({
     >
       {({ clickInput }) =>
         <FileButton
+          type="button"
           onClick={clickInput}
           children={children}
           {...props}

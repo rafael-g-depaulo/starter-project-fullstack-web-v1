@@ -50,11 +50,13 @@ export const SignupForm: FC<SignupFormProps> = () => {
             Upload Profile Picture
           </FileInputButton>
 
+          <br/>
+          <button type="submit">submit</button>
+
           <pre>values: {JSON.stringify(values, null, 2)}</pre>
           <pre>errors: {JSON.stringify({ ...errors, api: error}, null, 2)}</pre>
           <pre>registered? {JSON.stringify(isSuccess)}</pre>
           <pre>return data: {JSON.stringify(data, null, 2)}</pre>
-          <button type="submit">submit</button>
         </Form>
       )}
     </Formik>
