@@ -6,6 +6,7 @@ import byteNumToString from "Utils/byteNumToString"
 import { Req } from "Utils/request"
 
 import MulterMiddleware from "./multer"
+import { RouteHandler } from "Utils/routeHandler"
 
 export enum FileType {
   image = "IMAGE FILE",
@@ -72,7 +73,7 @@ export const parseMultedFiles =
     if (fieldFiles.some(file => !fileIsOfType(file, type)))
       return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
 
-    req.parsedFiles![fieldName as T] = fieldFiles
+    req.parsedFiles[fieldName as T] = fieldFiles
   }
 
   return next()
@@ -85,5 +86,5 @@ export const parseFiles = (filesConfig: fileFieldParseConfig[]) => {
   return [
     MulterMiddleware.fields(multerConfig),
     parseMultedFiles(filesConfig),
-  ]
+  ] as RouteHandler[]
 }

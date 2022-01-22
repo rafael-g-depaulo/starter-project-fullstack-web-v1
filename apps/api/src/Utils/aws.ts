@@ -37,16 +37,15 @@ export interface UploadedFile {
   url: string
   fieldname: string
 }
-
 interface UploadFileConfig {
-  folderPrefix: string
-  filePrefix: string
+  folderPrefix?: string
+  filePrefix?: string
 }
 const defaultConfig: UploadFileConfig = {
   filePrefix: "",
   folderPrefix: "",
 }
-const uploadFile = (file: Express.Multer.File, config: UploadFileConfig = defaultConfig) => {
+export const UploadFile = (file: Express.Multer.File, config: UploadFileConfig = defaultConfig) => {
   const base64 = Buffer.from(file.buffer)
   const {
     filePrefix = "",
@@ -59,16 +58,16 @@ const uploadFile = (file: Express.Multer.File, config: UploadFileConfig = defaul
     ACL: "public-read",
     Bucket: process.env.AWS_BUCKET ?? "",
     Body: base64,
-    Key: `apiFiles/${folderPrefix}-${file.fieldname}/${filePrefix}-${filename}-${new Date()}.${extension}`,
+    Key: `apiFiles/${folderPrefix}${file.fieldname}/${filePrefix}${filename}-${new Date()}.${extension}`,
   }
 
   return s3UploadPromise(params)
-    .then(data => ({
+    .then((data): UploadedFile => ({
       url: data.Location,
       fieldname: file.fieldname
     }))
 }
 
 export const UploadFiles = (files: Express.Multer.File[], config: UploadFileConfig = defaultConfig) => {
-  return Promise.all(files.map(file => uploadFile(file, config)))
+  return Promise.all(files.map(file => UploadFile(file, config)))
 }
