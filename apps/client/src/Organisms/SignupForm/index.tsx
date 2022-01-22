@@ -16,6 +16,7 @@ const initialValues: UserRegister = {
   email: "",
   password: "",
   passwordConfirmation: "",
+  profilePicture: undefined
 }
 
 export const SignupForm: FC<SignupFormProps> = () => {
@@ -27,7 +28,7 @@ export const SignupForm: FC<SignupFormProps> = () => {
       onSubmit={useFormikSubmit(mutateAsync)}
       validationSchema={registerUserSchema}
     >
-      {({ values, errors }) => (
+      {({ values, errors, setFieldValue }) => (
         <Form>
           <EmailInputGroup
             label="Email:"         
@@ -35,12 +36,17 @@ export const SignupForm: FC<SignupFormProps> = () => {
 
           <PasswordInputGroup
             label="Senha:"
-            name="password"
           />
 
           <PasswordInputGroup
             label="Senha:"
             name="passwordConfirmation"
+          />
+          
+          <input
+            name="profilePicture"
+            type="file"
+            onChange={e => setFieldValue("profilePicture", e.target.files?.[0])}
           />
 
           <pre>values: {JSON.stringify(values, null, 2)}</pre>

@@ -41,7 +41,6 @@ export const LoginForm: FC<LoginFormProps> = () => {
 
           <PasswordInputGroup
             label="Senha:"
-            name="password"
           />
 
           <pre>values: {JSON.stringify(values, null, 2)}</pre>
