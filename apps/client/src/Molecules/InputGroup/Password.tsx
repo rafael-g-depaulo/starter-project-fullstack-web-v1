@@ -6,14 +6,14 @@ import Label from "Atoms/Input/Label"
 
 export interface PasswordInputGroupProps extends InputGroupProps {
   id?: string
-  name: string
+  name?: string
   label: string
   placeholder?: string
 }
 
 export const PasswordInputGroup: FC<PasswordInputGroupProps> = ({
   label,
-  name,
+  name = "password",
   id = name,
   placeholder = name,
   ...props
