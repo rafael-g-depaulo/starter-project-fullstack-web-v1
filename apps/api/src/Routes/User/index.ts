@@ -13,6 +13,7 @@ import RegisterUser from "./Register"
 import LoginUsers from "./Login"
 import ListUsers from "./List"
 import ShowCurrentUser from "./ShowCurrentUser"
+import { FileType, parseFiles } from "Middlewares/parseFiles"
 
 type UserDeps = {
   conn: Connection
@@ -24,7 +25,13 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 
   return express
     .Router(options)
-    .post("/register", ParseBody(registerUserSchema, "user_info"), RegisterUser({ UserRepo }))
+    .post("/register", 
+      parseFiles([
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 15 * 1024 * 1024 },
+      ]),
+      ParseBody(registerUserSchema, "user_info"),
+      RegisterUser({ UserRepo })
+    )
     .post("/login", ParseBody(loginUserSchema, "user_info"), LoginUsers({ UserRepo }))
     // .post("/logout", RegisterUser({ UserRepo }))
     .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
