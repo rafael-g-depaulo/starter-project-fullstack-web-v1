@@ -1,5 +1,5 @@
 import { BaseEntity, BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm"
-import { IsEmail, IsUUID } from "class-validator"
+import { IsEmail, IsUrl, IsUUID } from "class-validator"
 import { nanoid } from "nanoid"
 import { Roles } from "@starter-project/permissions";
 
@@ -19,6 +19,10 @@ export class User extends BaseEntity {
 
   @Column()
   password_hash: string;
+
+  @Column()
+  @IsUrl()
+  profile_picture_url: string
   
   @Column({
     type: "enum",
