@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2022-01-21T13:54:57.745Z",
+  "__export_date": "2022-01-22T23:59:35.458Z",
   "__export_source": "insomnia.desktop.app:v2021.7.2",
   "resources": [
     {
@@ -40,21 +40,48 @@
     {
       "_id": "req_cdcefdf919914eaa94540a1600060aa7",
       "parentId": "fld_09a7c21fb74c490981dea1fb1ffad4c3",
-      "modified": 1642772495822,
+      "modified": 1642895904494,
       "created": 1642771770426,
       "url": "{{baseRoute}}/register",
       "name": "Register",
       "description": "",
       "method": "POST",
       "body": {
-        "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"lalala@lalala.com\",\n\t\"password\": \"123456\",\n\t\"passwordConfirmation\": \"123456\"\n}"
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "email",
+            "value": "lalala@lalala1.com",
+            "id": "pair_afc101efe126468bb0f667e0a754cc6f"
+          },
+          {
+            "id": "pair_ddc6dd2e869547be8202325554c2a26e",
+            "name": "password",
+            "value": "123456",
+            "description": ""
+          },
+          {
+            "id": "pair_86716fe7ee4f4cb48cd2bef33c9b3178",
+            "name": "passwordConfirmation",
+            "value": "123456",
+            "description": ""
+          },
+          {
+            "id": "pair_33d4c851b1534d10bd5d223a90ca5e61",
+            "name": "profilePictures",
+            "value": "",
+            "description": "",
+            "type": "file",
+            "fileName": "D:\\Pictures\\gatos\\3.jpg",
+            "disabled": true
+          }
+        ]
       },
       "parameters": [],
       "headers": [
         {
           "name": "Content-Type",
-          "value": "application/json",
+          "value": "multipart/form-data",
           "id": "pair_b01a4ac3a9ea4a58a4890bdddf94f0f9"
         }
       ],
@@ -90,7 +117,7 @@
     {
       "_id": "req_d73239b920b140388772115a259158c9",
       "parentId": "fld_09a7c21fb74c490981dea1fb1ffad4c3",
-      "modified": 1642772500930,
+      "modified": 1642885886442,
       "created": 1642772462201,
       "url": "{{baseRoute}}/login",
       "name": "Login",
@@ -98,7 +125,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"lalala@lalala.com\",\n\t\"password\": \"123456\"\n}"
+        "text": "{\n\t\"email\": \"lalala@lala1la.com\",\n\t\"password\": \"123456\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -148,7 +175,7 @@
     {
       "_id": "req_64c77a98f6f740d694979b0f438f7c56",
       "parentId": "fld_09a7c21fb74c490981dea1fb1ffad4c3",
-      "modified": 1642773005729,
+      "modified": 1642885891256,
       "created": 1642772997895,
       "url": "{{baseRoute}}/me",
       "name": "Show Current User",
