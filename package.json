@@ -17,7 +17,7 @@
   "scripts": {
     "build": "${BUILD_SCRIPT:-yarn build:all}",
     "build:all": "yarn build:libs && yarn build:apps",
-    "build:libs": "yarn workspaces foreach -pv --exclude \"*/api\" --exclude \"*/client\" --exclude \"*/strapi\" --exclude \"starter-project\" run build",
+    "build:libs": "yarn workspaces foreach -pvt --exclude \"*/api\" --exclude \"*/client\" --exclude \"*/strapi\" --exclude \"starter-project\" run build",
     "build:libs:watch": "yarn workspaces foreach -piv --exclude \"*/api\" --exclude \"*/client\" --exclude \"*/strapi\" --exclude \"starter-project\" run build:watch",
     "build:apps": "yarn workspaces foreach -pivt --include \"*/api\" --include \"*/client\" --include \"*/strapi\" run build",
     "build:api": "yarn build:libs && yarn build:only:api",
