@@ -1,6 +1,6 @@
 {
   "name": "@starter-project/client",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "private": true,
   "dependencies": {
     "@starter-project/entities": "workspace:*",
