@@ -94,6 +94,6 @@
   // always have exactly one newline at the end of files
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "god.tsconfig": "./tsconfig.json",
+  // "god.tsconfig": "./tsconfig.json",
   // "typescript.tsdk": "node_modules/typescript/lib"
 }
