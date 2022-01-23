@@ -17,11 +17,11 @@ module.exports = {
 
   testPathIgnorePatterns: [
     "<rootDir>",
-    "/node_modules/",
-    "/dist/",
-    "**/dist/",
-    "<rootDir>/**/dist/",
-    "<rootDir>/libs/*/dist/",
-    "<rootDir>/apps/*/dist/",
+    "\\/node_modules\\/",
+    "\\/dist\\/",
+    "\\*\\*\\/dist\\/",
+    "<rootDir>\\/\\*\\*\\/dist\\/",
+    "<rootDir>\\/libs\\/\\*\\/dist\\/",
+    "<rootDir>\\/apps\\/\\*\\/dist\\/",
   ],
 }
